@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "./useLocalStorage";
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
       adminlogin,
       adminlogout,
     }),
-    [admin]
+    [admin,]
   );
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
