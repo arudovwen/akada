@@ -64,7 +64,7 @@ const SignUp = function () {
 
           <p className='text-center text-sm text-gray-500'>
             already have an account?{' '}
-            <a className='text-green-300' href=''>
+            <a className='text-green-300' href="#home">
               sign up
             </a>
           </p>

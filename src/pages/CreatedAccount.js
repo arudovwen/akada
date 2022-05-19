@@ -79,7 +79,7 @@ const CreatedAccount = function () {
 
         <div className='text-center bg-gray-200 rounded-b-lg w-full py-2 font-semibold uppercase text-text-color'>
           {' '}
-          <a href=''>go to dashboard</a>
+          <a href='#home'>go to dashboard</a>
         </div>
       </div>
     </section>
