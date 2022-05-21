@@ -9,7 +9,7 @@ function Header() {
     setStatus(e.target.checked);
   }
   return (
-    <div className="py-4 relative bg-white top-0">
+    <div className="py-4 rela bg-white top-0">
       <nav className="flex justify-between container">
         <div className="logo">
           <img
@@ -26,15 +26,17 @@ function Header() {
             pill
             className="bg-transparent border text-[#943993] border-[#943993] uppercase text-sm font-bold px-5 border-primary hover:bg-primary hover:border-primary hover:text-white"
           >
-            <label>
+            Get started
+          </Button>
+        </div>
+
+        <label htmlFor="check" className="flex lg:hidden menu">
           <input
             type="checkbox"
             id="check"
             value={status}
             onChange={(e) => handleChange(e)}
           />
-
-          
           <span></span>
           <span></span>
           <span></span>
