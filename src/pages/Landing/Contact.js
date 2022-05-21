@@ -16,12 +16,10 @@ function Contact() {
           </p>
         </div>
         <div className="w-full lg:w-2/3">
-          <form
-            action="
-        "
+          <form action=" "
           >
-            <div className="flex space-x-16 mb-20">
-              <div className="w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+              <div className="">
                 <label htmlFor="" className="capitalize">
                   name
                 </label>
@@ -30,7 +28,7 @@ function Contact() {
                   className="block border-b bg-gray-100 border-black w-full  h-10 text-xl font-medium "
                 />
               </div>
-              <div className="w-full">
+              <div className="">
                 <label htmlFor="" className="capitalize">
                   email
                 </label>
@@ -50,7 +48,7 @@ function Contact() {
                 className="block border-b bg-gray-100 border-black w-full h-10 text-xl font-medium "
               />
             </div>
-            <button className="border-2 border-black text-center w-full py-5 uppercase font-bold text-xl">
+            <button className="border-2 border-black text-center w-full py-4 lg:py-5 uppercase font-bold text-lg lg:text-xl">
               send
             </button>
           </form>

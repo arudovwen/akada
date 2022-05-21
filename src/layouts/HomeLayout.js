@@ -11,10 +11,26 @@ export const HomeLayout = () => {
 
   return (
     <div>
-      <img src={topimg} className='w-full h-[33px]' alt='topimg' />
+      <div className="grid grid-cols-1 lg:grid-cols-3">
+        <img src={topimg} className="h-[33px]" alt="topimg" />
+        <img src={topimg} className="h-[33px] hidden lg:inline" alt="topimg" />
+        <img src={topimg} className="h-[33px] hidden lg:inline" alt="topimg" />
+      </div>
 
       <Outlet />
-      <img src={topimg} className='w-full h-[33px] rotate-180' alt='topimg' />
+      <div className="grid grid-cols-1 lg:grid-cols-3">
+        <img src={topimg} className="h-[33px]  rotate-180" alt="topimg" />
+        <img
+          src={topimg}
+          className="h-[33px] hidden lg:inline rotate-180"
+          alt="topimg"
+        />
+        <img
+          src={topimg}
+          className="h-[33px] hidden lg:inline rotate-180"
+          alt="topimg"
+        />
+      </div>
     </div>
   );
 };

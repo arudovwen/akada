@@ -70,6 +70,11 @@ function Banner() {
             </div>
           </div>
         </div>
+        <img
+          src={dot}
+          alt="dot"
+          className="w-[100px] h-[110px] left-0 lg:right-4 bottom-0 md:bottom-[20%] absolute  lg:hidden"
+        />
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ function Footer() {
         <div className="flex gap-x-5 mb-5 lg:mb-0 lg:gap-x-14 justify-center lg:justify-end">
           {footerIcons.map((item) => {
             return (
-              <a className="text-gray-600 text-2xl" href="/facebook">
+              <a key={item.id} className="text-gray-600 text-2xl" href="/facebook">
                 {item.icon}
               </a>
             );
