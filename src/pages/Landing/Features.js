@@ -44,9 +44,9 @@ function Features() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 lg:w-[80%] mx-auto relative">
           {categories.map((item) => (
             <div key={item.id} className=" z-20 bg-white md:bg-transparent md:hover:shadow-lg md:hover:bg-white px-6 py-12 rounded-3xl transition ease-in-out delay-300 duration-300">
-              <div className="bg-[#FFF1DA]  rounded-bl-2xl rounded-tr-2xl w-12 h-12 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-[#FFF1DA]  rounded-bl-2xl rounded-tr-2xl w-[50px] h-[50px] flex items-center justify-center mx-auto mb-4">
                 {" "}
-                <img src={item.img} className="w-8 h-8" alt="features" />
+                <img src={item.img} className="w-9 h-9" alt="features" />
               </div>
               <h5 className="text-lg font-bold text-[#7A6D7B] mb-2">
                 {item.title}
