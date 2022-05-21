@@ -29,28 +29,28 @@ function About() {
   return (
     <div className=" py-24 relative">
       <div className=" text-center">
-        <h2 className="text-5xl font-black mb-4">About Us</h2>
-        <p className="mx-auto lg:w-[35%] px-8 text-lg font-light">
+        <h2 className="text-3xl lg:text-5xl font-black mb-4">About Us</h2>
+        <p className="mx-auto lg:w-[35%] px-8 text-base md:text-lg font-light">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida ipsum
           tempor nec auctor. Mauris vel mauris sed cursus eget id venenatis.
         </p>
 
         <div
-          className='h-[600px]'
+          className="h-[600px]"
           style={{
             backgroundImage: `url(${bulb})`,
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
+            backgroundSize: "contain",
+            backgroundPosition: "center",
           }}
         >
-          <div className='grid grid-cols-4 gap-2 mt-8  mx-auto relative h-full transition duration-500'>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-8  mx-auto relative h-full transition duration-500">
             {categories.map((item) => (
-              <div className='duration-300 group bg-black/30 h-full grid items-end py-10 text-left px-5'>
-                <div className='h-50 mt-auto'>
-                  <h5 className='text-xl font-bold text-white mb-2 capitalize'>
+              <div className="duration-300 group bg-black/30 h-full grid items-end py-10 text-left px-5">
+                <div className="h-50 mt-auto">
+                  <h5 className="text-xl font-bold text-white mb-2 capitalize">
                     {item.title}
                   </h5>
-                  <p className='text-sm hidden group-hover:block text-white transtion group-hover:slide-in-bottom duration-500'>
+                  <p className="text-sm md:hidden group-hover:block text-white transtion group-hover:slide-in-bottom duration-500">
                     {item.text}
                   </p>
                 </div>

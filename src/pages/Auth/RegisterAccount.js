@@ -5,9 +5,9 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const RegisterAccount = function () {
   return (
-    <div className="bg-white w-[30rem] pt-8 py-12 px-10 rounded-[30px] right-24 mt-10 absolute scale-in-center">
-      <div className="mt-10 mx-auto">
-       <Link to="/">
+    <div className="bg-white w-[90%] mx-auto lg:mx-0 right-0 left-0 lg:left-[unset] lg:w-[30rem] py-4 lg:py-12 px-6 lg:px-10 rounded-[30px] lg:right-24 mt-10 absolute scale-in-center">
+      <div className="lg:mt-10 mx-auto">
+        <Link to="/">
           {" "}
           <img src={akadaLogo} alt="akada-logo" className="mx-auto mb-10" />
         </Link>
@@ -16,8 +16,8 @@ const RegisterAccount = function () {
       <div className="capitalize mb-1 text-text-color text-2xl font-bold">
         create account
       </div>
-      <p className="text-2xl font-bold  mb-5">
-        Kindly fill in your details <br></br> to get started
+      <p className="text-base lg:text-2xl font-bold  mb-5">
+        Kindly fill in your details <br className="hidden lg:block"></br> to get started
       </p>
 
       <form
@@ -61,14 +61,14 @@ const RegisterAccount = function () {
             </div>
           </div>
         </div>
-        <button className="uppercase bg-text-color w-full text-white py-3 text-lg font-bold rounded-md mb-4 tracking-wider mt-5">
+        <button className="uppercase bg-text-color w-full text-white py-3 text-base lg:text-lg font-bold rounded-md mb-4 tracking-wider mt-5">
           <Link to="/verify-account">Create account</Link>
         </button>
 
         <p className="text-center text-sm text-gray-500">
           Already have an account?{" "}
-          <Link to="/login" className="text-[#9bab76]" >
-           Log in
+          <Link to="/login" className="text-[#9bab76]">
+            Log in
           </Link>
         </p>
       </form>
