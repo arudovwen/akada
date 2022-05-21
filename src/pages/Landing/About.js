@@ -27,10 +27,10 @@ function About() {
     },
   ];
   return (
-    <div className=' py-16 relative'>
-      <div className=' text-center'>
-        <h2 className='text-5xl font-black mb-4'>About Us</h2>
-        <p className='mx-auto w-[50%]'>
+    <div className=" py-24 relative">
+      <div className=" text-center">
+        <h2 className="text-5xl font-black mb-4">About Us</h2>
+        <p className="mx-auto lg:w-[35%] px-8 text-lg font-light">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida ipsum
           tempor nec auctor. Mauris vel mauris sed cursus eget id venenatis.
         </p>

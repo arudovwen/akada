@@ -1,13 +1,13 @@
 import * as React from 'react';
 function Contact() {
   return (
-    <section className='bg-gray-100 '>
-      <main className=' flex container gap-x-32 py-32 items-center'>
-        <div className='w-1/3'>
-          <h3 className='text-5xl text-black font-bold mb-4 capitalize'>
+    <section className='bg-gray-100 py-14 lg:py-0'>
+      <main className='grid grid-cols-1 justify-center   md:flex container md:gap-x-32 md:py-32 items-center'>
+        <div className='w-full lg:w-1/3'>
+          <h3 className='text-5xl text-black text-center font-bold mb-4 capitalize '>
             contact us
           </h3>
-          <p>
+          <p className='mb-4 lg:mb-0'>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
             nisi maiores reiciendis, consectetur illum omnis molestias maxime
             magnam earum. Debitis. Lorem ipsum dolor sit amet consectetur
@@ -15,7 +15,7 @@ function Contact() {
             officia quod earum aspernatur odio.
           </p>
         </div>
-        <div className='w-2/3'>
+        <div className='w-full lg:w-2/3'>
           <form
             action='
         '

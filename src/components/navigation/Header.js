@@ -19,14 +19,14 @@ function Header() {
           />
         </div>
         <div className='items-center hidden lg:flex'>
-          <Link to='/' className='text-[#333] mr-3 text-bold'>
+          <Link to='/login' className='text-[#333] mr-3 text-bold'>
             Log in
           </Link>
           <Button
             pill
             className='bg-transparent border text-[#943993] border-[#943993] uppercase text-sm font-bolder px-5 border-primary hover:bg-primary hover:border-primary hover:text-white'
           >
-            <Link to='/getStarted'>get started </Link>
+            <Link to='/register'>get started </Link>
           </Button>
         </div>
 
