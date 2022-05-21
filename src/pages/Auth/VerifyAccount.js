@@ -10,9 +10,9 @@ const VerifyAccount = function () {
     setIsOpen(!isOpen);
   }
   return (
-    <div className="bg-white w-[28rem] h-[38rem] px-10 rounded-[30px] right-24 absolute scale-in-center">
+    <div className="bg-white w-[90%] mx-auto lg:mx-0 right-0 left-0 lg:left-[unset] lg:w-[28rem] lg:h-[38rem] px-6  py-4 lg:px-10 rounded-[30px] lg:right-24 absolute scale-in-center">
       <div className="mt-10 mx-auto">
-       <Link to="/">
+        <Link to="/">
           {" "}
           <img src={akadaLogo} alt="akada-logo" className="mx-auto mb-10" />
         </Link>
@@ -21,8 +21,9 @@ const VerifyAccount = function () {
       <div className="capitalize mb-1 text-text-color text-2xl font-bold">
         Verify account
       </div>
-      <p className="text-2xl font-bold mb-10">
-        Kindly fill the code sent to your <br></br> mail below
+      <p className=" text-base lg:text-2xl font-bold mb-10">
+        Kindly fill the code sent to your <br className="hidden lg:block"></br>{" "}
+        mail below
       </p>
 
       <form
@@ -67,7 +68,11 @@ const VerifyAccount = function () {
             />
           </div>
         </div>
-        <button onClick={()=>toggleModal()} className="uppercase bg-text-color w-full text-white py-3 text-lg font-bold rounded-md mb-4 tracking-wider" type="button">
+        <button
+          onClick={() => toggleModal()}
+          className="uppercase bg-text-color w-full text-white py-3 text-base lg:text-lg font-bold rounded-md mb-4 tracking-wider"
+          type="button"
+        >
           {/* <Link to="/createdAccount"> */}
           create account
           {/* </Link> */}
@@ -91,7 +96,7 @@ const VerifyAccount = function () {
 
           <div className="text-center bg-[#E4E5E3] text-sm  flex items-center justify-center w-full py-4 mt-8  font-bold uppercase text-text-color">
             {" "}
-            <a href="">go to dashboard</a>
+            <Link to="/dashboard">go to dashboard</Link>
           </div>
         </div>
       </CustomModal>

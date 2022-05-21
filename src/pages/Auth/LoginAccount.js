@@ -2,11 +2,10 @@
 import akadaLogo from "../../images/akada-logo.png";
 import { Link } from "react-router-dom";
 
-import { IoIosArrowDown } from "react-icons/io";
 
 const LoginAccount = function () {
   return (
-    <div className="bg-white w-[28rem] pt-8 py-12 px-10 rounded-[30px] right-24 mt-10 absolute scale-in-center">
+    <div className="bg-white w-[90%] mx-auto lg:mx-0 right-0 left-0 lg:left-[unset] lg:w-[28rem] pt-8 py-12 px-6 lg:px-10 rounded-[30px] lg:right-24 mt-10 absolute scale-in-center">
       <div className="mt-10 mx-auto">
       <Link to="/">
           {" "}
@@ -44,7 +43,7 @@ const LoginAccount = function () {
           />
         </div>
 
-        <button className="uppercase bg-text-color w-full text-white py-3 text-lg font-bold rounded-md mb-4 tracking-wider mt-5">
+        <button className="uppercase bg-text-color w-full text-white py-3 text-base lg:text-lg font-bold rounded-md mb-4 tracking-wider mt-5">
           <Link to="/verify-account">Login in</Link>
         </button>
         <p className="text-center text-sm text-gray-500 mb-2">
