@@ -9,7 +9,7 @@ function Header() {
     setStatus(e.target.checked);
   }
   return (
-    <div className="py-4 sticky bg-white top-0">
+    <div className="py-4 relative bg-white top-0">
       <nav className="flex justify-between container">
         <div className="logo">
           <img
@@ -19,12 +19,12 @@ function Header() {
           />
         </div>
         <div className="items-center hidden lg:flex">
-          <Link to="/" className="text-[#333] mr-3 text-bold">
+          <Link to="/" className="text-[#333] mr-3 text-bold text-base">
             Log in
           </Link>
           <Button
             pill
-            className="bg-transparent border text-[#943993] border-[#943993] uppercase text-sm font-bolder px-5 border-primary hover:bg-primary hover:border-primary hover:text-white"
+            className="bg-transparent border text-[#943993] border-[#943993] uppercase text-sm font-bold px-5 border-primary hover:bg-primary hover:border-primary hover:text-white"
           >
             Get started
           </Button>
