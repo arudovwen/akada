@@ -4,26 +4,26 @@ function About() {
   const categories = [
     {
       id: 1,
-      title: 'our vision',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ',
+      title: "our vision",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
     },
     {
       id: 1,
-      img: '',
-      title: 'our mission',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ',
+      img: "",
+      title: "our mission",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.  ",
     },
     {
       id: 1,
-      img: '',
-      title: 'what we do',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ',
+      img: "",
+      title: "what we do",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
     },
     {
       id: 1,
-      img: '',
-      title: 'our values',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ',
+      img: "",
+      title: "our values",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
     },
   ];
   return (
@@ -47,10 +47,10 @@ function About() {
             {categories.map((item) => (
               <div key={item.title} className="duration-300 group bg-black/30 h-full grid items-end py-10 text-left px-5">
                 <div className="h-50 mt-auto">
-                  <h5 className="text-xl font-bold text-white mb-2 capitalize">
+                  <h5 className="text-xl lg:text-3xl font-bold text-white mb-2 capitalize">
                     {item.title}
                   </h5>
-                  <p className="text-sm md:hidden group-hover:block text-white transtion group-hover:slide-in-bottom duration-500">
+                  <p className="text-sm lg:text-lg md:hidden group-hover:block text-white transtion slide-in-bottom duration-300 pr-6">
                     {item.text}
                   </p>
                 </div>
