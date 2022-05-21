@@ -28,7 +28,7 @@ function Footer() {
       <img src={akadaLogo} alt="akada-logo " className="mb-3 mx-auto md:mx-0" />
       <div className="grid grid-cols-1 lg:grid-cols-3  lg:gap-x-8 ">
         <div className="">
-          <p className="mb-5">
+          <p className="mb-5 text-center lg:text-left">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
             dolorem consequatur blanditiis ducimus eveniet ratione cumque quas
             adipisci suscipit dignissimos!
@@ -54,7 +54,7 @@ function Footer() {
           })}
         </div>
       </div>
-      <div className="capitalize text-gray-600 text-xs md:text-base">
+      <div className="capitalize text-gray-600 text-xs md:text-base text-center lg:text-left">
         copyright © 2022 akada. All rights reserved.
       </div>
     </section>
