@@ -26,17 +26,15 @@ function Header() {
             pill
             className="bg-transparent border text-[#943993] border-[#943993] uppercase text-sm font-bold px-5 border-primary hover:bg-primary hover:border-primary hover:text-white"
           >
-            Get started
-          </Button>
-        </div>
-
-        <label htmlFor="check" className="flex lg:hidden menu">
+            <label>
           <input
             type="checkbox"
             id="check"
             value={status}
             onChange={(e) => handleChange(e)}
           />
+
+          
           <span></span>
           <span></span>
           <span></span>
