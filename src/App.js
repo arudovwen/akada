@@ -16,23 +16,24 @@ export default function App() {
   return (
     <Routes>
       <Route element={<HomeLayout />}>
-        <Route path='/' element={<Landing />} />
+        <Route path="/" element={<Landing />} />
       </Route>
 
-      <Route path='/dashboard' element={<UserLayout />}>
-        <Route path='About' element={<About />} />
+      <Route  element={<UserLayout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
       </Route>
-      <Route path='/getStarted' element={<Dashboard />} />
+
+    
 
       <Route element={<AuthLayout />}>
-        <Route path='register' element={<RegisterAccount />} />
-        <Route path='/login' element={<LoginAccount />} />
-        <Route path='/verify-account' element={<VerifyAccount />} />
-        <Route path='/forgot-password' element={<ForgotPassword />} />
-        <Route path='/reset-password' element={<ResetPassword />} />
+        <Route path="register" element={<RegisterAccount />} />
+        <Route path="/login" element={<LoginAccount />} />
+        <Route path="/verify-account" element={<VerifyAccount />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Route>
 
-      <Route path='/admin' element={<AdminLayout />}>
+      <Route path="/admin" element={<AdminLayout />}>
         {/* <Route path="About" element={<About />} /> */}
       </Route>
     </Routes>

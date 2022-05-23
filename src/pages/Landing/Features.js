@@ -43,8 +43,8 @@ function Features() {
         </h2>
 
         <div className='grid grid-cols-4 gap-8 mt-8 lg:w-[80%] mx-auto relative'>
-          {categories.map((item) => (
-            <div className=' z-20 hover:shadow-lg hover:bg-white px-6 py-8 rounded-3xl transition ease-in-out delay-300 duration-300'>
+          {categories.map((item, index) => (
+            <div key={index} className=' z-20 hover:shadow-lg hover:bg-white px-6 py-8 rounded-3xl transition ease-in-out delay-300 duration-300'>
               <div className='p-5 bg-[#FFF1DA] rounded-t-8 rounded-b-8 w-12 h-12 flex items-center justify-center mx-auto mb-4'>
                 {' '}
                 <img src={item.img} className='w-16 h-16 mx-auto' />

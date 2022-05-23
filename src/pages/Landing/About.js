@@ -44,8 +44,8 @@ function About() {
           }}
         >
           <div className='grid grid-cols-4 gap-2 mt-8  mx-auto relative h-full transition duration-500'>
-            {categories.map((item) => (
-              <div className='duration-300 group bg-black/30 h-full grid items-end py-10 text-left px-5'>
+            {categories.map((item, index) => (
+              <div key={index} className='duration-300 group bg-black/30 h-full grid items-end py-10 text-left px-5'>
                 <div className='h-50 mt-auto'>
                   <h5 className='text-xl font-bold text-white mb-2 capitalize'>
                     {item.title}
