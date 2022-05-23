@@ -1,3 +1,7 @@
+import customer1 from '../../images/customer1.png';
+
+import customer2 from '../../images/customer2.png';
+
 const Table = function () {
   return (
     <section className='absolute left-[20.6rem] top-[23rem]'>
@@ -27,8 +31,9 @@ const Table = function () {
         </div>
       </div>
 
-      <table className='w-[65rem] capitalize h-[20rem] table-auto border-separate'>
+      <table className='w-[65rem] capitalize h-[20rem] table-auto border-separate text-dashboardgray text-sm'>
         <tr className='text-left'>
+          <th className='w-[2rem] '></th>
           <th>Name</th>
           <th>form</th>
           <th>Country</th>
@@ -43,19 +48,9 @@ const Table = function () {
         </tr>
 
         <tr className='bg-gray-100'>
-          <td className=''>odunated taiwo</td>
-          <td>u-lesson</td>
-          <td>Germany</td>
-          <td>male</td>
-          <td>monthly</td>
-          <td>corona school</td>
-          <td>A+</td>
-          <td>private</td>
-          <td>view all</td>
-          <td>action</td>
-        </tr>
-
-        <tr className='bg-gray-100'>
+          <td className='w-10 h-10'>
+            <img src={customer1} alt='cusotmer' />{' '}
+          </td>
           <td>odunated taiwo</td>
           <td>u-lesson</td>
           <td>Germany</td>
@@ -64,11 +59,14 @@ const Table = function () {
           <td>corona school</td>
           <td>A+</td>
           <td>private</td>
-          <td>view all</td>
+          <td className='text-sm text-dashboardgreen underline'>view all</td>
           <td>action</td>
         </tr>
 
         <tr className='bg-gray-100'>
+          <td className='w-10 h-10'>
+            <img src={customer2} alt='cusotmer' />{' '}
+          </td>
           <td>odunated taiwo</td>
           <td>u-lesson</td>
           <td>Germany</td>
@@ -77,11 +75,14 @@ const Table = function () {
           <td>corona school</td>
           <td>A+</td>
           <td>private</td>
-          <td>view all</td>
+          <td className='text-sm text-dashboardgreen underline'>view all</td>
           <td>action</td>
         </tr>
 
         <tr className='bg-gray-100'>
+          <td className='w-10 h-10'>
+            <img src={customer1} alt='cusotmer' />{' '}
+          </td>
           <td>odunated taiwo</td>
           <td>u-lesson</td>
           <td>Germany</td>
@@ -90,11 +91,14 @@ const Table = function () {
           <td>corona school</td>
           <td>A+</td>
           <td>private</td>
-          <td>view all</td>
+          <td className='text-sm text-dashboardgreen underline'>view all</td>
           <td>action</td>
         </tr>
 
         <tr className='bg-gray-100'>
+          <td className='w-10 h-10'>
+            <img src={customer2} alt='cusotmer' />{' '}
+          </td>
           <td>odunated taiwo</td>
           <td>u-lesson</td>
           <td>Germany</td>
@@ -103,11 +107,14 @@ const Table = function () {
           <td>corona school</td>
           <td>A+</td>
           <td>private</td>
-          <td>view all</td>
+          <td className='text-sm text-dashboardgreen underline'>view all</td>
           <td>action</td>
         </tr>
 
-        <tr className='bg-gray-100'>
+        <tr className='bg-gray-100 '>
+          <td className='w-10 h-10'>
+            <img src={customer1} alt='cusotmer' />{' '}
+          </td>
           <td>odunated taiwo</td>
           <td>u-lesson</td>
           <td>Germany</td>
@@ -116,7 +123,23 @@ const Table = function () {
           <td>corona school</td>
           <td>A+</td>
           <td>private</td>
-          <td>view all</td>
+          <td className='text-sm text-dashboardgreen underline'>view all</td>
+          <td>action</td>
+        </tr>
+
+        <tr className='bg-gray-100 '>
+          <td className='w-10 h-10'>
+            <img src={customer2} alt='cusotmer' />{' '}
+          </td>
+          <td>odunated taiwo</td>
+          <td>u-lesson</td>
+          <td>Germany</td>
+          <td>male</td>
+          <td>monthly</td>
+          <td>corona school</td>
+          <td>A+</td>
+          <td>private</td>
+          <td className='text-sm text-dashboardgreen underline'>view all</td>
           <td>action</td>
         </tr>
       </table>

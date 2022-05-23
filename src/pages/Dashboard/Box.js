@@ -51,13 +51,13 @@ const Box = function () {
         </div>
       </div>
 
-      <div className='w-full grid grid-cols-6 gap-x-40'>
-        <div className='bg-[#E16D38] w-[11rem] h-[11.5rem] rounded text-center  py-12'>
+      <div className='w-full grid grid-cols-6 gap-x-44'>
+        <div className='bg-[#E16D38] w-[11rem] h-[11.5rem] rounded text-center   py-12'>
           <span className='text-white text-4xl mb-5'>75%</span>
           <p className='text-gray-100 font-thin text-sm'>Average grade</p>
         </div>
-        <div className='bg-[#943993] w-[11rem] h-[11.5rem] rounded text-center  py-12'>
-          <span className='text-white text-4xl mb-5'>125</span>
+        <div className='bg-[#943993] w-[11rem] h-[11.5rem] rounded  text-center  py-12'>
+          <span className='text-white text-4xl mb-5 '>125</span>
           <p className='text-gray-100 font-thin text-sm'>
             No of students sponsored
           </p>
