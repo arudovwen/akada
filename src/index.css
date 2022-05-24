@@ -15,8 +15,3 @@ code {
   --dashboardgreen: #97b550;
   --dashboardgray: #5b5b5b;
 }
-
-.container {
-  width: 95%;
-  margin: 0 auto;
-}
