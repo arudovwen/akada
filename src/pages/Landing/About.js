@@ -43,11 +43,11 @@ function About() {
             backgroundPosition: "center",
           }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-8  mx-auto relative h-full transition duration-500">
-            {categories.map((item) => (
-              <div key={item.title} className="duration-300 group bg-black/30 h-full grid items-end py-10 text-left px-5">
-                <div className="h-50 mt-auto">
-                  <h5 className="text-xl lg:text-3xl font-bold text-white mb-2 capitalize">
+          <div className='grid grid-cols-4 gap-2 mt-8  mx-auto relative h-full transition duration-500'>
+            {categories.map((item, index) => (
+              <div key={index} className='duration-300 group bg-black/30 h-full grid items-end py-10 text-left px-5'>
+                <div className='h-50 mt-auto'>
+                  <h5 className='text-xl font-bold text-white mb-2 capitalize'>
                     {item.title}
                   </h5>
                   <p className="text-sm lg:text-lg md:hidden group-hover:block text-white transtion slide-in-bottom duration-300 pr-6">
