@@ -2,7 +2,7 @@ import * as React from "react";
 function Contact() {
   return (
     <section className="bg-gray-100 py-14 lg:py-0">
-      <main className="grid grid-cols-1 justify-center   md:flex container md:gap-x-32 md:py-32 items-center text-left">
+      <main className="grid grid-cols-1 justify-center   md:flex container md:gap-x-32 md:py-32 items-start text-left">
         <div className="w-full lg:w-1/3">
           <h3 className="text-3xl lg:text-5xl text-black text-left font-bold mb-4 capitalize ">
             contact us

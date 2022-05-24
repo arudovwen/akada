@@ -27,7 +27,7 @@ function About() {
     },
   ];
   return (
-    <div className=" py-24 relative">
+    <div className=" pt-24 relative">
       <div className=" text-center">
         <h2 className="text-3xl lg:text-5xl font-black mb-4">About Us</h2>
         <p className="mx-auto lg:w-[35%] px-8 text-base md:text-lg font-light">
@@ -36,16 +36,17 @@ function About() {
         </p>
 
         <div
-          className="h-[600px]"
+          className="lg:h-[600px]"
           style={{
             backgroundImage: `url(${bulb})`,
-            backgroundSize: "contain",
+            backgroundSize: "cover",
             backgroundPosition: "center",
+            backgroundRepeat:"no-repeat",
           }}
         >
-          <div className='grid grid-cols-4 gap-2 mt-8  mx-auto relative h-full transition duration-500'>
+          <div className='grid grid-cols-1 md-grid-cols-2 lg:grid-cols-4 lg:gap-2 mt-8  mx-auto relative h-full transition duration-500'>
             {categories.map((item, index) => (
-              <div key={index} className='duration-300 group bg-black/30 h-full grid items-end py-10 text-left px-5'>
+              <div key={index} className='duration-300 group bg-black/50 lg:bg-black/30 h-full grid items-end py-10 text-left px-5'>
                 <div className='h-50 mt-auto'>
                   <h5 className='text-xl font-bold text-white mb-2 capitalize'>
                     {item.title}
