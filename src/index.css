@@ -15,3 +15,8 @@ code {
   --dashboardgreen: #97b550;
   --dashboardgray: #5b5b5b;
 }
+.container{
+  margin:0 auto;
+  padding-left: 15px;
+   padding-right: 15px;
+}
