@@ -2,20 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./App.scss";
-
+@import './App.scss';
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 :root {
-   --main-color: #943993;
+  --main-color: #943993;
   --text-color: #943993;
-}
-
-.container {
-  width: 90%;
-  margin: 0 auto;
+  --dashboardgreen: #97b550;
+  --dashboardgray: #5b5b5b;
 }
