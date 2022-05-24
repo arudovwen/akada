@@ -1,7 +1,10 @@
 import * as React from 'react';
-import akada from '../../../images/akada-logo.png';
-import home from '../../../images/home.png';
-import taiwo from '../../../images/taiwo.png';
+
+import akada from '../../../../images/akada-logo.png';
+import home from '../../../../images/home.png';
+
+import taiwo from '../../../../images/taiwo.png';
+
 import { Link } from 'react-router-dom';
 
 import { NavLink } from 'react-router-dom';
@@ -73,8 +76,7 @@ const Header = function () {
               {' '}
               <img src={home} alt='icon' className='h-4 w-4 mr-1' />
               <span className='mx-2 text-gray-400'>|</span>
-              {/* <span>Overview</span> */}
-              <Link to='/Notifications'>Overview </Link>
+              <span>Notifications</span>
             </div>
             <div className='flex items-center flex-1 relative'>
               <input
