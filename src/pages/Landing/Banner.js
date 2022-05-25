@@ -8,7 +8,7 @@ import Button from '../../components/Button';
 function Banner() {
   return (
     <div className="relative min-h-[400px] md:min-h-[550px] mt-8 py-8">
-      <div className="container grid grid-cols-2 lg:grid-cols-3 h-full items-center">
+      <div className="container grid grid-cols-2 lg:grid-cols-3 h-full items-center mx-auto">
         <div className="col-span-1  font-bold text-left py-10 h-full flex  items-center relative">
           <div className="z-20">
             <p className="text-primary text-3xl sm:text-4xl md:text-5xl lg:text-[64px] md:leading-[71px] lg:mb-4">

@@ -24,7 +24,7 @@ const footerIcons = [
 ];
 function Footer() {
   return (
-    <section className="container pt-6 lg:py-14  ">
+    <section className="container pt-6 lg:py-14 mx-auto ">
       <img src={akadaLogo} alt="akada-logo " className="mb-3 mx-auto lg:mx-0" />
       <div className="grid grid-cols-1 lg:flex  lg:gap-x-8 text-center lg:text-left">
         <div className="w-full lg:w-[35%] ">

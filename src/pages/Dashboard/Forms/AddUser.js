@@ -1,29 +1,20 @@
-import Dashboard from "../Dashboard/Home";
-import CustomModal from "../../components/Modal";
-import akadaLogo from "../../images/akada-logo.png";
+
+import akadaLogo from "../../../images/akada-logo.png";
 import { Link } from "react-router-dom";
 
 const AddUser = function () {
   return (
-    <section>
-      <Dashboard />
-      <div className="bg-white w-[28rem] pt-8 py-12 px-10 rounded-[30px] right-24 mt-10 absolute scale-in-center">
-        <div className="mt-10 mx-auto">
-          <Link to="/">
-            {" "}
-            <img src={akadaLogo} alt="akada-logo" className="mx-auto mb-10" />
-          </Link>
-        </div>
 
-        <div className="capitalize mb-1 text-text-color text-2xl font-bold mb-5">
+      <div className="w-full">
+
+        <div className="capitalize text-text-color text-2xl font-bold mb-16">
           Add User
         </div>
 
         <form
-          action="
-        "
+          action=""
         >
-          <div className=" mb-5">
+          <div className=" mb-8">
             <label htmlFor="" className="text-sm">
               Enter Name
             </label>
@@ -34,7 +25,7 @@ const AddUser = function () {
             />
           </div>
 
-          <div className=" mb-5">
+          <div className=" mb-8">
             <label htmlFor="" className="text-sm">
               Enter work email
             </label>
@@ -45,7 +36,7 @@ const AddUser = function () {
             />
           </div>
 
-          <div className=" mb-5">
+          <div className=" mb-12">
             <label htmlFor="" className="text-sm ">
               Select role
             </label>
@@ -68,7 +59,7 @@ const AddUser = function () {
           </button>
         </form>
       </div>
-    </section>
+
   );
 };
 

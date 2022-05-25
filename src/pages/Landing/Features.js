@@ -35,7 +35,7 @@ const categories = [
 function Features() {
   return (
     <div className="bg-[#f8f8f8] py-24 relative">
-      <div className="container text-center">
+      <div className="container text-center mx-auto">
         <h5 className="text-xl text-gray-600 uppercase mb-3">Features</h5>
         <h2 className="text-5xl font-black mb-12">Stand -out Features</h2>
 

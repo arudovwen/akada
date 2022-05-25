@@ -1,4 +1,4 @@
-import notificationImage from '../../../../images/notification.png';
+import notificationImage from '../../../images/notification.png';
 
 const recent = [
   {
@@ -60,26 +60,26 @@ const recent = [
 
 const RecentNotifications = function () {
   return (
-    <section className=' rounded-lg py-10 px-4 border border-gray-200 w-[25rem] '>
-      <h3 className='capitalize text-primary font-semibold mb-7 text-lg'>
+    <section className=' rounded-lg py-10 px-4 border border-gray-200'>
+      <h3 className='capitalize text-primary font-normal mb-7 text-lg'>
         recent notifications
       </h3>
-      <div>
+      <div className="max-[80vh] overflow-auto">
         {recent.map((item) => {
           return (
-            <div key={item.id} className='mb-6'>
-              <div className='flex mb-2'>
-                <img
-                  src={notificationImage}
-                  alt='noti icon'
-                  className='mr-3 '
-                />
-                <div className='mr-28 capitalize font-semibold'>
-                  {item.title}
+            <div key={item.id} className="mb-6">
+              <div className="flex mb-2 items-center">
+                <div className="flex flex-1 items-center">
+                  <img
+                    src={notificationImage}
+                    alt="noti icon"
+                    className="mr-2 h-[18px] w-[18px]"
+                  />
+                  <div className="capitalize font-normal text-xs">{item.title}</div>
                 </div>
-                <div>{item.time}</div>
+                <div className="text-[10px]">{item.time}</div>
               </div>
-              <div className='pr-28 text-[#5B5B5B]'>{item.content}</div>
+              <div className="pr-28 text-[#5B5B5B] text-xs font-light">{item.content}</div>
             </div>
           );
         })}

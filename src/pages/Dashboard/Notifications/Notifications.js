@@ -1,16 +1,15 @@
-import Header from './Navigation/Header';
-import SideBar from '../Navigation/SideBar';
-import Messages from './Messages';
-import RecentNotifications from './Navigation/RecentNotifications';
+
+import Messages from "./Messages";
+import RecentNotifications from "./RecentNotifications";
 const Notifications = function () {
   return (
-    <section>
-      <Header />
-      <div className='flex justify-between mb-6 px-4 lg:px-8'>
-        <div className='flex gap-x-12 '>
-          <SideBar />
-          <Messages />
-        </div>
+    <section className="grid grid-cols-1 lg:grid-cols-3 gap-2">
+      <div className="col-span-2">
+
+        <Messages />
+      </div>
+
+      <div className="col-span-1 hidden lg:inline">
         <RecentNotifications />
       </div>
     </section>

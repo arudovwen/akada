@@ -10,7 +10,7 @@ function Header() {
   }
   return (
     <div className="py-4 relative bg-white top-0">
-      <nav className="flex justify-between container">
+      <nav className="flex justify-between container mx-auto">
         <div className="logo">
           <img
             alt="akada logo"

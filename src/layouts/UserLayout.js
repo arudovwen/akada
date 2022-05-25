@@ -21,12 +21,12 @@ export const UserLayout = () => {
       <div className="z-[3] w-full">
         <Header />
       </div>
-      <div className="flex py-6 lg:py-10 z-[4] relative">
-        <div className="hidden lg:block lg:w-[20%] px-8">
+      <div className="flex z-[4] relative full-body">
+        <div className="hidden lg:block lg:w-[20%] px-8  pt-6 lg:pt-10 ">
           {" "}
           <SideBar />
         </div>
-        <div className="w-100 lg:w-[80%] px-6 lg:px-12 relative z-10 main-body pb-44">
+        <div className="w-100 lg:w-[80%] px-6 lg:px-12 relative z-10 main-body pt-6 lg:pt-10 ">
           <Outlet />
         </div>
       </div>
