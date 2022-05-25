@@ -1,15 +1,18 @@
 import Table from "./components/Table";
-import CustomModal from "../../components/SideModal";
+import SideModal from "../../components/SideModal";
+
 import { useState } from "react";
 import AddUser from "../Dashboard/Forms/AddUser";
-import {
- XIcon
-} from "@heroicons/react/outline";
+
+import { XIcon } from "@heroicons/react/outline";
 const Dashboard = function () {
-  let [isOpen, setIsOpen] = useState(true);
-  function toggleModal() {
-    setIsOpen(!isOpen);
+  let [isSideOpen, setIsSideOpen] = useState(false);
+
+  function toggleSideModal() {
+    setIsSideOpen(!isSideOpen);
   }
+
+
   return (
     <section>
       <div className="container mb-12">
@@ -51,12 +54,19 @@ const Dashboard = function () {
       </div>
       <Table />
       {/* Add user starts */}
-      <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
+      <SideModal isSideOpen={isSideOpen} closeModal={() => toggleSideModal()}>
         <div className="p-8">
-          <span className="absolute top-4 right-4" onClick={() => toggleModal()}><XIcon className="w-6 h-6" /></span>
+          <span
+            className="absolute top-4 right-4"
+            onClick={() => toggleSideModal()}
+          >
+            <XIcon className="w-6 h-6" />
+          </span>
           <AddUser />
         </div>
-      </CustomModal>
+      </SideModal>
+
+
     </section>
   );
 };

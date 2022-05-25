@@ -62,7 +62,7 @@ const subjects = [
 const Boxes = function () {
   return (
     <section>
-      <div className='container mb-12'>
+      {/* <div className='container mb-12'>
         <div className=' w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 '>
           <div className='bg-[#E16D38] h-[12rem] rounded-lg text-center px-4 lg:px-8  py-8 lg:py-12 flex items-center justify-center h-[30rem]'>
             <div>
@@ -98,8 +98,8 @@ const Boxes = function () {
             <p className='text-gray-100 text-lg'>Statistics</p>
           </div>
         </div>
-      </div>
-      <Form />
+      </div> */}
+      {/* <Form /> */}
       <div className='bg-white translate-x-2/4 w-[63rem] h-[38rem]  border rounded-xl pt-4 absolute top-[120px] right-1/2'>
         <div className='flex items-center pl-28 py-7 gap-x-36 '>
           <div className='capitalize rounded-2xl shadow-lg p-10'>

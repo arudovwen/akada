@@ -1,9 +1,18 @@
 import customer1 from "../../../images/customer1.png";
 import * as React from "react";
-import { DotsVerticalIcon, ChevronDownIcon } from "@heroicons/react/outline";
+import {
+  DotsVerticalIcon,
+  ChevronDownIcon,
+  XIcon,
+} from "@heroicons/react/outline";
 import { Menu, Transition } from "@headlessui/react";
+import CustomModal from "../../../components/Modal";
+import StudentDetail from "../../Dashboard/StudentDetails/Details";
 const Table = function () {
-  const tableData = 10;
+  let [isOpen, setIsOpen] = React.useState(false);
+  function toggleModal() {
+    setIsOpen(!isOpen);
+  }
   return (
     <div className=" container pb-20">
       <div className="flex capitalize gap-x-5 items-center">
@@ -52,7 +61,7 @@ const Table = function () {
             </tr>
           </thead>
           <tbody>
-            {[...Array(10)].map((e,i) => (
+            {[...Array(10)].map((e, i) => (
               <tr className="" key={i}>
                 <td className="flex items-center">
                   {" "}
@@ -61,7 +70,7 @@ const Table = function () {
                     className="w-8 h-8 rounded-lg mr-2"
                     alt="cusotmer"
                   />{" "}
-                  odunated taiwo 
+                  odunated taiwo
                 </td>
                 <td>u-lesson</td>
                 <td>Germany</td>
@@ -87,7 +96,10 @@ const Table = function () {
                     >
                       <Menu.Items className="absolute right-4 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
                         <Menu.Item>
-                          <div className="rounded-md px-4 py-3 text-sm text-center">
+                          <div
+                            className="rounded-md px-4 py-3 text-sm text-center"
+                            onClick={() => setIsOpen(true)}
+                          >
                             View
                           </div>
                         </Menu.Item>
@@ -100,6 +112,17 @@ const Table = function () {
           </tbody>
         </table>
       </div>
+      <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
+        <div className="relative">
+          <span
+            className="absolute top-4 right-4"
+            onClick={() => toggleModal()}
+          >
+            <XIcon className="w-6 h-6" />
+          </span>
+          <StudentDetail />
+        </div>
+      </CustomModal>
     </div>
   );
 };

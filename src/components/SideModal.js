@@ -1,9 +1,9 @@
 import { Dialog, Transition } from "@headlessui/react";
 
-function CustomModal({ children, isOpen, closeModal }) {
+function CustomModal({ children, isSideOpen, closeModal }) {
   return (
     <Transition
-      show={isOpen}
+      show={isSideOpen}
       enter="transition duration-100 ease-out"
       enterFrom="transform scale-95 opacity-0"
       enterTo="transform scale-100 opacity-100"
@@ -12,7 +12,7 @@ function CustomModal({ children, isOpen, closeModal }) {
       leaveTo="transform scale-95 opacity-0"
     >
       <Dialog
-        open={isOpen}
+        open={isSideOpen}
         onClose={() => closeModal()}
         className="relative z-50"
       >
