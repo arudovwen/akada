@@ -18,12 +18,12 @@ function CustomModal({ children, isSideOpen, closeModal }) {
       >
         {/* The backdrop, rendered as a fixed sibling to the panel container */}
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-md"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm fade-in"
           aria-hidden="true"
         />
 
         {/* Full-screen container to center the panel */}
-        <div className="fixed  flex items-center justify-end right-0 w-[85vw] lg:w-[40vw] top-0 h-screen bg-white">
+        <div className="fixed  flex items-center justify-end right-0 w-[85vw] lg:w-[50vw] top-0 h-screen bg-white slide-in-right">
           {/* The actual dialog panel  */}
           <Dialog.Panel className="w-full h-full  ">
             {children}
