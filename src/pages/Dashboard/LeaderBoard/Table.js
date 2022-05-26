@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/outline";
 import { Menu, Transition } from "@headlessui/react";
 import CustomModal from "../../../components/Modal";
+import Pagination from "../../../components/Pagination";
 import StudentDetail from "../../Dashboard/StudentDetails/Details";
 const Table = function ({ toggleDetailsModal }) {
   let [isOpen, setIsOpen] = React.useState(false);
@@ -16,12 +17,10 @@ const Table = function ({ toggleDetailsModal }) {
   return (
     <div className=" container pb-20">
       <div className="flex capitalize gap-x-5 items-center">
-        <div className="font-bold whitespace-nowrap">leader board</div>
-        {/* <div className='text-text-color font-bold'>By subject</div> */}
 
-        <div className="relative px-6">
+        <div className="relative pr-6">
           {" "}
-          <select className="appearance-none text-text-color font-semibold relative outline-none bg-transpare">
+          <select className="appearance-none bg-transparent text-text-color font-semibold relative outline-none bg-transpare">
             <option>By Subject</option>
             <option value="Date">Date</option>
             <option value="Email">Email</option>
@@ -61,7 +60,7 @@ const Table = function ({ toggleDetailsModal }) {
             </tr>
           </thead>
           <tbody>
-            {[...Array(10)].map((e, i) => (
+            {[...Array(6)].map((e, i) => (
               <tr className="" key={i}>
                 <td className="flex items-center">
                   {" "}
@@ -113,6 +112,9 @@ const Table = function ({ toggleDetailsModal }) {
             ))}
           </tbody>
         </table>
+{/* PAGINATION STARTS HERE    */}
+        <Pagination />
+
       </div>
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className="relative">

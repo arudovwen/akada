@@ -1,7 +1,15 @@
 import Table from "./components/Table";
+import Modal from "../../components/Modal";
 
+import { useState } from "react";
+import { XIcon } from "@heroicons/react/outline";
+import StudentDetails from "../Dashboard/StudentDetails/StudentStats";
 const Dashboard = function () {
+  let [isOpen, setisOpen] = useState(false);
 
+  function toggleModal() {
+    setisOpen(!isOpen);
+  }
 
   return (
     <section>
@@ -42,8 +50,19 @@ const Dashboard = function () {
           </div>
         </div>
       </div>
-      <Table />
-
+      <Table toggleDetailsModal={toggleModal} />
+      {/* View user stats */}
+      <Modal isOpen={isOpen} closeModal={() => toggleModal()}>
+        <div className="">
+          <span
+            className="absolute top-4 right-4"
+            onClick={() => toggleModal()}
+          >
+            <XIcon className="w-6 h-6 text-white" />
+          </span>
+          <StudentDetails />
+        </div>
+      </Modal>
     </section>
   );
 };

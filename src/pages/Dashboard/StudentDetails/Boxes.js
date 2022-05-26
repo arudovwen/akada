@@ -62,44 +62,7 @@ const subjects = [
 const Boxes = function () {
   return (
     <section>
-      {/* <div className='container mb-12'>
-        <div className=' w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 '>
-          <div className='bg-[#E16D38] h-[12rem] rounded-lg text-center px-4 lg:px-8  py-8 lg:py-12 flex items-center justify-center h-[30rem]'>
-            <div>
-              <p className='text-white text-4xl mb-5'>75%</p>
-              <p className='text-gray-100 font-thin text-sm'>Average grade</p>
-            </div>
-          </div>
-          <div className='bg-[#943993] h-[12rem] rounded-lg text-center   px-4 lg:px-8  py-8 lg:py-12 flex items-center justify-center'>
-            <div>
-              <p className='text-white text-4xl mb-5'>125</p>
-              <p className='text-gray-100 font-thin text-sm'>
-                No of students sponsored
-              </p>
-            </div>
-          </div>
-          <div className='bg-[#97B550] h-[12rem] rounded-lg text-center   px-4 lg:px-8  py-8 lg:py-12 flex items-center justify-center'>
-            <div>
-              <p className='text-black text-4xl mb-5'>125</p>
-              <p className='text-black font-thin text-sm'>
-                Best matched candidates
-              </p>
-            </div>
-          </div>
-          <div className='bg-[#7A6D7B] h-[12rem] rounded-lg text-center   px-4 lg:px-8  py-8 lg:py-12 flex items-center justify-center'>
-            <div className=''>
-              <p className='text-white text-4xl mb-5'>125</p>
-              <p className='text-gray-100 font-thin text-sm'>
-                No of students sponsored
-              </p>
-            </div>
-          </div>
-          <div className='bg-[#943993] col-span-2  rounded-2xl py-8 h-[40rem] '>
-            <p className='text-gray-100 text-lg'>Statistics</p>
-          </div>
-        </div>
-      </div> */}
-      {/* <Form /> */}
+   
       <div className='bg-white translate-x-2/4 w-[63rem] h-[38rem]  border rounded-xl pt-4 absolute top-[120px] right-1/2'>
         <div className='flex items-center pl-28 py-7 gap-x-36 '>
           <div className='capitalize rounded-2xl shadow-lg p-10'>

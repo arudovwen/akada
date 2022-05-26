@@ -79,7 +79,7 @@ const SideBar = function () {
         ))}
         <hr style={{ borderColor: "#fafafa" }} />
         <span
-          className="py-4 capitalize flex gap-x-5  hover:text-primary"
+          className="py-4 capitalize flex gap-x-5  hover:text-primary max-w-max"
           onClick={() => toggleSideModal()}
         >
           <CalendarIcon className="w-6 h-6" /> Add user

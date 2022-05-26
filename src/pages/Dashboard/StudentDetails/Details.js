@@ -68,21 +68,37 @@ const Boxes = function () {
           <table>
             <tbody>
               <tr className=" bg-transparent">
-                <td className="text-[#5B5B5B] py-[.1rem] px-2">name:</td>
-                <td className="text-[#5B5B5B] py-[.1rem] px-2">Odunade Taiwo</td>
+                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                  name:
+                </td>
+                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                  Odunade Taiwo
+                </td>
               </tr>
               <tr className="bg-transparent">
-                <td className="text-[#5B5B5B] py-[.1rem] px-2">school:</td>
-                <td className="text-[#5B5B5B] py-[.1rem] px-2">The Kings College</td>
+                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                  school:
+                </td>
+                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                  The Kings College
+                </td>
               </tr>
               <tr className=" bg-transparent">
-                <td className="text-[#5B5B5B] py-[.1rem] px-2">location:</td>
-                <td className="text-[#5B5B5B] py-[.1rem] px-2">lagos, nigeria</td>
+                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                  location:
+                </td>
+                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                  lagos, nigeria
+                </td>
               </tr>
 
               <tr className="bg-transparent ">
-                <td className="text-[#5B5B5B] py-[.1rem] px-2">platform:</td>
-                <td className="text-[#5B5B5B] py-[.1rem] px-2">u-lesson</td>
+                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                  platform:
+                </td>
+                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                  u-lesson
+                </td>
               </tr>
             </tbody>
           </table>
@@ -110,14 +126,25 @@ const Boxes = function () {
             {subjects.map((item) => {
               return (
                 <tr className="capitalize  text-dashboardgray bg-transparent">
-                  <td className="text-[#5B5B5B] py-[.1rem] px-2"> {item.subject} </td>
-                  <td className="text-[#5B5B5B] py-[.1rem] px-2"> {item.grade} </td>
+                  <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                    {" "}
+                    {item.subject}{" "}
+                  </td>
+                  <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
+                    {" "}
+                    {item.grade}{" "}
+                  </td>
                 </tr>
               );
             })}
             <tr className=" bg-transparent capitalize ">
-              <td className="text-dashboardgray py-[.1rem] px-2">master:</td>
-              <td href="#" className=" py-[.1rem] px-2 text-primary">
+              <td className=" bg-transparent text-dashboardgray py-[.1rem] px-2">
+                master:
+              </td>
+              <td
+                href="#"
+                className="bg-transparent py-[.1rem] px-2 text-primary"
+              >
                 view
               </td>
             </tr>
