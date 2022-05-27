@@ -26,7 +26,7 @@ export const UserLayout = () => {
           {" "}
           <SideBar />
         </div>
-        <div className="w-100 lg:w-[80%] px-6 lg:px-12 relative z-10 main-body pt-6 lg:pt-10 ">
+        <div className="w-full lg:w-[80%] px-4 md:px-6 lg:px-12 relative z-10 main-body pt-6 lg:pt-10 pb-[80px] lg:pb-0">
           <Outlet />
         </div>
       </div>

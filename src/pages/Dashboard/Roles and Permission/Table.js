@@ -18,7 +18,7 @@ const Table = function () {
           Assign role
         </Button>
       </div>
-      <div className="overflow-x">
+      <div className="overflow-x-auto w-full">
         <table className="capitalize table-auto text-dashboardgray text-sm w-full">
           <thead>
             <tr className="text-left">

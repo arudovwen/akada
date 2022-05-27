@@ -19,7 +19,7 @@ function Header() {
           />
         </div>
         <div className="items-center hidden lg:flex">
-          <Link to="/login" className="text-[#333] mr-4 text-bold text-xl">
+          <Link to="/login" className="text-[#333] mr-4 text-bold text-lg">
             Log in
           </Link>
           <Button

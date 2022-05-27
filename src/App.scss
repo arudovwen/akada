@@ -175,7 +175,8 @@ table {
 th,
 td {
   white-space: nowrap;
-  padding: 15px 44px 15px 12px;
+  padding: 1rem 1.2rem;
+  font-size: 12px;
 }
 td {
   background: #f9f9f9;
@@ -218,4 +219,11 @@ tr td:last-child {
 
 .scrollable-element {
   scrollbar-color: red yellow;
+}
+
+input{
+  outline-color: #9bab76;
+  outline-width: 1px;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
 }

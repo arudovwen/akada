@@ -41,7 +41,7 @@ const Table = function ({ toggleDetailsModal }) {
         </div>
       </div>
 
-      <div className='overflow-x'>
+      <div className='overflow-x-auto w-full'>
         <table className='capitalize table-auto text-dashboardgray text-sm w-full'>
           <thead>
             <tr className='text-left'>
@@ -77,7 +77,7 @@ const Table = function ({ toggleDetailsModal }) {
                 <td>corona school</td>
                 <td>A+</td>
                 <td>private</td>
-                <td className='text-sm' onClick={() => toggleDetailsModal()}>
+                <td className='' onClick={() => toggleDetailsModal()}>
                   view all
                 </td>
                 <td>
