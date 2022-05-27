@@ -1,6 +1,7 @@
 import Boxes from './Boxes';
 import Table from './Table';
 import RecentPayments from './RecentPayments';
+import QuickAction from './QuickAction';
 
 const Payments = function () {
   return (
@@ -10,7 +11,10 @@ const Payments = function () {
 
         <RecentPayments />
       </div>
-      {/* <Table /> */}
+      <div className='flex  gap-x-7 pt-14'>
+        <Table />
+        <QuickAction />
+      </div>
     </section>
   );
 };

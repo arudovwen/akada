@@ -45,11 +45,20 @@ const Boxes = function () {
             </span>
           </div>
           <div className='col-span-2 bg-white shadow-xl h-[14rem] rounded-3xl mt-2 py-5 px-5  '>
-            Spend analysis
-            <div className='grid grid-cols-2'>
-              <div>subscription</div>
-              <div>sponsorship</div>
-              <div>upgrade</div>
+            <h3 className='mb-3 text-dashboardgray font-semibold'>
+              {' '}
+              Spend analysis{' '}
+            </h3>
+            <div className='grid grid-cols-2 items-center gap-y-10 '>
+              <div className='flex gap-x-7 text-sm'>
+                <div>subscription</div> <span>N67,300</span>
+              </div>
+              <div className='flex gap-x-7 text-sm'>
+                <div> sponsorship</div> <span>N156,300</span>
+              </div>
+              <div className='flex gap-x-7 text-sm'>
+                <div> upgrade</div> <span>N1,456,300</span>
+              </div>
             </div>
           </div>
         </div>
