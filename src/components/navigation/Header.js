@@ -10,7 +10,7 @@ function Header() {
   }
   return (
     <div className="py-4 relative bg-white top-0">
-      <nav className="flex justify-between container">
+      <nav className="flex justify-between container mx-auto">
         <div className="logo">
           <img
             alt="akada logo"
@@ -19,7 +19,7 @@ function Header() {
           />
         </div>
         <div className="items-center hidden lg:flex">
-          <Link to="/login" className="text-[#333] mr-4 text-bold text-xl">
+          <Link to="/login" className="text-[#333] mr-4 text-bold text-lg">
             Log in
           </Link>
           <Button

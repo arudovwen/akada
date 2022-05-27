@@ -1,13 +1,11 @@
-import customer1 from '../../../images/customer1.png';
-import * as React from 'react';
-import {
-  DotsVerticalIcon,
-  ChevronDownIcon,
-  XIcon,
-} from '@heroicons/react/outline';
-import { Menu, Transition } from '@headlessui/react';
-import CustomModal from '../../../components/Modal';
-import StudentDetail from '../../Dashboard/StudentDetails/Details';
+import customer1 from "../../../images/customer1.png";
+import * as React from "react";
+import { DotsVerticalIcon, XIcon } from "@heroicons/react/outline";
+import { Menu, Transition } from "@headlessui/react";
+import CustomModal from "../../../components/Modal";
+import StudentDetail from "../../Dashboard/StudentDetails/Details";
+import Pagination from "../../../components/Pagination";
+import Button from "../../../components/Button";
 const Table = function () {
   let [isOpen, setIsOpen] = React.useState(false);
   function toggleModal() {
@@ -15,53 +13,23 @@ const Table = function () {
   }
   return (
     <div className=" container pb-20">
-      <div className="flex capitalize gap-x-5 items-center">
-        <div className="font-bold whitespace-nowrap">leader board</div>
-        {/* <div className='text-text-color font-bold'>By subject</div> */}
-
-        <div className="relative px-6">
-          {" "}
-          <select className="appearance-none text-text-color bg-transparent font-semibold relative outline-none bg-transpare">
-            <option>By Subject</option>
-            <option value="Date">Date</option>
-            <option value="Email">Email</option>
-            <option value="Sector">Sector</option>
-            <option value="Gender"> Gender</option>
-          </select>
-          <ChevronDownIcon className="h-4 w-4 absolute top-1 right-0 text-text-color" />
-        </div>
-        <div className="relative">
-          {" "}
-          <select className="appearance-none outline-none bg-transparent text-gray-400 border px-3 w-40 py-2 rounded-lg border-gray-200 relative">
-            <option>Agriculture</option>
-            <option value="Date">Date</option>
-            <option value="Email">Email</option>
-            <option value="Sector">Sector</option>
-            <option value="Gender"> Gender</option>
-          </select>
-          <ChevronDownIcon className="h-4 w-4 absolute top-3 right-2 text-gray-400" />
-        </div>
+      <div className="text-right mb-5">
+        <Button className="bg-primary px-8 rounded uppercase text-sm py-2 text-white ml-auto">
+          Assign role
+        </Button>
       </div>
-
       <div className="overflow-x-auto w-full">
         <table className="capitalize table-auto text-dashboardgray text-sm w-full">
           <thead>
             <tr className="text-left">
               <th>Name</th>
-              <th>form</th>
-              <th>Country</th>
-              <th>gender</th>
-              <th>subscription</th>
-              <th>school</th>
-              <th>grade</th>
-              <th>section</th>
+              <th>roles</th>
 
-              <th>subjects</th>
-              <th>action</th>
+              <th className="text-right px-5">action</th>
             </tr>
           </thead>
           <tbody>
-            {[...Array(10)].map((e, i) => (
+            {[...Array(6)].map((e, i) => (
               <tr className="" key={i}>
                 <td className="flex items-center">
                   {" "}
@@ -72,18 +40,13 @@ const Table = function () {
                   />{" "}
                   odunated taiwo
                 </td>
-                <td>u-lesson</td>
-                <td>Germany</td>
-                <td>male</td>
-                <td>monthly</td>
-                <td>corona school</td>
-                <td>A+</td>
-                <td>private</td>
-                <td className="">view all</td>
-                <td>
+
+                <td>admin</td>
+
+                <td className="text-right px-8">
                   <Menu as="div">
                     <Menu.Button>
-                      <DotsVerticalIcon className="w-4 h-4" />
+                      <DotsVerticalIcon className="w-6 h-6" />
                     </Menu.Button>
                     <Transition
                       as={React.Fragment}
@@ -100,7 +63,7 @@ const Table = function () {
                             className="rounded-md px-4 py-3 text-sm text-center"
                             onClick={() => setIsOpen(true)}
                           >
-                            View
+                            Unassign
                           </div>
                         </Menu.Item>
                       </Menu.Items>
@@ -111,6 +74,7 @@ const Table = function () {
             ))}
           </tbody>
         </table>
+        <Pagination />
       </div>
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className="relative">

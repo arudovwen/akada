@@ -2,7 +2,8 @@ import * as React from "react";
 import akada from "../../../images/akada-logo.png";
 import home from "../../../images/home.png";
 import taiwo from "../../../images/taiwo.png";
-
+import { Link } from "react-router-dom";
+import { Menu, Transition } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
 import {
   ShoppingBagIcon,
@@ -15,6 +16,7 @@ import {
   UserIcon,
   CreditCardIcon,
   XIcon,
+  ChevronDownIcon,
 } from "@heroicons/react/outline";
 const sideBar = [
   {
@@ -60,7 +62,7 @@ const Header = function () {
     setStatus(e.target.checked);
   }
   return (
-    <section className="bg-[#FAFAFA] w-full mb-6 px-4 lg:px-8 shadow lg:shadow-none z-40">
+    <section className="bg-[#FAFAFA] w-full px-4 lg:px-8 shadow lg:shadow-none z-40">
       <nav className="flex lg:grid lg:grid-cols-4 py-5 items-center justify-between">
         <div className="col-span-1 z-40">
           <img src={akada} alt="logo" className="w-[100px] h-auto z-40" />
@@ -72,13 +74,14 @@ const Header = function () {
               {" "}
               <img src={home} alt="icon" className="h-4 w-4 mr-1" />
               <span className="mx-2 text-gray-400">|</span>
-              <span>Overview</span>
+              {/* <span>Overview</span> */}
+              <Link to="/overview">Overview </Link>
             </div>
             <div className="flex items-center flex-1 relative">
               <input
                 type="text"
                 placeholder="Search"
-                className=" rounded-full pl-6 py-2 flex-1"
+                className=" rounded-full px-4 py-2 flex-1"
               />
               <SearchIcon className="w-4 h-4 absolute right-5" />
             </div>
@@ -86,20 +89,60 @@ const Header = function () {
         </div>
         <div className="col-span-1 items-center justify-between  hidden lg:flex">
           <div className="flex items-center">
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-5 relative">
-              <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span>
-              <ShoppingBagIcon className="w-5 h-5 relative" />
-            </div>
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative">
-              <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span>
-              <BellIcon className="w-5 h-5" />
-            </div>
+            <NavLink to="/cart">
+              {" "}
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-5 relative cursor-pointer">
+                <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span>
+                <ShoppingBagIcon className="w-5 h-5 relative" />
+              </div>
+            </NavLink>
+            <NavLink to="/notifications">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative cursor-pointer">
+                <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span>
+                <BellIcon className="w-5 h-5" />
+              </div>
+            </NavLink>
           </div>
-
-          <div className="text-right flex gap-x-2 items-center h-10 bg-white rounded-full px-4">
-            <img src={taiwo} alt="taiwo" />
-            <p>Taiwo Odunade</p>
-          </div>
+          <Menu as="div">
+            <Menu.Button>
+              {" "}
+              <div className="text-right flex gap-x-2 items-center h-10 bg-white rounded-full px-4 cursor-pointer">
+                <img src={taiwo} alt="taiwo" />
+                <p>Taiwo Odunade</p>
+                <ChevronDownIcon
+                  className="ml-2 -mr-1 h-5 w-5 text-gray-400 hover:text-gray-500"
+                  aria-hidden="true"
+                />
+              </div>
+            </Menu.Button>
+            <Transition
+              as={React.Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute right-4 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
+                <Menu.Item >
+                  <div className="rounded-md px-4 py-3 text-sm">
+                    Account settings
+                  </div>
+                </Menu.Item>
+                <Menu.Item >
+                  <div className="rounded-md px-4 py-3 text-sm">
+                    Account settings
+                  </div>
+                </Menu.Item>
+                <Menu.Item>
+                  <div className="rounded-md px-4 py-3 text-sm">
+                    Account settings
+                  </div>
+                </Menu.Item>
+              </Menu.Items>
+            </Transition>
+          </Menu>
         </div>
         {!status && (
           <label htmlFor="check" className="flex lg:hidden menu z-40">
