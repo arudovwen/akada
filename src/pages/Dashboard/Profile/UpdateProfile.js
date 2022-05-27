@@ -10,17 +10,17 @@ const UpdateProfile = function () {
   }
 
   return (
-    <section className='w-full '>
+    <section className='w-full'>
       <ProfilePicture />
-      <div className=' justify-between shadow-lg pt-7 pb-20  px-14 rounded-xl'>
-        <div className='grid grid-cols-1  lg:grid-cols-2 gap-x-[15rem] mb-5'>
+      <div className=' justify-between shadow lg:shadow-lg pt-7  pb-10 lg:pb-20 px-8 lg:px-14 rounded-xl bg-white'>
+        <div className='grid grid-cols-1  lg:grid-cols-2 gap-x-8 lg:gap-x-[15rem] mb-5'>
           <div className=' mb-5'>
             <label htmlFor='' className='text-sm'>
               Enter your name
             </label>
             <input
               type='text'
-              className='block border-b-2 w-full h-10 text-xl font-medium'
+              className='block border-b-2 w-full h-10 text-base md:text-lg lg:text-xl font-medium'
               placeholder='Name'
             />
           </div>
@@ -29,7 +29,7 @@ const UpdateProfile = function () {
             <label htmlFor='' className='text-sm'>
               Select your gender
             </label>
-            <select className='block border-b-2 w-full h-10 text-xl font-medium text-gray-300'>
+            <select className='block border-b-2 w-full h-10 text-base md:text-lg lg:text-xl font-medium text-gray-300'>
               <option className='text-gray-300'>Gender </option>
               <option value='Male'>Male</option>
               <option value='Female'>Female</option>
@@ -43,7 +43,7 @@ const UpdateProfile = function () {
             </label>
             <input
               type='text'
-              className='block border-b-2 w-full h-10 text-xl font-medium'
+              className='block border-b-2 w-full h-10 text-base md:text-lg lg:text-xl font-medium'
               placeholder='Email address'
             />
           </div>
@@ -52,7 +52,7 @@ const UpdateProfile = function () {
             <label htmlFor='' className='text-sm'>
               Enter location
             </label>
-            <select className='block border-b-2 w-full h-10 text-xl font-medium text-gray-300'>
+            <select className='block border-b-2 w-full h-10 text-base md:text-lg lg:text-xl font-medium text-gray-300'>
               <option className='text-gray-300'>Location</option>
               <option value='Male'>Male</option>
               <option value='Female'>Female</option>
@@ -65,7 +65,7 @@ const UpdateProfile = function () {
             </label>
             <input
               type='text'
-              className='block border-b-2 w-full h-10 text-xl font-medium'
+              className='block border-b-2 w-full h-10 text-base md:text-lg lg:text-xl font-medium'
               placeholder='Phone number'
             />
           </div>
@@ -74,7 +74,7 @@ const UpdateProfile = function () {
             <label htmlFor='' className='text-sm'>
               Select role
             </label>
-            <select className='block border-b-2 w-full h-10 text-xl font-medium text-gray-300'>
+            <select className='block border-b-2 w-full h-10 text-base md:text-lg lg:text-xl font-medium text-gray-300'>
               <option>By Subject</option>
               <option value='Date'>Date</option>
               <option value='Email'>Email</option>
@@ -86,9 +86,9 @@ const UpdateProfile = function () {
         <div className='text-center  '>
           <button
             onClick={toggleModal}
-            className='bg-primary w-full lg:w-[25rem] uppercase text-center rounded-lg py-3 px-6 text-white'
+            className='bg-primary w-full lg:w-[25rem] md:uppercase text-center rounded-lg py-3 px-3 text-sm md:text-base text-white'
           >
-            update profile
+            Update profile
           </button>
         </div>
       </div>

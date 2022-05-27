@@ -81,7 +81,7 @@ const Header = function () {
               <input
                 type="text"
                 placeholder="Search"
-                className=" rounded-full pl-6 py-2 flex-1"
+                className=" rounded-full px-4 py-2 flex-1"
               />
               <SearchIcon className="w-4 h-4 absolute right-5" />
             </div>
