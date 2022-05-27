@@ -12,11 +12,14 @@ import StudentDetail from '../../Dashboard/StudentDetails/Details';
 const Table = function () {
   return (
     <section>
-      <div className=' container pb-20 pt-14'>
-        <div className='font-semibold mb-4'>Sponsored list</div>
+      <div className=' w-[15rem] pb-20 pt-14'>
+        <div className='flex justify-between font-semibold mb-4'>
+          <div>Sponsored list</div>
+          <div>view all</div>
+        </div>
 
         <div className='overflow-x'>
-          <table className='capitalize table-auto text-dashboardgray text-sm  w-[20rem]'>
+          <table className='capitalize table-auto text-dashboardgray text-sm  '>
             <thead>
               <tr className='text-left'>
                 <th>Name</th>

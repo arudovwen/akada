@@ -1,11 +1,16 @@
 import Boxes from './Boxes';
 import Table from './Table';
+import RecentPayments from './RecentPayments';
 
 const Payments = function () {
   return (
     <section>
-      <Boxes />
-      <Table />
+      <div className='flex gap-x-7'>
+        <Boxes />
+
+        <RecentPayments />
+      </div>
+      {/* <Table /> */}
     </section>
   );
 };
