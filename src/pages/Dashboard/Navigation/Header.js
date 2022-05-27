@@ -5,6 +5,9 @@ import taiwo from "../../../images/taiwo.png";
 import { Link } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
+import SideModal from "../../../components/SideModal";
+import AddUser from "../../Dashboard/Forms/AddUser";
+import { useLocation } from "react-router-dom";
 import {
   ShoppingBagIcon,
   BellIcon,
@@ -23,12 +26,6 @@ const sideBar = [
     id: 1,
     title: "overview",
     url: "/dashboard",
-  },
-
-  {
-    id: 2,
-    title: "add user",
-    url: "/add-user",
   },
 
   {
@@ -61,6 +58,19 @@ const Header = function () {
   function handleChange(e) {
     setStatus(e.target.checked);
   }
+  let [isSideOpen, setIsSideOpen] = React.useState(false);
+
+  function toggleSideModal() {
+    setStatus(false);
+    setIsSideOpen(!isSideOpen);
+  }
+  const location = useLocation();
+
+  React.useEffect(() => {
+    setStatus(false);
+    setIsSideOpen(false);
+  }, [location]);
+
   return (
     <section className="bg-[#FAFAFA] w-full px-4 lg:px-8 shadow lg:shadow-none z-40">
       <nav className="flex lg:grid lg:grid-cols-4 py-5 items-center justify-between">
@@ -125,12 +135,12 @@ const Header = function () {
               leaveTo="transform opacity-0 scale-95"
             >
               <Menu.Items className="absolute right-4 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
-                <Menu.Item >
+                <Menu.Item>
                   <div className="rounded-md px-4 py-3 text-sm">
                     Account settings
                   </div>
                 </Menu.Item>
-                <Menu.Item >
+                <Menu.Item>
                   <div className="rounded-md px-4 py-3 text-sm">
                     Account settings
                   </div>
@@ -175,11 +185,12 @@ const Header = function () {
                 <NavLink
                   to={item.url}
                   key={item.id}
+                  onClick={() => toggleSideModal()}
                   className="py-4 capitalize flex gap-x-5  hover:text-primary"
                 >
                   {item.id === 1 && <ViewGridIcon className="w-6 h-6" />}
                   {item.id === 3 && <CreditCardIcon className="w-6 h-6" />}
-                  {item.id === 2 && <CalendarIcon className="w-6 h-6" />}
+                  {/* {item.id === 2 && <CalendarIcon className="w-6 h-6" />} */}
                   {item.id === 5 && <KeyIcon className="w-6 h-6" />}
                   {item.id === 4 && (
                     <PresentationChartLineIcon className="w-6 h-6" />
@@ -188,10 +199,29 @@ const Header = function () {
                   <div> {item.title} </div>
                 </NavLink>
               ))}
+              <hr style={{ borderColor: "#fafafa" }} />
+              <span
+                className="py-4 capitalize flex gap-x-5  hover:text-primary max-w-max"
+                onClick={() => toggleSideModal()}
+              >
+                <CalendarIcon className="w-6 h-6" /> Add user
+              </span>
             </nav>
           </div>
         </aside>
       )}
+      {/* Add user starts */}
+      <SideModal isSideOpen={isSideOpen} closeModal={() => toggleSideModal()}>
+        <div className="p-8">
+          <span
+            className="absolute top-4 right-4"
+            onClick={() => toggleSideModal()}
+          >
+            <XIcon className="w-6 h-6" />
+          </span>
+          <AddUser />
+        </div>
+      </SideModal>
     </section>
   );
 };

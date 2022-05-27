@@ -15,36 +15,36 @@ const Table = function ({ toggleDetailsModal }) {
     setIsOpen(!isOpen);
   }
   return (
-    <div className=' container pb-20'>
-      <div className='font-semibold mb-4'>Leader board</div>
-      <div className='flex capitalize gap-x-5 items-center'>
-        <div className='relative pr-6'>
-          <select className='appearance-none bg-transparent text-text-color font-semibold relative outline-none bg-transpare'>
+    <div className=" container pb-20">
+      <div className="font-semibold mb-4">Leader board</div>
+      <div className="flex capitalize gap-x-5 items-center">
+        <div className="relative pr-6">
+          <select className="appearance-none  text-text-color font-semibold relative outline-none bg-transparent text-xs sm:text-sm md:text-base">
             <option>By Subject</option>
-            <option value='Date'>Date</option>
-            <option value='Email'>Email</option>
-            <option value='Sector'>Sector</option>
-            <option value='Gender'> Gender</option>
+            <option value="Date">Date</option>
+            <option value="Email">Email</option>
+            <option value="Sector">Sector</option>
+            <option value="Gender"> Gender</option>
           </select>
-          <ChevronDownIcon className='h-4 w-4 absolute top-1 right-0 text-text-color' />
+          <ChevronDownIcon className="h-4 w-4 absolute top-1 right-0 text-text-color" />
         </div>
-        <div className='relative'>
-          {' '}
-          <select className='appearance-none outline-none bg-transparent text-gray-400 border px-3 w-40 py-2 rounded-lg border-gray-200 relative'>
+        <div className="relative">
+          {" "}
+          <select className="appearance-none outline-none bg-transparent text-gray-400 border px-3 w-40 py-2 rounded-lg border-gray-200 relative text-xs sm:text-sm md:text-base">
             <option>Agriculture</option>
-            <option value='Date'>Date</option>
-            <option value='Email'>Email</option>
-            <option value='Sector'>Sector</option>
-            <option value='Gender'> Gender</option>
+            <option value="Date">Date</option>
+            <option value="Email">Email</option>
+            <option value="Sector">Sector</option>
+            <option value="Gender"> Gender</option>
           </select>
-          <ChevronDownIcon className='h-4 w-4 absolute top-3 right-2 text-gray-400' />
+          <ChevronDownIcon className="h-4 w-4 absolute top-3 right-2 text-gray-400" />
         </div>
       </div>
 
-      <div className='overflow-x-auto w-full'>
-        <table className='capitalize table-auto text-dashboardgray text-sm w-full'>
+      <div className="overflow-x-auto w-full">
+        <table className="capitalize table-auto text-dashboardgray text-sm w-full">
           <thead>
-            <tr className='text-left'>
+            <tr className="text-left">
               <th>Name</th>
               <th>form</th>
               <th>Country</th>
@@ -60,14 +60,14 @@ const Table = function ({ toggleDetailsModal }) {
           </thead>
           <tbody>
             {[...Array(6)].map((e, i) => (
-              <tr className='' key={i}>
-                <td className='flex items-center'>
-                  {' '}
+              <tr className="" key={i}>
+                <td className="flex items-center">
+                  {" "}
                   <img
                     src={customer1}
-                    className='w-8 h-8 rounded-lg mr-2'
-                    alt='cusotmer'
-                  />{' '}
+                    className="w-8 h-8 rounded-lg mr-2"
+                    alt="cusotmer"
+                  />{" "}
                   odunated taiwo
                 </td>
                 <td>u-lesson</td>
@@ -77,27 +77,27 @@ const Table = function ({ toggleDetailsModal }) {
                 <td>corona school</td>
                 <td>A+</td>
                 <td>private</td>
-                <td className='' onClick={() => toggleDetailsModal()}>
+                <td className="" onClick={() => toggleDetailsModal()}>
                   view all
                 </td>
                 <td>
-                  <Menu as='div'>
+                  <Menu as="div">
                     <Menu.Button>
-                      <DotsVerticalIcon className='w-6 h-6' />
+                      <DotsVerticalIcon className="w-6 h-6" />
                     </Menu.Button>
                     <Transition
                       as={React.Fragment}
-                      enter='transition ease-out duration-100'
-                      enterFrom='transform opacity-0 scale-95'
-                      enterTo='transform opacity-100 scale-100'
-                      leave='transition ease-in duration-75'
-                      leaveFrom='transform opacity-100 scale-100'
-                      leaveTo='transform opacity-0 scale-95'
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className='absolute right-4 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40'>
+                      <Menu.Items className="absolute right-4 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
                         <Menu.Item>
                           <div
-                            className='rounded-md px-4 py-3 text-sm text-center'
+                            className="rounded-md px-4 py-3 text-sm text-center"
                             onClick={() => setIsOpen(true)}
                           >
                             View
@@ -115,12 +115,12 @@ const Table = function ({ toggleDetailsModal }) {
         <Pagination />
       </div>
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
-        <div className='relative'>
+        <div className="relative">
           <span
-            className='absolute top-4 right-4'
+            className="absolute top-4 right-4"
             onClick={() => toggleModal()}
           >
-            <XIcon className='w-6 h-6' />
+            <XIcon className="w-6 h-6" />
           </span>
           <StudentDetail />
         </div>

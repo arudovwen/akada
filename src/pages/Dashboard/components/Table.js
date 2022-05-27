@@ -21,7 +21,7 @@ const Table = function () {
 
         <div className="relative px-6">
           {" "}
-          <select className="appearance-none text-text-color bg-transparent font-semibold relative outline-none bg-transpare">
+          <select className="appearance-none text-text-color bg-transparent font-semibold relative outline-none  text-xs sm:text-sm md:text-base">
             <option>By Subject</option>
             <option value="Date">Date</option>
             <option value="Email">Email</option>
@@ -32,7 +32,7 @@ const Table = function () {
         </div>
         <div className="relative">
           {" "}
-          <select className="appearance-none outline-none bg-transparent text-gray-400 border px-3 w-40 py-2 rounded-lg border-gray-200 relative">
+          <select className="appearance-none outline-none bg-transparent text-gray-400 border px-3 w-40 py-2 rounded-lg border-gray-200 relative text-xs sm:text-sm md:text-base">
             <option>Agriculture</option>
             <option value="Date">Date</option>
             <option value="Email">Email</option>

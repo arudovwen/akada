@@ -21,8 +21,6 @@ import LeaderBoard from './pages/Dashboard/LeaderBoard/LeaderBoard';
 import Roles from './pages/Dashboard/Roles and Permission/Roles';
 import Payments from './pages/Dashboard/Payments/Payments';
 
-import Add from './pages/Dashboard/AddUser/Add';
-
 export default function App() {
   return (
     <Routes>
@@ -35,8 +33,8 @@ export default function App() {
         <Route path='/profile/edit' element={<EditProfile />} />
         <Route path='/notifications' element={<Notifications />} />
         <Route path='/leader-board' element={<LeaderBoard />} />
-        <Route path='/add-user' element={<Add />} />
-        <Route path='//SuccessUser' element={<SuccessUser />} />
+
+        <Route path='/SuccessUser' element={<SuccessUser />} />
         <Route path='/roles' element={<Roles />} />
         <Route path='/payments' element={<Payments />} />
       </Route>
