@@ -30,7 +30,7 @@ export const UserLayout = () => {
           <Outlet />
         </div>
       </div>
-      <div className="lg:hidden fixed w-full bottom-0 z-[9999] shadow-lg border-t">
+      <div className="lg:hidden fixed w-full bottom-0 z-[30] shadow-lg border-t">
         <BottomNav />
       </div>
     </div>

@@ -28,23 +28,23 @@ const payments = [
 const RecentPayments = function () {
   return (
     <section>
-      <div className='shadow-2xl rounded-2xl pt-7 pb-10 pl-3 h-full w-[17rem] mb-5'>
-        <h3 className='font-semibold mb-3 text-primary'>Recent payments</h3>
+      <div className="shadow-mb rounded-2xl py-10 px-6 h-full mb-5">
+        <h3 className="font-semibold mb-3 text-primary">Recent payments</h3>
         {payments.map((item) => {
           return (
             <div
               key={item.id}
-              className='flex items-center gap-x-2  capitalize mb-6'
+              className="flex items-center gap-x-2  capitalize mb-6"
             >
-              <div className='w-10 h-10 rounded-full bg-[#F6F8FD] flex items-center justify-center mr-5'>
-                <img src={item.icon} alt='icon' className='w-5 h-5' />
+              <div className="w-10 h-10 rounded-full bg-[#F6F8FD] flex items-center justify-center mr-5">
+                <img src={item.icon} alt="icon" className="w-5 h-5" />
               </div>
-              <div className=' capitalize'>
-                <div className='font-semibold text-dashboardgray'>
+              <div className=" capitalize">
+                <div className="font-semibold text-dashboardgray">
                   {item.title}
                 </div>
 
-                <div className='text-[#A3AED0] text-sm'>{item.date}</div>
+                <div className="text-[#A3AED0] text-sm">{item.date}</div>
               </div>
             </div>
           );
