@@ -108,7 +108,7 @@ const UpdateProfile = function () {
             </p>
           </div>
 
-          <div className='text-center bg-[#E4E5E3] text-sm  flex items-center justify-center w-full py-4 mt-8  font-bold uppercase text-text-color'>
+          <div className='text-center bg-[#E4E5E3] text-sm rounded-br-xl rounded-bl-xl  flex items-center justify-center w-full py-4 mt-8  font-bold uppercase text-text-color'>
             {' '}
             <a href=''>go to dashboard</a>
           </div>
