@@ -18,7 +18,7 @@ function CustomModal({ children, isOpen, closeModal }) {
       >
         {/* The backdrop, rendered as a fixed sibling to the panel container */}
         <div
-          className='fixed inset-0 bg-black/50 backdrop-blur-md'
+          className='fixed inset-0 bg-black/50 backdrop-blur-sm'
           aria-hidden='true'
         />
 

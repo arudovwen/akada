@@ -8,7 +8,7 @@ import {
 const Header = function () {
   return (
     <section className="bg-fuchsia-100 w-full px-0 shadow-lg">
-      <nav className="grid grid-cols-4 py-5 items-center justify-around">
+      <nav className="grid grid-cols-4 py-3 items-center justify-around">
         <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative mx-auto">
           <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2 z-10"></span>
           <HomeIcon className="w-8 h-8 relative text-primary" />

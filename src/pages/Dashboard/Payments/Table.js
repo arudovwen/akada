@@ -13,15 +13,15 @@ import CustomModal from '../../../components/Modal';
 import StudentDetail from '../../Dashboard/StudentDetails/Details';
 const Table = function () {
   return (
-    <section>
-      <div className=' container pb-20'>
-        <div className='overflow-x-auto w-[43rem]'>
+    <section className="w-full">
+      <div className='  pb-20'>
+        <div className='overflow-x-auto '>
           <div className='flex justify-between'>
             <div className='font-semibold mb-4'>Sponsored list</div>
             <div className='text-[#97B550] underline capitalize'>view all</div>
           </div>
 
-          <table className='capitalize table-auto text-dashboardgray text-sm '>
+          <table className='capitalize table-auto text-dashboardgray text-sm w-full'>
             <thead>
               <tr className='text-left'>
                 <th>Name</th>

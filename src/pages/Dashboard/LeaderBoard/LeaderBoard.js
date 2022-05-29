@@ -3,7 +3,7 @@ import Button from './Button';
 import Modal from "../../../components/Modal";
 import { useState } from "react";
 import { XIcon } from "@heroicons/react/outline";
-import StudentDetails from "../StudentDetails/StudentStats";
+import StudentStats from "../StudentDetails/StudentStats";
 
 const LeaderBoard = function () {
   let [isOpen, setisOpen] = useState(false);
@@ -20,12 +20,12 @@ const LeaderBoard = function () {
         <Modal isOpen={isOpen} closeModal={() => toggleModal()}>
           <div className="">
             <span
-              className="absolute top-4 right-4"
+              className="absolute top-4 right-4  z-40 cursor-pointer"
               onClick={() => toggleModal()}
             >
-              <XIcon className="w-6 h-6 text-white" />
+              <XIcon className="w-6 h-6 text-white z-40" />
             </span>
-            <StudentDetails />
+            <StudentStats />
           </div>
         </Modal>
       </section>
