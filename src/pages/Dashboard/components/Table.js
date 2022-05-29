@@ -1,23 +1,25 @@
-import customer1 from '../../../images/customer1.png';
-import * as React from 'react';
+import customer1 from "../../../images/customer1.png";
+import * as React from "react";
 import {
   DotsVerticalIcon,
   ChevronDownIcon,
   XIcon,
-} from '@heroicons/react/outline';
-import { Menu, Transition } from '@headlessui/react';
-import CustomModal from '../../../components/Modal';
-import StudentDetail from '../../Dashboard/StudentDetails/Details';
+} from "@heroicons/react/outline";
+import { Menu, Transition } from "@headlessui/react";
+import CustomModal from "../../../components/Modal";
+import StudentDetail from "../../Dashboard/StudentDetails/Details";
+import StudentStats from "../StudentDetails/StudentStats";
 const Table = function () {
   let [isOpen, setIsOpen] = React.useState(false);
-  function toggleModal() {
+  const [isShowing, setIsShowing] = React.useState("details");
+  function toggleModal(val) {
+    setIsShowing(val);
     setIsOpen(!isOpen);
   }
   return (
-    <div className=" container pb-20">
+    <div className=" container pb-20 mx-auto">
       <div className="flex capitalize gap-x-5 items-center">
         <div className="font-bold whitespace-nowrap">leader board</div>
-        {/* <div className='text-text-color font-bold'>By subject</div> */}
 
         <div className="relative px-6">
           {" "}
@@ -79,7 +81,16 @@ const Table = function () {
                 <td>corona school</td>
                 <td>A+</td>
                 <td>private</td>
-                <td className="">view all</td>
+                <td className="">
+                  {" "}
+                  <span
+                    className="cursor-pointer"
+                    onClick={() => toggleModal("stats")}
+                  >
+                    {" "}
+                    view all{" "}
+                  </span>
+                </td>
                 <td>
                   <Menu as="div">
                     <Menu.Button>
@@ -98,7 +109,7 @@ const Table = function () {
                         <Menu.Item>
                           <div
                             className="rounded-md px-4 py-3 text-sm text-center"
-                            onClick={() => setIsOpen(true)}
+                            onClick={() => toggleModal("details")}
                           >
                             View
                           </div>
@@ -115,12 +126,12 @@ const Table = function () {
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className="relative">
           <span
-            className="absolute top-4 right-4"
+            className="absolute top-4 right-4 z-40 cursor-pointer"
             onClick={() => toggleModal()}
           >
-            <XIcon className="w-6 h-6" />
+            <XIcon className="w-6 h-6 " />
           </span>
-          <StudentDetail />
+          {isShowing === "details" ? <StudentDetail /> : <StudentStats />}
         </div>
       </CustomModal>
     </div>

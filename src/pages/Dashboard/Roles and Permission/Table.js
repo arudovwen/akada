@@ -79,10 +79,10 @@ const Table = function () {
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className="relative">
           <span
-            className="absolute top-4 right-4"
+            className="absolute top-4 right-4  z-40 cursor-pointer"
             onClick={() => toggleModal()}
           >
-            <XIcon className="w-6 h-6" />
+            <XIcon className="w-6 h-6 z-40 cursor-pointer" />
           </span>
           <StudentDetail />
         </div>

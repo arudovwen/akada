@@ -19,7 +19,7 @@ const Table = function ({ toggleDetailsModal }) {
       <div className="font-semibold mb-4">Leader board</div>
       <div className="flex capitalize gap-x-5 items-center">
         <div className="relative pr-6">
-          <select className="appearance-none  text-text-color font-semibold relative outline-none bg-transparent text-xs sm:text-sm md:text-base">
+          <select className="appearance-none bg-transparent text-text-color font-semibold relative outline-none bg-transpare">
             <option>By Subject</option>
             <option value="Date">Date</option>
             <option value="Email">Email</option>
@@ -30,7 +30,7 @@ const Table = function ({ toggleDetailsModal }) {
         </div>
         <div className="relative">
           {" "}
-          <select className="appearance-none outline-none bg-transparent text-gray-400 border px-3 w-40 py-2 rounded-lg border-gray-200 relative text-xs sm:text-sm md:text-base">
+          <select className="appearance-none outline-none bg-transparent text-gray-400 border px-3 w-40 py-2 rounded-lg border-gray-200 relative">
             <option>Agriculture</option>
             <option value="Date">Date</option>
             <option value="Email">Email</option>
@@ -78,12 +78,12 @@ const Table = function ({ toggleDetailsModal }) {
                 <td>A+</td>
                 <td>private</td>
                 <td className="" onClick={() => toggleDetailsModal()}>
-                  view all
+                  <span className="cursor-pointer"> view all </span>
                 </td>
                 <td>
                   <Menu as="div">
                     <Menu.Button>
-                      <DotsVerticalIcon className="w-6 h-6" />
+                      <DotsVerticalIcon className="w-4 h-4" />
                     </Menu.Button>
                     <Transition
                       as={React.Fragment}
@@ -97,7 +97,7 @@ const Table = function ({ toggleDetailsModal }) {
                       <Menu.Items className="absolute right-4 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
                         <Menu.Item>
                           <div
-                            className="rounded-md px-4 py-3 text-sm text-center"
+                            className="rounded-md px-4 py-3 text-sm text-center cursor-pointer"
                             onClick={() => setIsOpen(true)}
                           >
                             View
@@ -117,10 +117,10 @@ const Table = function ({ toggleDetailsModal }) {
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className="relative">
           <span
-            className="absolute top-4 right-4"
+            className="absolute top-4 right-4  z-40 cursor-pointer"
             onClick={() => toggleModal()}
           >
-            <XIcon className="w-6 h-6" />
+            <XIcon className="w-6 h-6 z-40" />
           </span>
           <StudentDetail />
         </div>

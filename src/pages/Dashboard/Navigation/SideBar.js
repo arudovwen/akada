@@ -1,4 +1,5 @@
 import richie from "../../../images/richieimage.png";
+import josh from "../../../images/josh.png";
 import icon3 from "../../../images/icon3.png";
 import icon4 from "../../../images/icon4.png";
 import icon5 from "../../../images/icon5.png";
@@ -51,10 +52,20 @@ const sideBar = [
     url: "/profile",
   },
 ];
+const currentHour = new Date().getHours();
 
+const greetingMessage =
+  currentHour >= 0 && currentHour < 12 // after 4:00AM and before 12:00PM
+    ? "Good morning."
+    : currentHour >= 12 && currentHour <= 17 // after 12:00PM and before 6:00pm
+    ? "Good afternoon."
+    : currentHour > 17 || currentHour < 0 // after 5:59pm or before 4:00AM (to accommodate night owls)
+    ? "Good evening." // if for some reason the calculation didn't work
+    : "Welcome";
+
+console.info(currentHour);
 const SideBar = function () {
   let [isSideOpen, setIsSideOpen] = useState(false);
-
   function toggleSideModal() {
     setIsSideOpen(!isSideOpen);
   }
@@ -66,7 +77,7 @@ const SideBar = function () {
           <NavLink
             to={item.url}
             key={item.id}
-            className="py-4 capitalize flex gap-x-5  hover:text-primary"
+            className="py-3 capitalize flex gap-x-5  hover:text-primary"
           >
             {item.id === 1 && <ViewGridIcon className="w-6 h-6" />}
             {item.id === 3 && <CreditCardIcon className="w-6 h-6" />}
@@ -79,7 +90,7 @@ const SideBar = function () {
         ))}
         <hr style={{ borderColor: "#fafafa" }} />
         <span
-          className="py-4 capitalize flex gap-x-5  hover:text-primary max-w-max"
+          className="py-3 capitalize flex gap-x-5  hover:text-primary max-w-max cursor-pointer"
           onClick={() => toggleSideModal()}
         >
           <CalendarIcon className="w-6 h-6" /> Add user
@@ -88,7 +99,7 @@ const SideBar = function () {
 
       <div className="rounded-xl bg-[#FFEBE2] relative h-56 max-h-52 flex justify-center">
         <img
-          src={richie}
+          src={currentHour >= 12 && currentHour <= 17?josh:richie}
           alt="richie"
           className="h-56 mx-auto  z-10 absolute -top-8"
         />
@@ -100,7 +111,7 @@ const SideBar = function () {
       <SideModal isSideOpen={isSideOpen} closeModal={() => toggleSideModal()}>
         <div className="p-8">
           <span
-            className="absolute top-4 right-4"
+            className="absolute top-4 right-4  z-40 cursor-pointer"
             onClick={() => toggleSideModal()}
           >
             <XIcon className="w-6 h-6" />
