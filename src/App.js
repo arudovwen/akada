@@ -20,6 +20,7 @@ import SuccessUser from './pages/Dashboard/Forms/SuccessUser';
 import LeaderBoard from './pages/Dashboard/LeaderBoard/LeaderBoard';
 import Roles from './pages/Dashboard/Roles and Permission/Roles';
 import Payments from './pages/Dashboard/Payments/Payments';
+import Cart from './pages/Dashboard/Cart/Cart';
 
 export default function App() {
   return (
@@ -39,9 +40,8 @@ export default function App() {
         <Route path='/payments' element={<Payments />} />
       </Route>
 
-      {/* <Route path="/add-user" element={<Student />} /> */}
+      <Route path='/cart' element={<Cart />} />
 
-      {/* <Route path='/add-user' element={<Student />} /> */}
       <Route element={<AuthLayout />}>
         <Route path='register' element={<RegisterAccount />} />
         <Route path='/login' element={<LoginAccount />} />
@@ -49,9 +49,7 @@ export default function App() {
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='/reset-password' element={<ResetPassword />} />
       </Route>
-      <Route path='/admin' element={<AdminLayout />}>
-        {/* <Route path="About" element={<About />} /> */}
-      </Route>
+      <Route path='/admin' element={<AdminLayout />}></Route>
     </Routes>
   );
 }
