@@ -178,6 +178,11 @@ td {
   padding: 1rem 1.2rem;
   font-size: 12px;
 }
+
+#checkbox {
+  display: block;
+}
+
 td {
   background: #f9f9f9;
 }
@@ -221,15 +226,15 @@ tr td:last-child {
   scrollbar-color: red yellow;
 }
 
-input{
+input {
   outline-color: #9bab76;
   outline-width: 1px;
   padding-left: 1rem !important;
   padding-right: 1rem !important;
 }
-.recharts-wrapper{
-  width:100% !important;
+.recharts-wrapper {
+  width: 100% !important;
 }
-.recharts-wrapper .recharts-surface{
+.recharts-wrapper .recharts-surface {
   width: 100% !important;
 }
