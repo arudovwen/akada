@@ -1,20 +1,32 @@
 import customer1 from '../../../images/customer1.png';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+
 import { DotsVerticalIcon, XIcon } from '@heroicons/react/outline';
 import { Menu, Transition } from '@headlessui/react';
 import CustomModal from '../../../components/Modal';
 import StudentDetail from '../../Dashboard/StudentDetails/Details';
 import Pagination from '../../../components/Pagination';
 import Button from '../../../components/Button';
+import AssignRole from '../Forms/AssignRole';
+import { IoMdCheckmark } from 'react-icons/io';
 const Table = function () {
   let [isOpen, setIsOpen] = React.useState(false);
+  let [assignOpen, setAssignOpen] = React.useState(false);
   function toggleModal() {
     setIsOpen(!isOpen);
   }
+
+  const assignToggle = () => {
+    setAssignOpen(!assignOpen);
+  };
   return (
-    <div className=' container pb-20'>
+    <div className=' container pb-20 relative'>
       <div className='text-right mb-5'>
-        <Button className='bg-primary px-8 rounded uppercase text-sm py-2 text-white ml-auto'>
+        <Button
+          className='bg-primary px-8 rounded uppercase text-sm py-2 text-white ml-auto'
+          onClick={() => assignToggle(true)}
+        >
           Assign role
         </Button>
       </div>
@@ -87,6 +99,27 @@ const Table = function () {
           <StudentDetail />
         </div>
       </CustomModal>
+      <AssignRole />
+      <div className='bg-white translate-x-2/4 w-[331px]  border rounded-xl pt-4 absolute top-[200px] right-1/2 text-center'>
+        <div className='text-white text-[52px] bg-text-color w-20 h-20 rounded-full text-center top-[-3rem] mx-auto absolute inset-x-0 flex items-center justify-center'>
+          <IoMdCheckmark />
+        </div>
+
+        <div className='px-16'>
+          <h3 className='text-center text-text-color font-semibold capitalize mb-1 mt-6 text-lg'>
+            success!
+          </h3>
+          <p className='text-[#8D8D8D] text-sm text-center text-ligh mb-4'>
+            {' '}
+            Yay! User role assigned successfully
+          </p>
+        </div>
+
+        <div className='text-center bg-[#E4E5E3] text-sm rounded-br-xl rounded-bl-xl    flex items-center justify-center w-full py-4 mt-8  font-bold uppercase text-text-color'>
+          {' '}
+          <Link to='/dashboard'>go to dashboard</Link>
+        </div>
+      </div>
     </div>
   );
 };
