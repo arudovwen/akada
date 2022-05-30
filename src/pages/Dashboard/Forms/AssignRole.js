@@ -1,59 +1,76 @@
-import { useState } from 'react';
-import CustomModal from '../../../components/Modal';
+import { IoMdCheckmark } from "react-icons/io";
+import * as React from "react";
+import { Link } from "react-router-dom";
 
 const AssignRole = function () {
-  // let [isOpen, setIsOpen] = useState(false);
-  // function toggleModal() {
-  //   console.log('🚀 ~ file: AddUser.js ~ line 9 ~ toggleModal ~ toggleModal');
-  //   setIsOpen(!isOpen);
-  // }
+  const [isDone, setIsDone] = React.useState(false);
   return (
-    <section>
-      <div>
-        <span className='absolute top-0 right-0  z-40 cursor-pointer'></span>
-
+    <div>
+      {!isDone ? (
         <form
-          action=''
-          className='px-64 py-24 bg-white rounded-2xl absolute top-0 w-full right-20'
+          action=""
+          className="px-8 md:px-16 py-12 md:py-24 bg-white rounded-2xl w-full lg:w-[40rem] "
         >
-          <div className=' mb-8 '>
-            <label htmlFor='' className='text-sm'>
+          <div className=" mb-8 ">
+            <label htmlFor="" className="text-sm">
               Enter Name
             </label>
             <input
-              type='text'
-              className='block border-b-2 w-full h-10 text-xl font-medium py-3 outline-none'
-              placeholder='Samson Joe'
+              type="text"
+              className="block border-b-2 w-full h-10 text-sm md:text-xl font-medium py-3 outline-none"
+              placeholder="Samson Joe"
             />
           </div>
 
-          <div className=' mb-12'>
-            <label htmlFor='' className='text-sm '>
+          <div className=" mb-12">
+            <label htmlFor="" className="text-sm ">
               Select role
             </label>
             <select
-              name='gender'
-              id='gender'
-              className='block border-b-2 w-full h-10 text-xl font-medium  outline-none'
+              name="gender"
+              id="gender"
+              className="block border-b-2 w-full h-10  text-sm md:text-xl font-medium  outline-none"
             >
-              <option value='' disabled selected hidden>
+              <option value="" disabled selected hidden>
                 Role
               </option>
-              <option value='male'>Male</option>
-              <option value='Female'>Female</option>
-              <option value='others'>Others</option>
+              <option value="male">Male</option>
+              <option value="Female">Female</option>
+              <option value="others">Others</option>
             </select>
           </div>
 
           <button
-            type='button'
-            className='uppercase bg-text-color w-full text-white py-3 text-lg font-bold rounded-md mb-4 tracking-wider mt-5'
+            onClick={() => setIsDone(true)}
+            type="button"
+            className="lg:uppercase bg-text-color w-full text-white py-3 text-sm md:text-base lg:text-lg font-bold rounded-md mb-4 tracking-wider mt-5"
           >
-            <span>assign role</span>
+            <span>Assign role</span>
           </button>
         </form>
-      </div>
-    </section>
+      ) : (
+        <div className="bg-white w-[250px] md:w-[331px]  border rounded-xl pt-4 text-center">
+          <div className="text-white text-[52px] bg-text-color w-20 h-20 rounded-full text-center top-[-3rem] mx-auto absolute inset-x-0 flex items-center justify-center">
+            <IoMdCheckmark />
+          </div>
+
+          <div className="px-8 md:px-16">
+            <h3 className="text-center text-text-color font-semibold capitalize mb-1 mt-6 text-lg">
+              success!
+            </h3>
+            <p className="text-[#8D8D8D] text-sm text-center text-ligh mb-4">
+              {" "}
+              Yay! User role assigned successfully
+            </p>
+          </div>
+
+          <div className="text-center bg-[#E4E5E3] text-sm rounded-br-xl rounded-bl-xl    flex items-center justify-center w-full py-4 mt-8  font-bold uppercase text-text-color">
+            {" "}
+            <Link to="/dashboard">go to dashboard</Link>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
