@@ -33,35 +33,47 @@ const Summary = function () {
     setIsOpen(!isOpen);
   }
   return (
-    <section className='bg-[#F9FAFB] p-3 capitalize text-dashboardgray'>
-      <div>
-        <h3 className='font-semibold text-lg mb-5'>summary</h3>
-        {summary.map((item) => {
-          return (
-            <div className='flex justify-between mb-4'>
-              <p> {item.title}</p>
-              <span className='font-semibold'>NGN {item.amount}</span>
-            </div>
-          );
-        })}
-        <div>Total</div>
-        <button
-          type='button'
-          className='uppercase bg-text-color w-full text-white rounded py-3 text-lg font-bold rounded-md mb-4 tracking-wider mt-5'
-        >
-          <span onClick={() => toggleModal('checkout')}>checkout</span>
-        </button>
+    <section>
+      <div className="bg-[#F9FAFB] pt-4 pb-2 capitalize text-dashboardgray rounded-lg cart-summary">
+        <h3 className="font-semibold text-lg mb-5 px-3 border-b">summary</h3>
+        <table className="w-full">
+          <tbody>
+            {summary.map((item) => {
+              return (
+                <tr className="border-b" key={item.title}>
+                  <td className="border-b"> {item.title}</td>
+                  <td className="font-semibold text-sm border-b">
+                    NGN {item.amount}
+                  </td>
+                </tr>
+              );
+            })}
+            <tr className="">
+              <td className="border-b">Total</td>
+              <td className="text-sm font-semibold border-b">NGN 5,000,000</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className="px-3">
+          <button
+            type="button"
+            className="uppercase bg-text-color w-full text-white  py-3 text-lg font-light rounded-md mb-4 tracking-wider mt-5"
+          >
+            <span onClick={() => toggleModal("checkout")}>checkout</span>
+          </button>
+        </div>
       </div>
 
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
-        <div className='relative'>
+        <div className="relative">
           <span
-            className='absolute top-4 right-4  z-40 cursor-pointer'
+            className="absolute top-4 right-4  z-40 cursor-pointer"
             onClick={() => toggleModal()}
           >
-            <XIcon className='w-6 h-6 z-40 cursor-pointer' />
+            <XIcon className="w-6 h-6 z-40 cursor-pointer" />
           </span>
-          {isShowing === 'checkout' && <MakePayment />}
+          {isShowing === "checkout" && <MakePayment />}
         </div>
       </CustomModal>
     </section>

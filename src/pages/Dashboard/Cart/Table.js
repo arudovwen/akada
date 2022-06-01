@@ -14,9 +14,9 @@ import StudentDetail from '../../Dashboard/StudentDetails/Details';
 
 const Table = function () {
   return (
-    <section className='w-full  rounded-xl bg-white shadow-2xl'>
+    <section className='w-full  rounded-xl bg-white'>
       <div className=''>
-        <div className='overflow-x-auto '>
+        <div className='cart-table'>
           <table className='capitalize table-auto text-dashboardgray text-sm w-full'>
             <thead>
               <tr className='text-left'>

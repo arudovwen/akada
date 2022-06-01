@@ -9,7 +9,7 @@ const Cart = function () {
     <section>
       <Header />
       <SponsorCart />
-      <div className='grid grid-cols-4 container mx-auto gap-x-3'>
+      <div className='grid grid-cols-4 container mx-auto gap-x-8'>
         <Budget />
         <div className='col-span-2'>
           <Table />

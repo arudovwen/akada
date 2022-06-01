@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}",  "./node_modules/flowbite/**/*.js"],
   theme: {
     backgroundImage: {
       "akada-background": "url('../src/images/background-image.jpg')",
@@ -15,7 +15,7 @@ module.exports = {
         "mb": "0px 4px 75px rgba(0, 0, 0, 0.1)",
       },
     },
-    plugins: [],
+    plugins: [require('flowbite/plugin')],
     rules: [
       {
         test: /\.s[ac]ss$/i,
