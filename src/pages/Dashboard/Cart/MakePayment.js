@@ -41,7 +41,7 @@ const MakePayment = function () {
   return (
     <section>
       {" "}
-      <div className="bg-white py-14  capitalize text-dashboardgray rounded-xl w-[30rem]">
+      <div className="bg-white py-14 px-8 capitalize text-dashboardgray rounded-xl w-[30rem]">
         <div className="cart-summary">
           <h3 className="font-semibold text-lg mb-5 px-3">summary</h3>
           <table className="w-full">
@@ -63,12 +63,14 @@ const MakePayment = function () {
             </tbody>
           </table>
 
-          <button
+        <div className="px-3">
+            <button
             type="button"
             className="uppercase bg-text-color w-full text-white rounded py-3 text-lg font-bold rounded-md mb-4 tracking-wider mt-5"
           >
             <span onClick={() => toggleModal("makePayment")}>make payment</span>
           </button>
+          </div>
         </div>
       </div>
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
