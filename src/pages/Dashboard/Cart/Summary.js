@@ -58,7 +58,7 @@ const Summary = function () {
         <div className="px-3">
           <button
             type="button"
-            className="uppercase bg-text-color w-full text-white  py-3 text-lg font-light rounded-md mb-4 tracking-wider mt-5"
+            className="capitalize lg:uppercase bg-text-color w-full text-white  py-3 text-lg font-light rounded-md mb-4 tracking-wider mt-5"
           >
             <span onClick={() => toggleModal("checkout")}>checkout</span>
           </button>

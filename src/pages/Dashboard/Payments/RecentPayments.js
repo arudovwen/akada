@@ -28,7 +28,7 @@ const payments = [
 const RecentPayments = function () {
   return (
     <section>
-      <div className="shadow-mb rounded-2xl py-10 px-6 h-full mb-5">
+      <div className="shadow-mb rounded-2xl py-10 px-6 h-full mb-5 bg-white">
         <h3 className="font-semibold mb-3 text-primary">Recent payments</h3>
         {payments.map((item) => {
           return (

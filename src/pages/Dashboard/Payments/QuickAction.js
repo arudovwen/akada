@@ -27,7 +27,7 @@ const QuickAction = function () {
   return (
     <section>
       {" "}
-      <div className="shadow-mb rounded-2xl py-10 px-6">
+      <div className="shadow-mb rounded-2xl py-10 px-6 bg-white">
         <h3 className="font-semibold mb-3 text-primary">Quick actions</h3>
         {actions.map((item) => {
           return (

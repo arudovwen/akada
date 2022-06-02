@@ -6,19 +6,19 @@ import QuickAction from "./QuickAction";
 const Payments = function () {
   return (
     <section>
-      <div className="grid grid-cols-3 gap-x-12">
-        <div className="col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
+        <div className="lg:col-span-4">
           <Boxes />
         </div>
-        <div  className="col-span-1" >
+        <div  className="lg:col-span-2" >
           <RecentPayments/>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-x-12 pt-14">
-          <div className="col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 pt-14">
+          <div className="lg:col-span-4">
         <Table />
   </div>
-        <div  className="col-span-1" >
+        <div  className="lg:col-span-2" >
         <QuickAction />
            </div>
       </div>

@@ -14,13 +14,13 @@ import StudentDetail from '../../Dashboard/StudentDetails/Details';
 const Table = function () {
   return (
     <section className="w-full">
-      <div className='  pb-20'>
-        <div className='overflow-x-auto '>
+      <div className='pb-10 lg:pb-20'>
+        <div className=''>
           <div className='flex justify-between'>
             <div className='font-semibold mb-4'>Sponsored list</div>
             <div className='text-[#97B550] underline capitalize'>view all</div>
           </div>
-
+<div className="overflow-x-auto ">
           <table className='capitalize table-auto text-dashboardgray text-sm w-full'>
             <thead>
               <tr className='text-left'>
@@ -61,6 +61,7 @@ const Table = function () {
               ))}
             </tbody>
           </table>
+          </div>
           {/* PAGINATION STARTS HERE    */}
         </div>
         {/* <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
