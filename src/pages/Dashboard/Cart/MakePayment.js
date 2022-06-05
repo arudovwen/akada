@@ -41,7 +41,7 @@ const MakePayment = function () {
   return (
     <section>
       {" "}
-      <div className="bg-white py-14 px-8 capitalize text-dashboardgray rounded-xl w-[30rem]">
+      <div className="bg-white py-14 px-8 capitalize text-dashboardgray rounded-xl w-[90vw] md:w-[30rem]">
         <div className="cart-summary">
           <h3 className="font-semibold text-lg mb-5 px-3">summary</h3>
           <table className="w-full">
@@ -66,7 +66,7 @@ const MakePayment = function () {
         <div className="px-3">
             <button
             type="button"
-            className="uppercase bg-text-color w-full text-white rounded py-3 text-lg font-bold rounded-md mb-4 tracking-wider mt-5"
+            className="capitalize md:uppercase bg-text-color w-full text-white  py-3 text-base md:text-lg font-semibold md:font-bold rounded-md mb-4 tracking-wider mt-5"
           >
             <span onClick={() => toggleModal("makePayment")}>make payment</span>
           </button>
@@ -74,12 +74,12 @@ const MakePayment = function () {
         </div>
       </div>
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
-        <div className="relative">
+        <div className="relative w-[95vw] sm:w-[331px]">
           <span
             className="absolute top-4 right-4  z-40 cursor-pointer"
             onClick={() => toggleModal()}
           >
-            <XIcon className="w-6 h-6 z-40 cursor-pointer" />
+            <XIcon className="w-6 h-6 " />
           </span>
 
           {isShowing === "makePayment" && <Success />}

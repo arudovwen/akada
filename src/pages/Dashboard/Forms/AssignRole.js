@@ -34,9 +34,9 @@ const AssignRole = function () {
               <option value="" disabled selected hidden>
                 Role
               </option>
-              <option value="male">Male</option>
-              <option value="Female">Female</option>
-              <option value="others">Others</option>
+              <option value="male">User</option>
+              <option value="Female">Admin</option>
+              <option value="others">SuperAdmin</option>
             </select>
           </div>
 

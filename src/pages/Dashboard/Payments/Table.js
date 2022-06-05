@@ -11,6 +11,8 @@ import { Menu, Transition } from '@headlessui/react';
 import CustomModal from '../../../components/Modal';
 // import Pagination from '../../../components/Pagination';
 import StudentDetail from '../../Dashboard/StudentDetails/Details';
+import { VscEye } from "react-icons/vsc";
+
 const Table = function () {
   return (
     <section className="w-full">
@@ -55,7 +57,8 @@ const Table = function () {
                   <td>A+</td>
 
                   <td>
-                    <img src={brow} alt='brow' />
+                    <VscEye  className="text-lg"/>
+
                   </td>
                 </tr>
               ))}

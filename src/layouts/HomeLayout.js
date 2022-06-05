@@ -11,23 +11,23 @@ export const HomeLayout = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3">
         <img src={topimg} className="h-[33px]" alt="topimg" />
-        <img src={topimg} className="h-[33px] hidden lg:inline" alt="topimg" />
-        <img src={topimg} className="h-[33px] hidden lg:inline" alt="topimg" />
+        <img src={topimg} className="h-[33px] hidden md:inline" alt="topimg" />
+        <img src={topimg} className="h-[33px] hidden md:inline" alt="topimg" />
       </div>
 
       <Outlet />
-      <div className="grid grid-cols-1 lg:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3">
         <img src={topimg} className="h-[33px]  rotate-180" alt="topimg" />
         <img
           src={topimg}
-          className="h-[33px] hidden lg:inline rotate-180"
+          className="h-[33px] hidden md:inline rotate-180"
           alt="topimg"
         />
         <img
           src={topimg}
-          className="h-[33px] hidden lg:inline rotate-180"
+          className="h-[33px] hidden md:inline rotate-180"
           alt="topimg"
         />
       </div>

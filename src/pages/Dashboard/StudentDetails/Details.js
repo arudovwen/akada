@@ -61,11 +61,11 @@ const subjects = [
 
 const Boxes = function () {
   return (
-    <div className="grid grid-cols-3 gap-16 bg-white rounded-2xl mx-auto p-12">
+    <div className="grid grid-cols-1 md:grid-cols-3 md:gap-16 bg-white rounded-2xl mx-auto p-6 md:p-12 w-[85vw] sm:w-[auto] max-h-[90vh] sm:max-h-full overflow-y-auto">
       <div className="">
-        <div className="capitalize rounded-3xl shadow-lg px-8 py-6 w-full translate-y-1/2 mt-[-35%]">
-          <img src={candidate} alt="candidate" className="mx-auto" />
-          <table>
+        <div className="capitalize rounded-3xl md:shadow-lg md:px-8 py-6 w-full md:translate-y-1/2 md:mt-[-35%]">
+          <img src={candidate} alt="candidate" className="md:mx-auto w-20 h-20 md:w-full md:h-full" />
+          <table className="w-full">
             <tbody>
               <tr className=" bg-transparent">
                 <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">

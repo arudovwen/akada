@@ -48,11 +48,11 @@ const AddUser = function () {
             className='block border-b-2 w-full h-10 text-xl font-medium  outline-none'
           >
             <option value='' disabled selected hidden>
-              Gender
+              Choose role
             </option>
-            <option value='male'>Male</option>
-            <option value='Female'>Female</option>
-            <option value='others'>Others</option>
+             <option value="male">User</option>
+              <option value="Female">Admin</option>
+              <option value="others">SuperAdmin</option>
           </select>
         </div>
 

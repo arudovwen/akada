@@ -30,7 +30,7 @@ const Table = function () {
             <option value="Sector">Sector</option>
             <option value="Gender"> Gender</option>
           </select>
-          <ChevronDownIcon className="h-4 w-4 absolute top-1 right-0 text-text-color" />
+          <ChevronDownIcon className="h-4 w-4 absolute top-1 right-0 text-text-color pointer-events-none" />
         </div>
         <div className="relative">
           {" "}
@@ -41,7 +41,7 @@ const Table = function () {
             <option value="Sector">Sector</option>
             <option value="Gender"> Gender</option>
           </select>
-          <ChevronDownIcon className="h-4 w-4 absolute top-3 right-2 text-gray-400" />
+          <ChevronDownIcon className="h-4 w-4 absolute top-3 right-2 text-gray-400 pointer-events-none" />
         </div>
       </div>
 

@@ -99,12 +99,13 @@ const SideBar = function () {
 
       <div className="rounded-xl bg-[#FFEBE2] relative h-56 max-h-52 flex justify-center">
         <img
-          src={currentHour >= 12 && currentHour <= 17?josh:richie}
+          src={currentHour >17 ? josh : richie}
           alt="richie"
           className="h-56 mx-auto  z-10 absolute -top-8"
         />
         <button className="py-3  rounded-full shadow-2xl text-[#909096] bg-white px-8 z-20  absolute -bottom-6 whitespace-nowrap ">
-          Good morning <span className="absolute top-0 right-6">&#128521;</span>
+          {greetingMessage}{" "}
+          <span className="absolute top-0 right-6">&#128521;</span>
         </button>
       </div>
       {/* Add user starts */}
