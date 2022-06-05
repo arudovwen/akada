@@ -41,7 +41,7 @@ const Budget = function () {
           type="range"
           min="0"
           max="100000"
-          defaultValue="50"
+          value="50"
           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-100"
         />
       </span>

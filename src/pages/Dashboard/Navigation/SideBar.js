@@ -63,7 +63,6 @@ const greetingMessage =
     ? "Good evening." // if for some reason the calculation didn't work
     : "Welcome";
 
-console.info(currentHour);
 const SideBar = function () {
   let [isSideOpen, setIsSideOpen] = useState(false);
   function toggleSideModal() {
