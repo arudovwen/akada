@@ -11,16 +11,16 @@ import {Link} from "react-router-dom"
 function Banner() {
   return (
     <div className="relative min-h-[400px] md:min-h-min lg:min-h-[550px] mt-8 py-8 mb-10">
-      <div className="px-6 sm:px-0 sm:w-[93%] grid grid-cols-1 md:grid-cols-3 h-full md:gap-x-4 lg:gap-x-40 items-center ml-auto">
+      <div className="px-6 sm:px-0 sm:w-[93%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 h-full md:gap-x-4 lg:gap-x-40 items-center ml-auto">
         <div className="md:col-span-1  font-bold text-center md:text-left py-10 h-full flex  items-center relative">
           <div className="z-20 w-full md:w-auto mx-auto md:mx-0">
-            <p className="text-primary text-4xl md:text-5xl lg:text-[64px] md:leading-[71px] lg:mb-4 transition tracking-in-expand-fwd delay-300 duration-500">
+            <p className="text-primary text-4xl sm:text-3xl md:text-5xl lg:text-[64px] md:leading-[71px] lg:mb-4 transition tracking-in-expand-fwd delay-300 duration-500">
               Subscribe<span className="hidden md:inline">.</span>
             </p>
-            <p className="text-primary   text-4xl  md:text-5xl lg:text-[64px] md:leading-[71px]  lg:mb-4 transition tracking-in-expand-fwd">
+            <p className="text-primary   text-4xl sm:text-3xl md:text-5xl lg:text-[64px] md:leading-[71px]  lg:mb-4 transition tracking-in-expand-fwd">
               Select<span className="hidden md:inline">.</span>
             </p>
-            <p className="text-primary  text-4xl md:text-5xl lg:text-[64px]  md:leading-[71px] mb-8 transition tracking-in-expand-fwd">
+            <p className="text-primary  text-4xl sm:text-3xl md:text-5xl lg:text-[64px]  md:leading-[71px] mb-8 transition tracking-in-expand-fwd">
               Sponsor<span className="hidden md:inline">.</span>
             </p>
             <Link to="/register">
