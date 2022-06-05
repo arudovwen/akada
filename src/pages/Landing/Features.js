@@ -40,8 +40,11 @@ function Features() {
         <h2 className="text-5xl font-black mb-12">Stand -out Features</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8 lg:w-[80%] mx-auto relative">
-          {categories.map((item) => (
-            <div className=" z-20 shadow-none hover:shadow-lg bg-white lg:bg-transparent hover:bg-white px-6 py-12 rounded-3xl transition ease-in-out delay-300 duration-300">
+          {categories.map((item,index) => (
+            <div
+              key={index}
+              className=" z-20 shadow-none hover:shadow-lg bg-white lg:bg-transparent hover:bg-white px-6 py-12 rounded-3xl transition ease-in-out delay-300 duration-300"
+            >
               <div className="bg-[#FFF1DA]  rounded-bl-2xl rounded-tr-2xl w-12 h-12 flex items-center justify-center mx-auto mb-4">
                 {" "}
                 <img src={item.img} className="w-8 h-8" alt="features" />

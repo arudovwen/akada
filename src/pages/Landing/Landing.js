@@ -11,7 +11,6 @@ function Landing() {
     <div className="min-h-screen">
       <Header />
       <Banner />
-
       <Features />
       <About />
       <Contact />
