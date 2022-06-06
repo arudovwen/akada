@@ -21,6 +21,7 @@ import LeaderBoard from './pages/Dashboard/LeaderBoard/LeaderBoard';
 import Roles from './pages/Dashboard/Roles and Permission/Roles';
 import Payments from './pages/Dashboard/Payments/Payments';
 import Cart from './pages/Dashboard/Cart/Cart';
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 
 export default function App() {
   return (
@@ -50,8 +51,9 @@ export default function App() {
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='/reset-password' element={<ResetPassword />} />
       </Route>
-      <Route path='/admin' element={<AdminLayout />}>
-        {/* <Route path="About" element={<About />} /> */}
+      <Route element={<AdminLayout />}>
+        <Route path='/admin' element={<AdminDashboard />} />
+        {/* <Route path='/dashboard' element={<Dashboard />} /> */}
       </Route>
     </Routes>
   );
