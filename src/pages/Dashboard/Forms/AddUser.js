@@ -6,7 +6,7 @@ import { IoMdCheckmark } from 'react-icons/io';
 const AddUser = function () {
   let [isOpen, setIsOpen] = useState(false);
   function toggleModal() {
-    console.log('🚀 ~ file: AddUser.js ~ line 9 ~ toggleModal ~ toggleModal');
+
     setIsOpen(!isOpen);
   }
   return (
