@@ -1,9 +1,9 @@
-import Table from '../Dashboard/components/Table';
-import Modal from '../../components/Modal';
+import Table from '../../Dashboard/components/Table';
+import Modal from '../../../components/Modal';
 
 import { useState } from 'react';
 import { XIcon } from '@heroicons/react/outline';
-import StudentDetails from '../Dashboard/StudentDetails/StudentStats';
+import StudentDetails from '../../Dashboard/StudentDetails/StudentStats';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 
 const AdminDashboard = function () {

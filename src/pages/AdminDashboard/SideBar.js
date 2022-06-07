@@ -46,7 +46,7 @@ const sideBar = [
     id: 5,
     title: 'payments',
     icon: icon5,
-    url: '/payments',
+    url: '/admin-payments',
   },
 
   {

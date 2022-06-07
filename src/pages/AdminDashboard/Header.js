@@ -89,7 +89,7 @@ const Header = function () {
               {/* <span>Overview</span> */}
               <Link to='/overview'>Dashboard</Link>
             </div>
-            <div className='flex items-center flex- relative'>
+            <div className='flex items-center w-72 relative'>
               <input
                 type='text'
                 placeholder='Search'
@@ -99,22 +99,13 @@ const Header = function () {
             </div>
           </div>
         </div>
-        <div className='col-span-1 items-center justify-between  hidden lg:flex'>
-          <div className=''>
-            {/* <NavLink to='/cart'>
-              {' '}
-              {/* <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center mr-5 relative cursor-pointer'>
-                <span className='bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2'></span>
-                <ShoppingBagIcon className='w-5 h-5 relative' />
-              </div> */}
-            {/* </NavLink> */}
-            <NavLink to='/notifications'>
-              <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center relative cursor-pointer'>
-                <span className='bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2'></span>
-                <BellIcon className='w-5 h-5' />
-              </div>
-            </NavLink>
-          </div>
+        <div className='col-span-1 items-center lg:gap-x-5  hidden lg:flex'>
+          <NavLink to='/notifications'>
+            <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center relative cursor-pointer'>
+              <span className='bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2'></span>
+              <BellIcon className='w-5 h-5' />
+            </div>
+          </NavLink>
           <Menu as='div'>
             <Menu.Button>
               {' '}

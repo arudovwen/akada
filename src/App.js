@@ -21,8 +21,14 @@ import LeaderBoard from './pages/Dashboard/LeaderBoard/LeaderBoard';
 import Roles from './pages/Dashboard/Roles and Permission/Roles';
 import Payments from './pages/Dashboard/Payments/Payments';
 import Cart from './pages/Dashboard/Cart/Cart';
-import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
-
+import AdminDashboard from './pages/AdminDashboard/Overview/AdminDashboard';
+import Students from './pages/AdminDashboard/Students/Students';
+import AccessRequest from './pages/AdminDashboard/Access Request/AccessRequest';
+import Approvals from './pages/AdminDashboard/Approvals/Approvals';
+import AdminRoles from './pages/AdminDashboard/Roles/AdminRoles';
+import ManagePartners from './pages/AdminDashboard/Manage Partners/ManagePartners';
+import ManageSponsors from './pages/AdminDashboard/Manage Sponsors/ManageSponsors';
+import AdminPayments from './pages/AdminDashboard/Payments/Payments';
 export default function App() {
   return (
     <Routes>
@@ -52,8 +58,14 @@ export default function App() {
         <Route path='/reset-password' element={<ResetPassword />} />
       </Route>
       <Route element={<AdminLayout />}>
-        <Route path='/admin' element={<AdminDashboard />} />
-        {/* <Route path='/dashboard' element={<Dashboard />} /> */}
+        <Route path='/overview' element={<AdminDashboard />} />
+        <Route path='/students' element={<Students />} />
+        <Route path='/access-requests' element={<AccessRequest />} />
+        <Route path='/approvals' element={<Approvals />} />
+        <Route path='/roles-permissions' element={<AdminRoles />} />
+        <Route path='/manage-partners' element={<ManagePartners />} />
+        <Route path='/manage-sponsors' element={<ManageSponsors />} />
+        <Route path='/admin-payments' element={<AdminPayments />} />
       </Route>
     </Routes>
   );
