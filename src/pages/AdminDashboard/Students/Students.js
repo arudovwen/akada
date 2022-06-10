@@ -5,6 +5,9 @@ import Modal from '../../../components/Modal';
 import { XIcon } from '@heroicons/react/outline';
 import StudentDetails from '../../Dashboard/StudentDetails/StudentStats';
 import sponsor from '../../../images/lastSponsor.png';
+import StudentInfo from './StudentInfo';
+import Approved from './Approved';
+import RequestConfirmation from './RequestConfirmation';
 
 const lastFiveSponsors = [
   {
@@ -92,18 +95,7 @@ const Students = function () {
             </div>
           </div>
         </div>
-        {/* <div className='bg-[#97B550]  rounded-lg text-center   px-4 lg:px-8  py-8 lg:py-12 flex items-center justify-center'>
-            <div>
-              <p className='text-black text-4xl mb-5'>125</p>
-              <p className='text-black font-thin text-sm'>Total Schools</p>
-            </div>
-          </div> */}
-        {/* <div className='bg-[#7A6D7B]  rounded-lg text-center   px-4 lg:px-8  py-8 lg:py-12 flex items-center justify-center'>
-            <div>
-              <p className='text-white text-4xl mb-5'>125</p>
-              <p className='text-gray-100 font-thin text-sm'>Total Sponsors</p>
-            </div>
-          </div> */}
+
         <div className='grid grid-cols-4 gap-x-7 '>
           <div className='col-span-3 bg-white rounded-2xl shadow-xl p-5 py-8 lg:py-12'>
             <div className='flex justify-between'>
@@ -129,70 +121,6 @@ const Students = function () {
                 );
               })}
             </ul>
-
-            {/* <PieChart width={100} height={140}>
-              <Pie
-                data={data}
-                startAngle={180}
-                endAngle={0}
-                dataKey='value'
-                cx='50%'
-                cy='70%'
-                innerRadius={60}
-                outerRadius={80}
-                labelLine={false}
-              >
-                {data.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Pie
-                data={data02}
-                dataKey='value'
-                cx='50%'
-                cy='70%'
-                innerRadius={25}
-                outerRadius={30}
-                fill='#fff'
-              />
-              <Pie
-                data={data02}
-                dataKey='value'
-                startAngle={360}
-                endAngle={0}
-                cx='50%'
-                cy='70%'
-                outerRadius={25}
-                fill='#e4e2e5'
-              />
-            </PieChart> */}
-            {/* <div className='flex justify-between'>
-              <div className='leading-tight'>
-                <p className='font-light text-[12px] text-[#eac8e9] mb-0'>
-                  Male
-                </p>
-                <p>
-                  <span className='text-[13px] mr-1 font-semibold text-white'>
-                    500
-                  </span>
-                  <span className='text-[11px] font-light text-white'>60%</span>
-                </p>
-              </div>
-              <div className='leading-tight'>
-                <p className='font-light text-[12px] text-[#eac8e9] mb-0'>
-                  Female
-                </p>
-                <p>
-                  <span className='text-[13px] mr-1 font-semibold text-white'>
-                    500
-                  </span>
-                  <span className='text-[11px] font-light text-white'>40%</span>
-                </p>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
@@ -209,6 +137,9 @@ const Students = function () {
           <StudentDetails />
         </div>
       </Modal>
+      <StudentInfo />
+      <Approved />
+      <RequestConfirmation />
     </section>
   );
 };

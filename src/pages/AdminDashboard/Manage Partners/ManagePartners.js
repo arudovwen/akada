@@ -2,6 +2,7 @@ import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import { XIcon } from '@heroicons/react/outline';
 import { useState } from 'react';
 import Table from './Table';
+import Gradely from './Gradely';
 const ManagePartners = function () {
   let [isOpen, setisOpen] = useState(false);
   const data = [
@@ -148,6 +149,7 @@ const ManagePartners = function () {
         </div>
       </div>
       <Table />
+      <Gradely />
     </section>
   );
 };
