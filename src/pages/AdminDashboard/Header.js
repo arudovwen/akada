@@ -74,22 +74,19 @@ const Header = function () {
   }, [location]);
   //
   return (
-    <section className='bg-[#FAFAFA] w-full px-4 lg:px-8 shadow lg:shadow-none z-40'>
-      <nav className='flex lg:grid lg:grid-cols-4 py-5 items-center justify-between'>
-        <div className='col-span-1'>
-          <img src={akada} alt='logo' className='w-[100px] h-auto z-40' />
-        </div>
+    <section className='w-full px-3 z-40'>
+      <nav className='flex py-5 items-center justify-between'>
 
-        <div className='col-span-2  z-30 mr-6 hidden lg:inline'>
+        <div className='  z-30 mr-6 hidden lg:inline'>
           <div className='flex'>
-            <div className='bg-white  py-2 px-6 rounded-3xl mr-6 flex items-center'>
+            <div className='bg-white  py-2 px-6 rounded-3xl mr-6 flex items-center shadow'>
               {' '}
               <img src={home} alt='icon' className='h-4 w-4 mr-1' />
               <span className='mx-2 text-gray-400'>|</span>
               {/* <span>Overview</span> */}
               <Link to='/overview'>Dashboard</Link>
             </div>
-            <div className='flex items-center flex- relative'>
+            <div className='flex items-center w-72 relative rounded-full shadow'>
               <input
                 type='text'
                 placeholder='Search'
@@ -99,22 +96,13 @@ const Header = function () {
             </div>
           </div>
         </div>
-        <div className='col-span-1 items-center justify-between  hidden lg:flex'>
-          <div className=''>
-            {/* <NavLink to='/cart'>
-              {' '}
-              {/* <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center mr-5 relative cursor-pointer'>
-                <span className='bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2'></span>
-                <ShoppingBagIcon className='w-5 h-5 relative' />
-              </div> */}
-            {/* </NavLink> */}
-            <NavLink to='/notifications'>
-              <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center relative cursor-pointer'>
-                <span className='bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2'></span>
-                <BellIcon className='w-5 h-5' />
-              </div>
-            </NavLink>
-          </div>
+        <div className=' items-center lg:gap-x-5  hidden lg:flex'>
+          <NavLink to='/notifications'>
+            <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center relative cursor-pointer'>
+              <span className='bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2'></span>
+              <BellIcon className='w-5 h-5' />
+            </div>
+          </NavLink>
           <Menu as='div'>
             <Menu.Button>
               {' '}

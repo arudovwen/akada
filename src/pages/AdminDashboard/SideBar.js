@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 //import AddUser from '../../Dashboard/Forms/AddUser';
 import { XIcon } from '@heroicons/react/outline';
+import akada from '../../images/akada-logo.png';
 import {
   CalendarIcon,
   KeyIcon,
@@ -46,7 +47,7 @@ const sideBar = [
     id: 5,
     title: 'payments',
     icon: icon5,
-    url: '/payments',
+    url: '/admin-payments',
   },
 
   {
@@ -94,27 +95,31 @@ const SideBar = function () {
   }
 
   return (
-    <section className='shadow-xl'>
-      <nav className=' bg-white min-h-[20rem] w-[15rem] p-5  mb-20'>
+    <section className="bg-white h-screen py-6">
+      <div className="mb-5 px-5">
+        <img src={akada} alt="logo" className="w-[100px] h-auto z-40" />
+      </div>
+
+      <nav className="p-5 mb-20">
         {sideBar.map((item) => (
           <NavLink
             to={item.url}
             key={item.id}
-            className='py-3 capitalize flex gap-x-5  hover:text-primary'
+            className="py-3 capitalize flex gap-x-5  hover:text-primary"
           >
-            {item.id === 1 && <ViewGridIcon className='w-6 h-6' />}
-            {item.id === 2 && <CalendarIcon className='w-6 h-6' />}
-            {item.id === 3 && <AcademicCapIcon className='w-6 h-6' />}
-            {item.id === 4 && <PlayIcon className='w-6 h-6' />}
-            {item.id === 5 && <CreditCardIcon className='w-6 h-6' />}
-            {item.id === 6 && <CalendarIcon className='w-6 h-6' />}
-            {item.id === 7 && <KeyIcon className='w-6 h-6' />}
-            {item.id === 8 && <UserIcon className='w-6 h-6' />}
-            {item.id === 9 && <UsersIcon className='w-6 h-6' />}
+            {item.id === 1 && <ViewGridIcon className="w-6 h-6" />}
+            {item.id === 2 && <CalendarIcon className="w-6 h-6" />}
+            {item.id === 3 && <AcademicCapIcon className="w-6 h-6" />}
+            {item.id === 4 && <PlayIcon className="w-6 h-6" />}
+            {item.id === 5 && <CreditCardIcon className="w-6 h-6" />}
+            {item.id === 6 && <CalendarIcon className="w-6 h-6" />}
+            {item.id === 7 && <KeyIcon className="w-6 h-6" />}
+            {item.id === 8 && <UserIcon className="w-6 h-6" />}
+            {item.id === 9 && <UsersIcon className="w-6 h-6" />}
             <div> {item.title} </div>
           </NavLink>
         ))}
-        <hr style={{ borderColor: '#fafafa' }} />
+        <hr style={{ borderColor: "#fafafa" }} />
         {/* <span
           className='py-3 capitalize flex gap-x-5  hover:text-primary max-w-max cursor-pointer'
           onClick={() => toggleSideModal()}

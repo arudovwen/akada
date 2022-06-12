@@ -8,24 +8,27 @@ import { PieChart, Pie, Sector, Cell, ResponsiveContainer, BarChart, Tooltip,
     Bar,
     XAxis,
     YAxis, } from 'recharts';
-import { BsFillBarChartFill } from "react-icons/bs";
+
 const AdminDashboard = function () {
 
   const monthData = [
     {
       name: "Jan",
       uv: 4000,
-
+      pv: 2400,
+      amt: 2400,
     },
     {
       name: "Feb",
       uv: 3000,
-   
+      pv: 1398,
+      amt: 2210,
     },
     {
       name: "Mar",
       uv: 2000,
-     
+      pv: 9800,
+      amt: 2290,
     },
     {
       name: "Apr",
@@ -36,12 +39,14 @@ const AdminDashboard = function () {
     {
       name: "May",
       uv: 1890,
-   
+      pv: 4800,
+      amt: 2181,
     },
     {
       name: "Jun",
       uv: 2390,
-     
+      pv: 3800,
+      amt: 2500,
     },
     {
       name: "Jul",
@@ -79,118 +84,6 @@ const AdminDashboard = function () {
     { name: 'Male', value: 60 },
     { name: 'Female', value: 40 },
   ];
-  const miniData = [
-    {
-      name: "Jan",
-      uv: 4000,
-
-    },
-     {
-      name: "Jan",
-      uv: 4000,
-
-    }, {
-      name: "Jan",
-      uv: 4000,
-
-    }, {
-      name: "Jan",
-      uv: 4000,
-
-    }, {
-      name: "Jan",
-      uv: 4000,
-
-    }, {
-      name: "Jan",
-      uv: 4000,
-
-    }, {
-      name: "Jan",
-      uv: 4000,
-
-    }, {
-      name: "Jan",
-      uv: 4000,
-
-    },
-    {
-      name: "Feb",
-      uv: 3000,
-   
-    },
-    {
-      name: "Mar",
-      uv: 2000,
-     
-    },
-    {
-      name: "Apr",
-      uv: 2780,
-     
-    },
-    {
-      name: "May",
-      uv: 1890,
-   
-    },
-    {
-      name: "Jun",
-      uv: 2390,
-     
-    },
-     {
-      name: "Apr",
-      uv: 2780,
-     
-    },
-     {
-      name: "Apr",
-      uv: 2780,
-     
-    },
-    {
-      name: "Jul",
-      uv: 3490,
-
-    },
-     {
-      name: "Aug",
-      uv: 3490,
-
-    },
-     {
-      name: "Apr",
-      uv: 2780,
-     
-    },
-     {
-      name: "Sept",
-      uv: 3490,
-
-    },
-     {
-      name: "Oct",
-      uv: 3490,
-
-    },
-     {
-      name: "Nov",
-      uv: 3490,
-
-    },
-     {
-      name: "Dec",
-      uv: 3490,
-
-    },
-  ];
-  let [isOpen, setisOpen] = useState(false);
-  const data = [
-    { name: 'Male', value: 60 },
-    { name: 'Female', value: 40 },
-  ];
-
   const data02 = [{ name: 'A1', value: 100 }];
   const COLORS = ['#E16D38', '#97B550'];
   const RADIAN = Math.PI / 180;
@@ -226,7 +119,7 @@ const AdminDashboard = function () {
   return (
     <section>
       <div className="container mb-12 mx-auto">
-        <div className=" w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className=" w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           <div className="bg-[#E16D38]  rounded-lg text-center px-4 lg:px-8  py-8 lg:py-12 flex items-center justify-center">
             <div>
               <p className="text-white text-4xl mb-5">75</p>
@@ -259,9 +152,7 @@ const AdminDashboard = function () {
                   1645
                 </span>
               </div>
-             <div className="flex items-center"> <span><select className="bg-gray-100 rounded-full px-3 text-xs mr-4">
-               <option>2022<option></select></span>
-            <div className="p-2 rounded-md bg-[#F4F7FE]">  <BsFillBarChartFill className="w-3 h-3" /></div> </div>
+              <span>2022</span>
             </div>
 
             <ResponsiveContainer width="100%" height={300}>
@@ -273,12 +164,16 @@ const AdminDashboard = function () {
                   top: 5,
                   right: 30,
                   left: 20,
-                  bottom: 15,
+                  bottom: 5,
                 }}
-                radius={10}
-                barSize={40}
+                barSize={30}
               >
-                <XAxis  dataKey="name"/>
+                <XAxis
+                  dataKey="name"
+
+                
+
+                />
 
                 <Tooltip />
 
@@ -286,7 +181,7 @@ const AdminDashboard = function () {
                   dataKey="pv"
                   fill="#97B550"
                   background={{ fill: "#eee" }}
-                  radius={10}
+                   radius={10}
                 />
               </BarChart>
             </ResponsiveContainer>
@@ -359,31 +254,6 @@ const AdminDashboard = function () {
                 </p>
               </div>
             </div>
-              <ResponsiveContainer width="100%" height={300}>
-              <BarChart
-                width={500}
-                height={300}
-                data={miniData}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-                
-               
-              >
-
-                <Tooltip />
-
-                <Bar
-                  dataKey="pv"
-                  fill="#97B550"
-                  background={{ fill: "#eee" }}
-                  radius={10}
-                />
-              </BarChart>
-            </ResponsiveContainer>
           </div>
         </div>
       </div>
