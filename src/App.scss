@@ -186,6 +186,20 @@ td {
 td {
   background: #f9f9f9;
 }
+.approvals table tr{
+    --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    border-radius:10px;
+}
+
+.approvals table  tr:nth-child(odd) td{
+    background: #fff;
+}
+.approvals table  tr:nth-child(even) td{
+    background: #f7faf7;
+}
+
 tr td:first-child {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;

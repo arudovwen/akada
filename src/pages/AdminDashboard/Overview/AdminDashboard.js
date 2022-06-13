@@ -1,34 +1,35 @@
-import Table from './Table';
-import Modal from '../../../components/Modal';
+import Table from "./Table";
+import Modal from "../../../components/Modal";
 
-import { useState } from 'react';
-import { XIcon } from '@heroicons/react/outline';
-import StudentDetails from '../../Dashboard/StudentDetails/StudentStats';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, BarChart, Tooltip,
-    Bar,
-    XAxis,
-    YAxis, } from 'recharts';
-
+import { useState } from "react";
+import { XIcon } from "@heroicons/react/outline";
+import StudentDetails from "../../Dashboard/StudentDetails/StudentStats";
+import {
+  PieChart,
+  Pie,
+  Sector,
+  Cell,
+  ResponsiveContainer,
+  BarChart,
+  Tooltip,
+  Bar,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { BsFillBarChartFill } from "react-icons/bs";
 const AdminDashboard = function () {
-
   const monthData = [
     {
       name: "Jan",
       uv: 4000,
-      pv: 2400,
-      amt: 2400,
     },
     {
       name: "Feb",
       uv: 3000,
-      pv: 1398,
-      amt: 2210,
     },
     {
       name: "Mar",
       uv: 2000,
-      pv: 9800,
-      amt: 2290,
     },
     {
       name: "Apr",
@@ -39,53 +40,135 @@ const AdminDashboard = function () {
     {
       name: "May",
       uv: 1890,
-      pv: 4800,
-      amt: 2181,
     },
     {
       name: "Jun",
       uv: 2390,
-      pv: 3800,
-      amt: 2500,
     },
     {
       name: "Jul",
       uv: 3490,
-
     },
-     {
+    {
       name: "Aug",
       uv: 3490,
-
     },
-     {
+    {
       name: "Sept",
       uv: 3490,
-
     },
-     {
+    {
       name: "Oct",
       uv: 3490,
-
     },
-     {
+    {
       name: "Nov",
       uv: 3490,
-
     },
-     {
+    {
       name: "Dec",
       uv: 3490,
+    },
+  ];
 
+  const miniData = [
+    {
+      name: "Jan",
+      uv: 4000,
+    },
+    {
+      name: "Jan",
+      uv: 4000,
+    },
+    {
+      name: "Jan",
+      uv: 4000,
+    },
+    {
+      name: "Jan",
+      uv: 4000,
+    },
+    {
+      name: "Jan",
+      uv: 4000,
+    },
+    {
+      name: "Jan",
+      uv: 4000,
+    },
+    {
+      name: "Jan",
+      uv: 4000,
+    },
+    {
+      name: "Jan",
+      uv: 4000,
+    },
+    {
+      name: "Feb",
+      uv: 3000,
+    },
+    {
+      name: "Mar",
+      uv: 2000,
+    },
+    {
+      name: "Apr",
+      uv: 2780,
+    },
+    {
+      name: "May",
+      uv: 1890,
+    },
+    {
+      name: "Jun",
+      uv: 2390,
+    },
+    {
+      name: "Apr",
+      uv: 2780,
+    },
+    {
+      name: "Apr",
+      uv: 2780,
+    },
+    {
+      name: "Jul",
+      uv: 3490,
+    },
+    {
+      name: "Aug",
+      uv: 3490,
+    },
+    {
+      name: "Apr",
+      uv: 2780,
+    },
+    {
+      name: "Sept",
+      uv: 3490,
+    },
+    {
+      name: "Oct",
+      uv: 3490,
+    },
+    {
+      name: "Nov",
+      uv: 3490,
+    },
+    {
+      name: "Dec",
+      uv: 3490,
     },
   ];
   let [isOpen, setisOpen] = useState(false);
   const data = [
-    { name: 'Male', value: 60 },
-    { name: 'Female', value: 40 },
+    { name: "Male", value: 60 },
+    { name: "Female", value: 40 },
   ];
-  const data02 = [{ name: 'A1', value: 100 }];
-  const COLORS = ['#E16D38', '#97B550'];
+
+  const data02 = [{ name: "A1", value: 100 }];
+  const COLORS = ["#E16D38", "#97B550"];
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
     cx,
@@ -104,9 +187,9 @@ const AdminDashboard = function () {
       <text
         x={x}
         y={y}
-        fill='#fafafa'
-        textAnchor={x > cx ? 'start' : 'end'}
-        dominantBaseline='central'
+        fill="#fafafa"
+        textAnchor={x > cx ? "start" : "end"}
+        dominantBaseline="central"
       >
         {`${(percent * 100).toFixed(0)}%`}
       </text>
@@ -119,7 +202,7 @@ const AdminDashboard = function () {
   return (
     <section>
       <div className="container mb-12 mx-auto">
-        <div className=" w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className=" w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <div className="bg-[#E16D38]  rounded-lg text-center px-4 lg:px-8  py-8 lg:py-12 flex items-center justify-center">
             <div>
               <p className="text-white text-4xl mb-5">75</p>
@@ -144,36 +227,42 @@ const AdminDashboard = function () {
               <p className="text-gray-100 font-thin text-sm">Total Sponsors</p>
             </div>
           </div>
-          <div className="col-span-3 bg-white rounded-2xl shadow-xl p-5">
-            <div className="flex justify-between mb-5">
+          <div className="col-span-3 bg-white rounded-2xl shadow-xl p-5 flex flex-col justify-between">
+            <div className="flex justify-between">
               <div>
                 <h2 className="font-light">Monthly sponsorship</h2>
                 <span className="text-dashboardgray text-2xl font-semibold">
                   1645
                 </span>
               </div>
-              <span>2022</span>
+
+              <div className="flex items-center">
+                <select className="bg-gray-100 rounded-full px-3 py-1  text-xs mr-4 outline-0">
+                  <option>2022</option>
+                </select>
+
+                <div className="p-2 rounded-md bg-[#F4F7FE]">
+                  {" "}
+                  <BsFillBarChartFill className="w-3 h-3" />
+                </div>
+              </div>
             </div>
 
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={200}>
               <BarChart
                 width={500}
-                height={300}
+                height={200}
                 data={monthData}
                 margin={{
                   top: 5,
                   right: 30,
                   left: 20,
-                  bottom: 5,
+                  bottom: 15,
                 }}
-                barSize={30}
+                radius={10}
+                barSize={40}
               >
-                <XAxis
-                  dataKey="name"
-
-                
-
-                />
+                <XAxis dataKey="name" />
 
                 <Tooltip />
 
@@ -181,7 +270,7 @@ const AdminDashboard = function () {
                   dataKey="pv"
                   fill="#97B550"
                   background={{ fill: "#eee" }}
-                   radius={10}
+                  radius={10}
                 />
               </BarChart>
             </ResponsiveContainer>
@@ -230,7 +319,7 @@ const AdminDashboard = function () {
               />
             </PieChart>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between mb-8">
               <div className="leading-tight">
                 <p className="font-light text-[12px] text-[#eac8e9] mb-0">
                   Male
@@ -253,6 +342,26 @@ const AdminDashboard = function () {
                   <span className="text-[11px] font-light text-white">40%</span>
                 </p>
               </div>
+            </div>
+
+            <div>
+              <ResponsiveContainer width="100%" height={100}>
+                <BarChart
+                  width="100%"
+                  height={100}
+                  data={miniData}
+
+                >
+                  <Tooltip />
+
+                  <Bar
+                    dataKey="pv"
+                    fill="#97B550"
+                    background={{ fill: "#eee" }}
+                    radius={10}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </div>

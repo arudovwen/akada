@@ -13,7 +13,7 @@ const StudentInfo = function () {
           <img
             src={candidate}
             alt={candidate}
-            className='absolute -top-24 left-14'
+            className='absolute -top-28 left-14'
           />
         </div>
 
@@ -40,7 +40,7 @@ const StudentInfo = function () {
           </div>
         </div>
       </div>
-      <XIcon className='absolute top-4 h-4 w-4 right-6' />
+  
     </section>
   );
 };

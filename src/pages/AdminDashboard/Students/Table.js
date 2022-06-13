@@ -7,9 +7,9 @@ import {
 } from "@heroicons/react/outline";
 import { Menu, Transition } from "@headlessui/react";
 import CustomModal from "../../../components/Modal";
-import StudentDetail from "../../Dashboard/StudentDetails/Details";
+import StudentDetail from "../components/Details";
 import StudentStats from "../../Dashboard/StudentDetails/StudentStats";
-
+import StudentInfo from "./StudentInfo";
 
 const Table = function () {
   let [isOpen, setIsOpen] = React.useState(false);
@@ -138,7 +138,13 @@ const Table = function () {
           >
             <XIcon className="w-6 h-6 " />
           </span>
-          {isShowing === "details" ? <StudentDetail /> : <StudentStats />}
+          {isShowing === "details" ? (
+            <StudentDetail />
+          ) : isShowing === "info" ? (
+            <StudentInfo />
+          ) : (
+            <StudentStats />
+          )}
         </div>
       </CustomModal>
     </div>

@@ -17,10 +17,10 @@ function Banner() {
             <p className="text-primary text-4xl sm:text-2xl md:text-4xl lg:text-[64px] md:leading-[71px] lg:mb-4 transition tracking-in-expand-fwd delay-300 duration-500">
               Subscribe<span className="hidden md:inline">.</span>
             </p>
-            <p className="text-primary   text-4xlsm:text-2xl md:text-4xl lg:text-[64px] md:leading-[71px]  lg:mb-4 transition tracking-in-expand-fwd">
+            <p className="text-primary   text-4xl sm:text-2xl md:text-4xl lg:text-[64px] md:leading-[71px]  lg:mb-4 transition tracking-in-expand-fwd">
               Select<span className="hidden md:inline">.</span>
             </p>
-            <p className="text-primary  text-4xlsm:text-2xl md:text-4xl lg:text-[64px]  md:leading-[71px] mb-8 transition tracking-in-expand-fwd">
+            <p className="text-primary  text-4xl sm:text-2xl md:text-4xl lg:text-[64px]  md:leading-[71px] mb-8 transition tracking-in-expand-fwd">
               Sponsor<span className="hidden md:inline">.</span>
             </p>
             <Link to="/register">

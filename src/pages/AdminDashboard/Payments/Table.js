@@ -30,7 +30,7 @@ const Table = function () {
         </div>
       </div>
 
-      <div className='overflow-x-auto w-full'>
+      <div className='overflow-x-auto w-full approvals'>
         <table className='capitalize table-auto text-dashboardgray text-sm w-full'>
           <thead>
             <tr className='text-left'>

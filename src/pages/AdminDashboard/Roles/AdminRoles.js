@@ -4,10 +4,10 @@ import SuccessRole from './SuccessRole';
 
 const AdminRoles = function () {
   return (
-    <section>
+    <section className="py-10">
       <Table />
-      <AssignRole />
-      <SuccessRole />
+      {/* <AssignRole /> */}
+      {/* <SuccessRole /> */}
     </section>
   );
 };

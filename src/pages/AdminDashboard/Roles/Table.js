@@ -7,8 +7,8 @@ import CustomModal from '../../../components/Modal';
 import StudentDetail from '../../Dashboard/StudentDetails/Details';
 import Pagination from '../../../components/Pagination';
 import Button from '../../../components/Button';
-// import AssignRole from '../Forms/AssignRole';
-import AssignRole from '../../Dashboard/Forms/AssignRole';
+import AssignRole from './AssignRole';
+// import AssignRole from '../../Dashboard/Forms/AssignRole';
 
 const Table = function () {
   let [isOpen, setIsOpen] = React.useState(false);
@@ -28,7 +28,7 @@ const Table = function () {
           Assign role
         </Button>
       </div>
-      <div className='overflow-x-auto w-full'>
+      <div className='overflow-x-auto w-full approvals'>
         <table className='capitalize table-auto text-dashboardgray text-sm w-full'>
           <thead>
             <tr className='text-left'>
