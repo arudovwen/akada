@@ -29,9 +29,7 @@ function Footer() {
       <div className="grid grid-cols-1 lg:flex  lg:gap-x-8 text-center lg:text-left">
         <div className="w-full lg:w-[35%] ">
           <p className="mb-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
-            dolorem consequatur blanditiis ducimus eveniet ratione cumque quas
-            adipisci suscipit dignissimos!
+          Akadaplay is a one-stop solution to rewarding and incentivising academic excellence among primary and secondary school kids. We do this by highlighting the profile of exceptional children from leading educational learning platforms and providing this information to FSTE brands for sponsorships.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full lg:w-[35%] mb-5 justify-center lg:justify-start">

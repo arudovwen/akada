@@ -8,12 +8,10 @@ function Contact() {
             contact us
           </h3>
           <p className="text-sm md:text-base mb-6 lg:mb-0">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
-            nisi maiores reiciendis, consectetur illum omnis molestias maxime
-            magnam earum. Debitis. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Inventore modi ipsam beatae ex corrupti expedita
-            officia quod earum aspernatur odio.
+          9B Onikoyi Lane, parkview estate, Ikoyi 
           </p>
+          <p>Info@akadaplay.com</p>
+          <p>08098714987</p>
         </div>
         <div className="w-full lg:w-2/3">
           <form action=" "
