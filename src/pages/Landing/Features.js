@@ -11,25 +11,25 @@ const categories = [
     id: 1,
     img: Sponsorship,
     title: "Sponsorship",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
+    text: "Reward academic excellence, award scholarships and provide aid to select schools. ",
   },
   {
     id: 1,
     img: Sponsorship,
     title: "Manage sponorship",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
+    text: "Track the activities of student/school beneficiaries and generate statistical reports. ",
   },
   {
     id: 1,
     img: Game,
-    title: "Gamification",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
+    title: "Consultancy",
+    text: "Let’s discuss your CSR goals and help you shape your innovative educational ideas.  ",
   },
   {
     id: 1,
     img: Sponsorship,
-    title: "Manage sponorship",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
+    title: "Subscribe",
+    text: "Brands subscription to Akadapay gives you access to academic data from E-learning platforms for sponsorship. ",
   },
 ];
 function Features() {

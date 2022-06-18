@@ -23,7 +23,9 @@ function About() {
       id: 1,
       img: "",
       title: "our values",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
+      text: "Integrity : We provide trusted verifiable and reliable data. We stand for transparency and integrity. ",
+      text: "People-oriented: Social impact and people are at the very heart of what we do.",
+      text: "Team-work: To deliver results that impact, partnerships and collaborative efforts are important ingredients. We imbibe this in our work interactions.",
     },
   ];
   return (
@@ -31,9 +33,11 @@ function About() {
       <div className=" text-center">
         <h2 className="text-3xl lg:text-5xl font-black mb-4">About Us</h2>
         <p className="mx-auto lg:w-[35%] px-8 text-base md:text-lg font-light">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida ipsum
-          tempor nec auctor. Mauris vel mauris sed cursus eget id venenatis.
+        The key to ensuring change, and securing the future of every society is educating its children.
         </p>
+        <p className="mx-auto lg:w-[35%] px-8 text-base md:text-lg font-light">With 10.5 million kids on the street without education in Africa, how do we change the narrative? </p>
+
+        <p className="mx-auto lg:w-[35%] px-8 text-base md:text-lg font-light">Akadaplay is a one-stop solution to rewarding and incentivising academic excellence among primary and secondary school kids. We do this by highlighting the profile of exceptional children from leading educational learning platforms and providing this information to FSTE brands for sponsorships. </p>
 
         <div
           className="lg:h-[600px]"
