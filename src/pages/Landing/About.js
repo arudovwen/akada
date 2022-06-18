@@ -5,13 +5,13 @@ function About() {
     {
       id: 1,
       title: "our vision",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
+      text: "To give children across Africa, access to opportunities that will enable them achieve their dreams. ",
     },
     {
       id: 1,
       img: "",
       title: "our mission",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.  ",
+      text: "To provide verifiable and trusted access to exceptional children in primary and secondary levels for FSTE brands. ",
     },
     {
       id: 1,
