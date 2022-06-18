@@ -17,7 +17,11 @@ function About() {
       id: 3,
       img: "",
       title: "what we do",
-      text1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus. ",
+      text1: "○ We partner with E-learning platforms to receive academic data of primary and secondary school students. ",
+      text2: "○ We provide access to this information to FSTE Brands for a monthly subscription to our platform.",
+      text3: "○ These brands in turn, reward academic excellence, award scholarships and provide aid to select schools. ",
+      text4: "○ Our API infrastructure also ensures that brands can track relevant data of the student/school beneficiaries and generate statistical reports.",
+      text5: "○ We partner with education boards, industry associations and government agencies for education CSR. ",
     },
     {
       id: 4,

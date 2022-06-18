@@ -34,10 +34,10 @@ function Footer() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full lg:w-[35%] mb-5 justify-center lg:justify-start">
           <div className="capitalize">features</div>
-          <div className="capitalize">pricing</div>
+          {/* <div className="capitalize">pricing</div> */}
 
-          <div className="capitalize">resources</div>
-          <div className="capitalize">blog</div>
+          {/* <div className="capitalize">resources</div> */}
+          {/* <div className="capitalize">blog</div> */}
         </div>
         <div className="flex gap-x-5 mb-3 lg:mb-0 lg:gap-x-14 justify-center lg:justify-start">
           {footerIcons.map((item) => {
