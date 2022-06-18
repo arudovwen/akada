@@ -5,13 +5,13 @@ function About() {
     {
       id: 1,
       title: "our vision",
-      text: "To give children across Africa, access to opportunities that will enable them achieve their dreams. ",
+      text1: "To give children across Africa, access to opportunities that will enable them achieve their dreams. ",
     },
     {
       id: 2,
       img: "",
       title: "our mission",
-      text: "To provide verifiable and trusted access to exceptional children in primary and secondary levels for FSTE brands. ",
+      text1: "To provide verifiable and trusted access to exceptional children in primary and secondary levels for FSTE brands. ",
     },
     {
       id: 3,
