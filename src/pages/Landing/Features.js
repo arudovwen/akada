@@ -6,10 +6,14 @@ import Game from "../../images/gamecontroller.png";
 import gradient from "../../images/gradient.png";
 import rec from "../../images/rec.svg";
 import coin from "../../images/coin.png";
+import Consultancy from "../../images/consultancy.png";
+import Subscribe from "../../images/subscribe.png";
+import Sponsor from "../../images/hand.png";
+
 const categories = [
   {
     id: 1,
-    img: Sponsorship,
+    img: Sponsor,
     title: "Sponsorship",
     text: "Reward academic excellence, award scholarships and provide aid to select schools. ",
   },
@@ -21,13 +25,13 @@ const categories = [
   },
   {
     id: 1,
-    img: Game,
+    img: Consultancy,
     title: "Consultancy",
     text: "Let’s discuss your CSR goals and help you shape your innovative educational ideas.  ",
   },
   {
     id: 1,
-    img: Sponsorship,
+    img: Subscribe,
     title: "Subscribe",
     text: "Brands subscription to Akadapay gives you access to academic data from E-learning platforms for sponsorship. ",
   },
