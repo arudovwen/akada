@@ -1,5 +1,35 @@
 import * as React from "react";
 function Contact() {
+
+  const [values, setValues]  = React.useState({
+    name:'',
+    email:'',
+    message:''
+  })
+
+  function handleChange(e){
+    setValues({
+      ...values,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  function sendMessage(e){
+    e.preventDefault()
+
+const body = `
+Name: ${values.name},
+Email: ${values.email}, 
+Message: ${values.message}`
+
+window.open(`mailto:info@akadaplay.com?subject=New message&body=${body}`, '_blank')
+setValues({
+    name:'',
+    email:'',
+    message:''
+  })
+  }
+
   return (
     <section className="bg-gray-100 py-14 lg:py-0">
       <main className="grid grid-cols-1 justify-center   md:flex container md:gap-x-32 md:py-32 items-start text-left mx-auto">
@@ -14,7 +44,7 @@ function Contact() {
           <p>08098714987</p>
         </div>
         <div className="w-full lg:w-2/3">
-          <form action=" "
+          <form onSubmit={(e)=>sendMessage(e)}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
               <div className="">
@@ -23,7 +53,10 @@ function Contact() {
                 </label>
                 <input
                   type="text"
-                  className="block border-b bg-gray-100 border-black w-full  h-10 text-xl font-medium "
+                  value={values.name}
+                  name="name"
+                  onChange={(e)=> handleChange(e)}
+                  className="block border-b bg-gray-100 border-black w-full  h-10 text-xl font-medium"
                 />
               </div>
               <div className="">
@@ -31,8 +64,11 @@ function Contact() {
                   email
                 </label>
                 <input
-                  type="text"
-                  className="block border-b bg-gray-100 border-black w-full  h-10 text-xl font-medium "
+                  type="email"
+                  name="email"
+                  value={values.email}
+                  onChange={(e)=> handleChange(e)}
+                  className="block border-b bg-gray-100 border-black w-full  h-10 text-xl font-medium"
                 />
               </div>
             </div>
@@ -43,12 +79,18 @@ function Contact() {
               </label>
               <input
                 type="text"
-                className="block border-b bg-gray-100 border-black w-full h-10 text-xl font-medium "
+                name="message"
+                value={values.message}
+                onChange={(e)=> handleChange(e)}
+                className="block border-b bg-gray-100 border-black w-full h-10 text-xl font-medium"
               />
             </div>
-            <button className="border-2 border-black text-center w-full py-4 lg:py-5 uppercase font-bold text-lg lg:text-xl">
+        
+            <button type="submit" className="border-2 border-black text-center w-full py-4 lg:py-5 uppercase font-bold text-lg lg:text-xl">
               send
             </button>
+          
+           
           </form>
         </div>
       </main>

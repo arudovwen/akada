@@ -2,6 +2,8 @@ import * as React from 'react';
 import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
+import Countdown from "react-countdown";
+
 import './Header.css';
 function Header() {
   const [status, setStatus] = React.useState(false);
@@ -18,8 +20,8 @@ function Header() {
             className="w-[120px] md:w-[180px] h-auto"
           />
         </div>
-        <div className="items-center hidden lg:flex">
-          <Link to="/login" className="text-[#333] mr-4 text-bold text-lg">
+        <div className="items-center hidden lg:flex text-primary font-bold">
+          {/* <Link to="/login" className="text-[#333] mr-4 text-bold text-lg">
             Log in
           </Link>
           <Button
@@ -27,7 +29,10 @@ function Header() {
             className="bg-transparent border text-[#943993] border-[#943993] uppercase text-sm font-bold px-5 border-primary hover:bg-primary hover:border-primary hover:text-white"
           >
             <Link to="/register">get started </Link>
-          </Button>
+          </Button> */}
+          <p className="mr-2"> Countdown till launch </p>
+
+          <Countdown date={Date.parse("01 Aug 2022 00:00:00 GMT")} />
         </div>
 
         <label htmlFor="check" className="flex lg:hidden menu">
@@ -42,7 +47,7 @@ function Header() {
           <span></span>
         </label>
       </nav>
-      {status && (
+      {/* {status && (
         <div className="z-40 text-center mx-auto lg:hidden grid grid-row-2 gap-4 justify-center p-4 rounded-lg shadow-lg absolute w-[90%] bg-[#943993] ml-[4%] mt-4 scale-in-center">
           <Link to="/login" className="text-white mr-3 text-bold">
             Log in
@@ -56,7 +61,7 @@ function Header() {
             </Button>
           </Link>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
