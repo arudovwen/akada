@@ -1,10 +1,33 @@
-import akadaLogo from '../../images/akada-logo.png';
-import { Link } from 'react-router-dom';
-import * as React from 'react';
-import { IoIosArrowDown } from 'react-icons/io';
+import akadaLogo from "../../images/akada-logo.png";
+import { Link } from "react-router-dom";
+import * as React from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { registerUser } from "../../services/authservices";
 
 const RegisterAccount = function () {
-  const [type, setType] = React.useState('individual');
+  const [type, setType] = React.useState("individual");
+  const initialValues = {
+    account_type: "individual",
+    username: "",
+    email: "",
+    password: "",
+    corporate_name: "",
+  };
+  const formik = useFormik({
+    initialValues,
+
+    validationSchema: Yup.object({
+      account_type: Yup.string().label("Account type").required(),
+      name: Yup.string().label("Name").required(),
+      email: Yup.string().email().required(),
+    }),
+    onSubmit: function (values) {
+      alert(`You are registered! Name: ${values.name}. Email: ${values.email}. Profession: ${values.profession}.
+        Age: ${values.age}`);
+    },
+  });
   return (
     <div className="bg-white w-[90%] mx-auto lg:mx-0 right-0 left-0 lg:left-[unset] lg:w-[30rem] py-4 lg:py-6 px-6 lg:px-10 rounded-[30px] lg:right-24  absolute scale-in-center">
       <div className=" mx-auto">
@@ -25,29 +48,35 @@ const RegisterAccount = function () {
         Kindly fill in your details to get started
       </p>
 
-      <form
-        action="
-        "
-      >
+      <form onSubmit={formik.handleSubmit}>
         <div className=" mb-5">
           <label htmlFor="" className="text-sm">
             Select type
           </label>
           <select
-            onChange={(e) => setType(e.target.value)}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.account_type}
             className="block border-b-2 w-full h-10 text-xl font-medium text-gray-300"
           >
             <option value="individual">Individual</option>
-            <option value="cooporate/business">Cooporate</option>
+            <option value="cooporate">Corporate</option>
           </select>
+          {formik.touched.account_type && formik.errors.account_type && (
+            <span className="text-red-400">{formik.errors.account_type}</span>
+          )}
         </div>
         <div className=" mb-5">
           <label htmlFor="" className="text-sm capitalize">
             {type} name
           </label>
           <input
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.corporate_name}
             type="text"
-            className="block border-b-2 w-full h-10 text-xl font-medium px-2"
+            className="block border-b-2 w-full h-10 text-xl
+          font-medium px-2"
             placeholder="Full name"
           />
         </div>
@@ -57,9 +86,19 @@ const RegisterAccount = function () {
           </label>
           <input
             type="email"
-            className="block border-b-2 w-full h-10 text-xl font-medium px-2"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+            className={`block border-b-2 w-full h-10 text-xl font-medium px-2 ${
+              formik.touched.email && formik.errors.email
+                ? "border-red-400"
+                : "border-gray-300"
+            }`}
             placeholder="Email address"
           />
+          {formik.touched.email && formik.errors.email && (
+            <span className="text-red-400">{formik.errors.email}</span>
+          )}
         </div>
 
         <div className=" mb-5">
@@ -67,10 +106,16 @@ const RegisterAccount = function () {
             Enter your password
           </label>
           <input
-            type="text"
+            type="password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
             className="block border-b-2 w-full  h-10 text-xl font-medium px-2"
             placeholder="Password"
           />
+          {formik.touched.password && formik.errors.password && (
+            <span className="text-red-400">{formik.errors.password}</span>
+          )}
         </div>
 
         <div className=" mb-5 relative">
