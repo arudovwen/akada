@@ -20,11 +20,8 @@ export async function resetPassword(user, config = {}) {
   return await post(urls.RESET_PASSWORD, user, config);
 }
 
-export async function verifySignupOtp(user, config = {}) {
-  return await post(urls.SIGNUP_VERIFY_OTP, user, config);
-}
 export async function accountverify(user, config = {}) {
-  return await post(urls.VERIFY_OTP, user, config);
+  return await post(urls.VERIFY_CODE, user, config);
 }
 
 export async function sendsignupOtp(user, config = {}) {

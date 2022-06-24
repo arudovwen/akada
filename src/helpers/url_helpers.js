@@ -1,12 +1,12 @@
 const urls = {
   //Auth urls
-  LOGIN_USER: "/v1/auth/register",
+  LOGIN_USER: "/v1/auth/login",
   REGISTER_USER: "/v1/auth/register",
-  SIGNUP_SEND_OTP: "/account/sendotp",
-  SIGNUP_VERIFY_OTP: "signUp/verifyotp-signup",
-  FORGOT_PASSWORD: "/account/forgot-password",
-  RESET_PASSWORD: "/account/reset-password",
-  VERIFY_OTP: "/account/verifyotp",
+  SEND_CODE: "/v1/auth/email/code",
+  VERIFY_CODE: "v1/auth/email/verify",
+  FORGOT_PASSWORD: "/v1/password/email",
+  RESET_PASSWORD: "/v1/password/confirm-reset-token",
+
 };
 
 export default urls;

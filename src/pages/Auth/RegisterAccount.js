@@ -1,31 +1,49 @@
 import akadaLogo from "../../images/akada-logo.png";
 import { Link } from "react-router-dom";
 import * as React from "react";
-import { IoIosArrowDown } from "react-icons/io";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { registerUser } from "../../services/authservices";
 
 const RegisterAccount = function () {
-  const [type, setType] = React.useState("individual");
+  const [isLoading, setIsLoading] = React.useState(false);
   const initialValues = {
     account_type: "individual",
     username: "",
     email: "",
     password: "",
     corporate_name: "",
+    first_name: "",
+    last_name: "",
   };
   const formik = useFormik({
     initialValues,
 
     validationSchema: Yup.object({
       account_type: Yup.string().label("Account type").required(),
-      name: Yup.string().label("Name").required(),
-      email: Yup.string().email().required(),
+      username: Yup.string().label("Name"),
+      first_name: Yup.string().label("First name"),
+      last_name: Yup.string().label("Last name"),
+      email: Yup.string().email().label("Email").required(),
+      password: Yup.string()
+        .label("Password")
+        .required()
+        .min(8, "Your password is too short."),
+      corporate_name: Yup.string(),
     }),
     onSubmit: function (values) {
-      alert(`You are registered! Name: ${values.name}. Email: ${values.email}. Profession: ${values.profession}.
-        Age: ${values.age}`);
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      };
+      registerUser(values, config).then((res) => {
+        console.log(
+          "🚀 ~ file: RegisterAccount.js ~ line 34 ~ registerUser ~ res",
+          res
+        );
+      });
     },
   });
   return (
@@ -54,10 +72,12 @@ const RegisterAccount = function () {
             Select type
           </label>
           <select
+            id="account_type"
+            name="account_type"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.account_type}
-            className="block border-b-2 w-full h-10 text-xl font-medium text-gray-300"
+            className="block border-b-2 w-full h-10 text-xl font-medium placeholder:text-gray-300"
           >
             <option value="individual">Individual</option>
             <option value="cooporate">Corporate</option>
@@ -66,35 +86,83 @@ const RegisterAccount = function () {
             <span className="text-red-400">{formik.errors.account_type}</span>
           )}
         </div>
-        <div className=" mb-5">
-          <label htmlFor="" className="text-sm capitalize">
-            {type} name
-          </label>
-          <input
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.corporate_name}
-            type="text"
-            className="block border-b-2 w-full h-10 text-xl
+        {formik.values.account_type === "coorporate" ? (
+          <div className=" mb-5">
+            <label htmlFor="" className="text-sm capitalize">
+              Corporate name
+            </label>
+            <input
+              id="corporate_name"
+              name="corporate_name"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.corporate_name}
+              type="text"
+              autoComplete="off"
+              required
+              className="block border-b-2 w-full h-10 text-xl placeholder:text-gray-300
           font-medium px-2"
-            placeholder="Full name"
-          />
-        </div>
+              placeholder="Corporate name"
+            />
+          </div>
+        ) : (
+          <div className="flex gap-x-2">
+            <div className=" mb-5">
+              <label htmlFor="" className="text-sm capitalize">
+                First name
+              </label>
+              <input
+                id="first_name"
+                name="first_name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.first_name}
+                type="text"
+                required
+                className="block border-b-2 w-full h-10 text-xl placeholder:text-gray-300
+          font-medium px-2"
+                placeholder="First name"
+                autoComplete="off"
+              />
+            </div>
+            <div className=" mb-5">
+              <label htmlFor="" className="text-sm capitalize">
+                Last name
+              </label>
+              <input
+                id="last_name"
+                name="last_name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.lase_name}
+                type="text"
+                required
+                className="block border-b-2 w-full h-10 text-xl placeholder:text-gray-300
+          font-medium px-2"
+                placeholder="Last name"
+                autoComplete="off"
+              />
+            </div>
+          </div>
+        )}
         <div className=" mb-5">
           <label htmlFor="" className="text-sm">
-            Enter your business email
+            Enter your email
           </label>
           <input
+            id="email"
+            name="email"
             type="email"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
-            className={`block border-b-2 w-full h-10 text-xl font-medium px-2 ${
+            className={`block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white ${
               formik.touched.email && formik.errors.email
                 ? "border-red-400"
                 : "border-gray-300"
             }`}
             placeholder="Email address"
+            autoComplete="off"
           />
           {formik.touched.email && formik.errors.email && (
             <span className="text-red-400">{formik.errors.email}</span>
@@ -106,35 +174,49 @@ const RegisterAccount = function () {
             Enter your password
           </label>
           <input
+            id="password"
+            name="password"
             type="password"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
-            className="block border-b-2 w-full  h-10 text-xl font-medium px-2"
+            className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
             placeholder="Password"
+            autoComplete="off"
           />
           {formik.touched.password && formik.errors.password && (
             <span className="text-red-400">{formik.errors.password}</span>
           )}
         </div>
 
-        <div className=" mb-5 relative">
-          <label htmlFor="" className="text-sm ">
+        <div className=" mb-5">
+          <label htmlFor="" className="text-sm">
             Select matching metrics
           </label>
-          <div className="relative">
-            <input
-              type="text"
-              className="block border-b-2 w-full  h-10 text-xl font-medium px-2"
-              placeholder="Matching metrics"
-            />
-            <span className="right-0 text-2xl bottom-[.5rem] absolute pointer-events-none">
-              <IoIosArrowDown />
-            </span>
-          </div>
+          <select
+            id="metrics"
+            name="metrics"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.account_type}
+            className="block border-b-2 w-full h-10 text-xl font-medium placeholder:text-gray-300"
+          >
+            <option value="individual">Individual</option>
+            <option value="cooporate">Corporate</option>
+          </select>
+          {formik.touched.account_type && formik.errors.account_type && (
+            <span className="text-red-400">{formik.errors.account_type}</span>
+          )}
         </div>
-        <button className="uppercase bg-text-color w-full text-white py-3 text-base lg:text-lg font-bold rounded-md mb-4 tracking-wider mt-5">
-          <Link to="/verify-account">Create account</Link>
+        <button
+          disabled={isLoading}
+          type="submit"
+          className={`uppercase bg-text-color w-full text-white py-3 text-base lg:text-lg font-bold
+           rounded-md mb-4 tracking-wider mt-5 ${
+             isLoading ? "opacity-70" : ""
+           }`}
+        >
+          Create account
         </button>
 
         <p className="text-center text-sm text-gray-500">

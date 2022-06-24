@@ -1,22 +1,16 @@
 import axios from "axios";
-// import store from "../store";
 //pass new generated access token here
 //const token = localStorage.getItem('user-token')
 
 //apply base url for axios
-axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://46.101.58.181/api/";
+
 const API_URL = "http://46.101.58.181/api/";
 
 const axiosApi = axios.create({
   baseURL: API_URL,
 });
 
-axiosApi.defaults.withCredentials = true;
-
-// axiosApi.defaults.headers.common[
-//   "Authorization"
-// ] = `Bearer ${store.getters.token}`;
+axiosApi.defaults.withCredentials = false;
 
 axiosApi.interceptors.response.use(
   (response) => response,
