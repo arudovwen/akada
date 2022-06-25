@@ -22,17 +22,17 @@ const ResetPassword = function () {
       ),
     }),
     onSubmit: function (values) {
-      console.log(
-        "🚀 ~ file: ForgotPassword.js ~ line 21 ~ ForgotPassword ~ values",
-        values
-      );
-
-      resetPassword(values).then((res) => {
-        console.log(
-          "🚀 ~ file: RegisterAccount.js ~ line 34 ~ registerUser ~ res",
-          res
-        );
-      });
+    setIsLoading(true)
+      resetPassword(values)
+        .then((res) => {
+          console.log(
+            "🚀 ~ file: RegisterAccount.js ~ line 34 ~ registerUser ~ res",
+            res
+          );
+        })
+        .catch(() => {
+          setIsLoading(false);
+        });
     },
   });
   return (

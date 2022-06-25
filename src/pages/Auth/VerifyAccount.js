@@ -1,14 +1,19 @@
 import * as React from "react";
 import akadaLogo from "../../images/akada-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomModal from "../../components/Modal";
 import { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { accountverify } from "../../services/authservices";
+import { accountverify, sendcode } from "../../services/authservices";
 import OtpInput from "react-otp-input";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const VerifyAccount = function () {
+
+   const navigate = useNavigate()
   let [isOpen, setIsOpen] = useState(false);
   const [otp, setOtp] = useState('');
   const [isLoading, setIsLoading] = React.useState(false);
@@ -22,18 +27,24 @@ const VerifyAccount = function () {
     }),
     onSubmit: function (values) {
 
+      setIsLoading(true)
+      let token = localStorage.getItem("token");
       const config = {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: "Bearer " + token,
         },
       };
-      setIsLoading(true)
-      accountverify(values).then((res) => {
-        console.log(
-          "🚀 ~ file: RegisterAccount.js ~ line 34 ~ registerUser ~ res",
-          res
-        );
+      accountverify(values, config).then(() => {
+
+             toast.success("Verification successful", {
+               position: "top-right",
+             });
+             navigate("/login")
+
+      }).catch(()=>{
+         setIsLoading(false)
       });
     },
   });
@@ -44,6 +55,22 @@ const VerifyAccount = function () {
     setOtp(val);
     formik.values.code = val;
 
+  }
+
+  function resendCode(){
+    let token = localStorage.getItem('token')
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: "Bearer " + token,
+        },
+      };
+    sendcode(config).then(()=>{
+        toast.success("Code resent!", {
+               position: "top-right",
+             });
+    })
   }
   return (
     <div className="bg-white w-[90%] mx-auto lg:mx-0 right-0 left-0 lg:left-[unset] lg:w-[28rem] lg:h-[36rem] px-6  py-4 lg:px-10 rounded-[30px] lg:right-24 absolute scale-in-center">
@@ -82,8 +109,10 @@ const VerifyAccount = function () {
            rounded-md tracking-wider mb-4 mt-5 ${isLoading ? "opacity-70" : ""}`}
           type="submit"
         >
-          create account
+          verify account
         </button>
+
+        <p className="text-center text-sm mt-3 text-[#9bab76] hover:underline cursor-pointer" onClick={()=>resendCode()}>Resend code</p>
       </form>
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className="bg-white translate-x-2/4 w-[331px]  border rounded-xl pt-4 absolute top-[200px] right-1/2 text-center">

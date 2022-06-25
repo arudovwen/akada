@@ -3,10 +3,11 @@ import akadaLogo from "../../images/akada-logo.png";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-
-import { loginUser } from "../../services/authservices";
-
+import { toast } from "react-toastify";
+import { loginUser, getUser } from "../../services/authservices";
+import { useAuth } from "../../hooks/useAuth";
 const LoginAccount = function () {
+  const { login } = useAuth();
   const [isLoading, setIsLoading] = React.useState(false);
   const initialValues = {
     email: "",
@@ -19,18 +20,42 @@ const LoginAccount = function () {
       password: Yup.mixed().label("Password").required(),
     }),
     onSubmit: function (values) {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      };
-      loginUser(values).then((res) => {
-        console.log(
-          "🚀 ~ file: RegisterAccount.js ~ line 34 ~ registerUser ~ res",
-          res
-        );
-      });
+      setIsLoading(true);
+      loginUser(values)
+        .then((res) => {
+          if (res.status === 200) {
+            const config = {
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: "Bearer " + res.data.token,
+              },
+            };
+            getUser(config)
+              .then((response) => {
+                toast.success("Login successful", {
+                  position: "top-right",
+                });
+                let user = {
+                  token: res.data.token,
+                  name: response.data.data.name,
+                  id: response.data.data.id,
+                  username: response.data.data.username,
+                  account_type: response.data.data.account_type,
+                };
+                login(user);
+              })
+              .catch(() => {
+                setIsLoading(false);
+              });
+          }
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message, {
+            position: "top-right",
+          });
+          setIsLoading(false);
+        });
     },
   });
   return (

@@ -4,6 +4,8 @@ import { useFormik } from "formik";
 import akadaLogo from "../../images/akada-logo.png";
 import { Link } from "react-router-dom";
 import { forgotPassword } from "../../services/authservices";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = function () {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -15,18 +17,27 @@ const ForgotPassword = function () {
     validationSchema: Yup.object({
       email: Yup.string().email().label("Email").required(),
     }),
-    onSubmit: function (values) {
-      console.log(
-        "🚀 ~ file: ForgotPassword.js ~ line 21 ~ ForgotPassword ~ values",
-        values
-      );
+    onSubmit: function (values, { resetValues }) {
+      setIsLoading(true);
+      forgotPassword(values)
+        .then(() => {
+          values.email = "";
+          toast.success("Email sent", {
+            position: "top-right",
+          });
+          setIsLoading(false);
+        })
 
-      forgotPassword(values).then((res) => {
-        console.log(
-          "🚀 ~ file: RegisterAccount.js ~ line 34 ~ registerUser ~ res",
-          res
-        );
-      });
+        .catch((err) => {
+          err.response.data.data.forEach((i) => {
+            if (i.email) {
+              toast.error(i.email, {
+                position: "top-right",
+              });
+            }
+          });
+          setIsLoading(false);
+        });
     },
   });
   return (

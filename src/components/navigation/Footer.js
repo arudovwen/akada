@@ -42,7 +42,7 @@ function Footer() {
         <div className="flex gap-x-5 mb-3 lg:mb-0 lg:gap-x-14 justify-center lg:justify-start">
           {footerIcons.map((item) => {
             return (
-              <a className="text-gray-600 text-2xl" href="#" key={item.icon}>
+              <a className="text-gray-600 text-2xl" href="#" key={item.id}>
                 {item.icon}
               </a>
             );

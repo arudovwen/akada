@@ -1,5 +1,5 @@
 import urls from "../helpers/url_helpers";
-import { post } from "../helpers/api_helpers";
+import { post, get } from "../helpers/api_helpers";
 
 //Authentication
 export async function loginUser(user, config = {}) {
@@ -11,6 +11,9 @@ export async function logOut() {
 }
 export async function registerUser(user, config = {}) {
   return await post(urls.REGISTER_USER, user, config);
+}
+export async function getUser(config = {}) {
+  return await get(urls.GET_USER, config);
 }
 
 export async function forgotPassword(user, config = {}) {
@@ -24,6 +27,7 @@ export async function accountverify(user, config = {}) {
   return await post(urls.VERIFY_CODE, user, config);
 }
 
-export async function sendsignupOtp(user, config = {}) {
-  return await post(urls.SIGNUP_SEND_OTP, user, config);
+export async function sendcode(config = {}) {
+
+  return await post(urls.SEND_CODE, {}, config);
 }

@@ -1,14 +1,19 @@
 import akadaLogo from "../../images/akada-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as React from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { registerUser } from "../../services/authservices";
+import { registerUser, sendcode } from "../../services/authservices";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../../hooks/useAuth";
 
 const RegisterAccount = function () {
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = React.useState(false);
   const initialValues = {
-    account_type: "individual",
+    account_type: "Individual",
     username: "",
     email: "",
     password: "",
@@ -32,20 +37,56 @@ const RegisterAccount = function () {
       corporate_name: Yup.string(),
     }),
     onSubmit: function (values) {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      };
-      values.username = values.first_name
-       values.password_confirmation = values.password;
-      registerUser(values, config).then((res) => {
-        console.log(
-          "🚀 ~ file: RegisterAccount.js ~ line 34 ~ registerUser ~ res",
-          res
-        );
-      });
+      setIsLoading(true);
+
+      values.password_confirmation = values.password;
+      registerUser(values)
+        .then((res) => {
+          localStorage.setItem("token", res.data.token);
+          const config = {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              Authorization: "Bearer " + res.data.token,
+            },
+          };
+          if (res.status === 200) {
+            sendcode(config)
+              .then(() => {
+                 toast.success('Registration successful', {
+                position: "top-right",
+              });
+               toast.info('Verify your account', {
+                position: "top-right",
+              });
+                navigate("/verify-account");
+              })
+              .catch(() => {
+
+                setIsLoading(false);
+              });;
+          }
+        })
+        .catch((err) => {
+          err.response.data.data.forEach((i) => {
+            if (i.username) {
+              toast.error(i.username, {
+                position: "top-right",
+              });
+            }
+            if (i.email) {
+              toast.error(i.email, {
+                position: "top-right",
+              });
+            }
+            if (i.password) {
+              toast.error(i.password, {
+                position: "top-right",
+              });
+            }
+          });
+          setIsLoading(false);
+        });
     },
   });
   return (
@@ -81,26 +122,26 @@ const RegisterAccount = function () {
             value={formik.values.account_type}
             className="block border-b-2 w-full h-10 text-xl font-medium placeholder:text-gray-300"
           >
-            <option value="individual">Individual</option>
-            <option value="cooporate">Corporate</option>
+            <option value="Individual">Individual</option>
+            <option value="Organization">Organization</option>
           </select>
           {formik.touched.account_type && formik.errors.account_type && (
             <span className="text-red-400">{formik.errors.account_type}</span>
           )}
         </div>
-        {formik.values.account_type === "coorporate" ? (
+        {formik.values.account_type === "Organization" ? (
           <div className=" mb-5">
             <label htmlFor="" className="text-sm capitalize">
-              Corporate name
+              Organization name
             </label>
             <input
               id="corporate_name"
               name="corporate_name"
+              autoComplete="corporate_name"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.corporate_name}
               type="text"
-              autoComplete="off"
               required
               className="block border-b-2 w-full h-10 text-xl placeholder:text-gray-300
           font-medium px-2"
@@ -124,7 +165,7 @@ const RegisterAccount = function () {
                 className="block border-b-2 w-full h-10 text-xl placeholder:text-gray-300
           font-medium px-2"
                 placeholder="First name"
-                autoComplete="off"
+                autoComplete="first_name"
               />
             </div>
             <div className=" mb-5">
@@ -142,7 +183,7 @@ const RegisterAccount = function () {
                 className="block border-b-2 w-full h-10 text-xl placeholder:text-gray-300
           font-medium px-2"
                 placeholder="Last name"
-                autoComplete="off"
+                autoComplete="last_name"
               />
             </div>
           </div>
@@ -164,11 +205,30 @@ const RegisterAccount = function () {
                 : "border-gray-300"
             }`}
             placeholder="Email address"
-            autoComplete="off"
+            autoComplete="email"
           />
           {formik.touched.email && formik.errors.email && (
             <span className="text-red-400">{formik.errors.email}</span>
           )}
+        </div>
+
+        <div className=" mb-5">
+          <label htmlFor="username" className="text-sm capitalize">
+            Username
+          </label>
+          <input
+            id="username"
+            name="username"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.username}
+            type="text"
+            autoComplete="username"
+            required
+            className="block border-b-2 w-full h-10 text-xl placeholder:text-gray-300
+          font-medium px-2"
+            placeholder="Enter username"
+          />
         </div>
 
         <div className=" mb-5">
@@ -184,32 +244,13 @@ const RegisterAccount = function () {
             value={formik.values.password}
             className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
             placeholder="Password"
-            autoComplete="off"
+            autoComplete="password"
           />
           {formik.touched.password && formik.errors.password && (
             <span className="text-red-400">{formik.errors.password}</span>
           )}
         </div>
 
-        <div className=" mb-5">
-          <label htmlFor="" className="text-sm">
-            Select matching metrics
-          </label>
-          <select
-            id="metrics"
-            name="metrics"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.account_type}
-            className="block border-b-2 w-full h-10 text-xl font-medium placeholder:text-gray-300"
-          >
-            <option value="individual">Individual</option>
-            <option value="cooporate">Corporate</option>
-          </select>
-          {formik.touched.account_type && formik.errors.account_type && (
-            <span className="text-red-400">{formik.errors.account_type}</span>
-          )}
-        </div>
         <button
           disabled={isLoading}
           type="submit"

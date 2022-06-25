@@ -8,6 +8,9 @@ import { NavLink } from "react-router-dom";
 import SideModal from "../../../components/SideModal";
 import AddUser from "../../Dashboard/Forms/AddUser";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
+import { toast } from "react-toastify";
+
 import {
   ShoppingBagIcon,
   BellIcon,
@@ -54,6 +57,12 @@ const sideBar = [
 ];
 
 const Header = function () {
+  const { logout, user } = useAuth();
+
+  function LogOut() {
+    logout();
+    toast.success("Logged out");
+  }
   const [status, setStatus] = React.useState(false);
   function handleChange(e) {
     setStatus(e.target.checked);
@@ -118,7 +127,7 @@ const Header = function () {
               {" "}
               <div className="text-right flex gap-x-2 items-center h-10 bg-white rounded-full px-4 cursor-pointer">
                 <img src={taiwo} alt="taiwo" />
-                <p>Taiwo Odunade</p>
+                <p className="capitalize">{user.name}</p>
                 <ChevronDownIcon
                   className="ml-2 -mr-1 h-5 w-5 text-gray-400 hover:text-gray-500"
                   aria-hidden="true"
@@ -136,18 +145,11 @@ const Header = function () {
             >
               <Menu.Items className="absolute right-4 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
                 <Menu.Item>
-                  <div className="rounded-md px-4 py-3 text-sm">
-                    Account settings
-                  </div>
-                </Menu.Item>
-                <Menu.Item>
-                  <div className="rounded-md px-4 py-3 text-sm">
-                    Account settings
-                  </div>
-                </Menu.Item>
-                <Menu.Item>
-                  <div className="rounded-md px-4 py-3 text-sm">
-                    Account settings
+                  <div
+                    className="rounded-md px-4 py-3 text-sm hover:text-primary cursor-pointer"
+                    onClick={() => LogOut()}
+                  >
+                    Logout
                   </div>
                 </Menu.Item>
               </Menu.Items>
