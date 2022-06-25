@@ -38,6 +38,8 @@ const RegisterAccount = function () {
           Accept: "application/json",
         },
       };
+      values.username = values.first_name
+       values.password_confirmation = values.password;
       registerUser(values, config).then((res) => {
         console.log(
           "🚀 ~ file: RegisterAccount.js ~ line 34 ~ registerUser ~ res",
@@ -134,7 +136,7 @@ const RegisterAccount = function () {
                 name="last_name"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.lase_name}
+                value={formik.values.last_name}
                 type="text"
                 required
                 className="block border-b-2 w-full h-10 text-xl placeholder:text-gray-300
