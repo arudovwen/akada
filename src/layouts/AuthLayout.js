@@ -3,7 +3,6 @@ import { useAuth } from "../hooks/useAuth";
 
 export const AuthLayout = () => {
   const { user } = useAuth();
-  console.log("🚀 ~ file: AuthLayout.js ~ line 6 ~ AuthLayout ~ user", user)
 
   if (user) {
     return <Navigate to="/dashboard" />;
