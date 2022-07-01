@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../hooks/useAuth";
 
+
 const RegisterAccount = function () {
   const { login } = useAuth();
   const navigate = useNavigate();
