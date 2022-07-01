@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 import { forgotPassword } from "../../services/authservices";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useNavigate } from "react-router-dom";
 const ForgotPassword = function () {
   const [isLoading, setIsLoading] = React.useState(false);
   const initialValues = {
     email: "",
   };
+    const navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
@@ -21,11 +22,13 @@ const ForgotPassword = function () {
       setIsLoading(true);
       forgotPassword(values)
         .then(() => {
-          values.email = "";
+          navigate(`/reset-password?email=${values.email}`)
           toast.success("Email sent", {
             position: "top-right",
           });
           setIsLoading(false);
+           values.email = "";
+
         })
 
         .catch((err) => {

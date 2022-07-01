@@ -22,6 +22,9 @@ export async function forgotPassword(user, config = {}) {
 export async function resetPassword(user, config = {}) {
   return await post(urls.RESET_PASSWORD, user, config);
 }
+export async function changePassword(user, config = {}) {
+  return await post(urls.CHANGE_PASSWORD, user, config);
+}
 
 export async function accountverify(user, config = {}) {
   return await post(urls.VERIFY_CODE, user, config);

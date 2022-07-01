@@ -7,6 +7,7 @@ const urls = {
   VERIFY_CODE: "v1/auth/email/verify",
   FORGOT_PASSWORD: "/v1/password/email",
   RESET_PASSWORD: "/v1/password/confirm-reset-token",
+  CHANGE_PASSWORD: "/v1/password/change",
 };
 
 export default urls;
