@@ -4,7 +4,7 @@ import axios from "axios";
 
 //apply base url for axios
 
-const API_URL = "https://46.101.58.181:85/api/";
+const API_URL = "https://akadaplay.com:9115/api/";
 
 const axiosApi = axios.create({
   baseURL: API_URL,
