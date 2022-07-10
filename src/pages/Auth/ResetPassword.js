@@ -7,11 +7,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { resetPassword, changePassword } from "../../services/authservices";
 import OtpInput from "react-otp-input";
-
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 const ResetPassword = function () {
+  const [isVisible, setIsvisible] = React.useState(false);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [phase, setPhase] = React.useState(1);
+  const [phase, setPhase] = React.useState(2);
   const [otp, setOtp] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const initialValues = {
@@ -38,8 +39,7 @@ const ResetPassword = function () {
       values.code = otp;
       changePassword(values)
         .then((res) => {
-          navigate('/login')
-        
+          navigate("/login");
         })
         .catch(() => {
           setIsLoading(false);
@@ -52,7 +52,6 @@ const ResetPassword = function () {
 
   function sendCode(e) {
     e.preventDefault();
-
     let token = localStorage.getItem("token");
     const config = {
       headers: {
@@ -92,17 +91,32 @@ const ResetPassword = function () {
               <label htmlFor="" className="text-sm block mb-2">
                 Enter your new password
               </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.password}
-                className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
-                placeholder="Password"
-                autoComplete="off"
-              />
+              <div className="flex items-center relative">
+                <input
+                  id="password"
+                  name="password"
+                  type={isVisible ? "text" : "password"}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password}
+                  className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
+                  placeholder="Password"
+                  autoComplete="off"
+                />
+                <span
+                  onClick={() => {
+                    setIsvisible(!isVisible);
+                  }}
+                  className="absolute right-4"
+                >
+                  {!isVisible ? (
+                    <VscEye className="text-lg" />
+                  ) : (
+                    <VscEyeClosed className="text-lg" />
+                  )}
+                </span>
+              </div>
+
               {formik.touched.password && formik.errors.password && (
                 <span className="text-red-400">{formik.errors.password}</span>
               )}
@@ -111,17 +125,32 @@ const ResetPassword = function () {
               <label htmlFor="" className="text-sm block mb-2">
                 Confirm your new password
               </label>
-              <input
-                id="password_confirmation"
-                name="password_confirmation"
-                type="password"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.password_confirmation}
-                className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
-                placeholder="Password"
-                autoComplete="off"
-              />
+              <div className="flex items-center relative">
+                <input
+                  id="password_confirmation"
+                  name="password_confirmation"
+                  type={isVisible ? "text" : "password"}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password_confirmation}
+                  className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
+                  placeholder="Password"
+                  autoComplete="off"
+                />
+                <span
+                  onClick={() => {
+                    setIsvisible(!isVisible);
+                  }}
+                  className="absolute right-4"
+                >
+                  {!isVisible ? (
+                    <VscEye className="text-lg" />
+                  ) : (
+                    <VscEyeClosed className="text-lg" />
+                  )}
+                </span>
+              </div>
+
               {formik.touched.password_confirmation &&
                 formik.errors.password_confirmation && (
                   <span className="text-red-400">
@@ -178,7 +207,7 @@ const ResetPassword = function () {
            }`}
               type="submit"
             >
-              verify reset
+              verify
             </button>
 
             <p

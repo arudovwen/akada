@@ -7,9 +7,10 @@ import { registerUser, sendcode } from "../../services/authservices";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../hooks/useAuth";
-
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
 const RegisterAccount = function () {
+  const [isVisible, setIsvisible] = React.useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = React.useState(false);
@@ -54,18 +55,14 @@ const RegisterAccount = function () {
           if (res.status === 200) {
             sendcode(config)
               .then(() => {
-                 toast.success('Registration successful', {
-                position: "top-right",
-              });
-               toast.info('Verify your account', {
-                position: "top-right",
-              });
+                toast.info("Verify your account", {
+                  position: "bottom-center",
+                });
                 navigate("/verify-account");
               })
               .catch(() => {
-
                 setIsLoading(false);
-              });;
+              });
           }
         })
         .catch((err) => {
@@ -236,17 +233,31 @@ const RegisterAccount = function () {
           <label htmlFor="" className="text-sm ">
             Enter your password
           </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
-            placeholder="Password"
-            autoComplete="password"
-          />
+          <div className="flex items-center relative">
+            <input
+              id="password"
+              name="password"
+              type={isVisible ? "text" : "password"}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
+              placeholder="Password"
+              autoComplete="password"
+            />
+            <span
+              onClick={() => {
+                setIsvisible(!isVisible);
+              }}
+              className="absolute right-4"
+            >
+              {!isVisible ? (
+                <VscEye className="text-lg" />
+              ) : (
+                <VscEyeClosed className="text-lg" />
+              )}
+            </span>
+          </div>
           {formik.touched.password && formik.errors.password && (
             <span className="text-red-400">{formik.errors.password}</span>
           )}

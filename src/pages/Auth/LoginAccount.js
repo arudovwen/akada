@@ -6,9 +6,11 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { loginUser, getUser } from "../../services/authservices";
 import { useAuth } from "../../hooks/useAuth";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 const LoginAccount = function () {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isVisible, setIsvisible] = React.useState(false);
   const initialValues = {
     email: "",
     password: "",
@@ -100,17 +102,32 @@ const LoginAccount = function () {
           <label htmlFor="" className="text-sm block mb-2">
             Enter your password
           </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
-            placeholder="Password"
-            autoComplete="off"
-          />
+          <div className="flex items-center relative">
+            <input
+              id="password"
+              name="password"
+              type={isVisible ? "text" : "password"}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
+              placeholder="Password"
+              autoComplete="off"
+            />
+            <span
+              onClick={() => {
+                setIsvisible(!isVisible);
+              }}
+              className="absolute right-4"
+            >
+              {!isVisible ? (
+                <VscEye className="text-lg" />
+              ) : (
+                <VscEyeClosed className="text-lg" />
+              )}
+            </span>
+          </div>
+
           {formik.touched.password && formik.errors.password && (
             <span className="text-red-400">{formik.errors.password}</span>
           )}
@@ -124,7 +141,7 @@ const LoginAccount = function () {
              isLoading ? "opacity-70" : ""
            }`}
         >
-          Login in
+          Log in
         </button>
         <p className="text-center text-sm text-gray-500 mb-2">
           Forgot your password?{" "}

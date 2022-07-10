@@ -89,7 +89,7 @@ const ForgotPassword = function () {
              isLoading ? "opacity-70" : ""
            }`}
         >
-          Send reset
+          Reset
         </button>
 
         <p className="text-center text-sm text-gray-500">

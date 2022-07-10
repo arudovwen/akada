@@ -12,10 +12,9 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const VerifyAccount = function () {
-
-   const navigate = useNavigate()
+  const navigate = useNavigate();
   let [isOpen, setIsOpen] = useState(false);
-  const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const initialValues = {
     code: "",
@@ -26,8 +25,7 @@ const VerifyAccount = function () {
       code: Yup.string().required(),
     }),
     onSubmit: function (values) {
-
-      setIsLoading(true)
+      setIsLoading(true);
       let token = localStorage.getItem("token");
       const config = {
         headers: {
@@ -36,16 +34,21 @@ const VerifyAccount = function () {
           Authorization: "Bearer " + token,
         },
       };
-      accountverify(values, config).then(() => {
-
-             toast.success("Verification successful", {
-               position: "top-right",
-             });
-             navigate("/login")
-
-      }).catch(()=>{
-         setIsLoading(false)
-      });
+      accountverify(values, config)
+        .then(() => {
+          toast.success("Registration successful", {
+            position: "bottom-center",
+          });
+          navigate("/login");
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setOtp("");
+          formik.values.code = "";
+          toast.error(err.response.data.message, {
+            position: "bottom-center",
+          });
+        });
     },
   });
   function toggleModal() {
@@ -54,23 +57,24 @@ const VerifyAccount = function () {
   function handleCode(val) {
     setOtp(val);
     formik.values.code = val;
-
   }
 
-  function resendCode(){
-    let token = localStorage.getItem('token')
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: "Bearer " + token,
-        },
-      };
-    sendcode(config).then(()=>{
-        toast.success("Code resent!", {
-               position: "top-right",
-             });
-    })
+  function resendCode() {
+    let token = localStorage.getItem("token");
+    setOtp("");
+    formik.values.code = "";
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+    sendcode(config).then(() => {
+      toast.success("Code resent!", {
+        position: "top-right",
+      });
+    });
   }
   return (
     <div className="bg-white w-[90%] mx-auto lg:mx-0 right-0 left-0 lg:left-[unset] lg:w-[28rem] lg:h-[36rem] px-6  py-4 lg:px-10 rounded-[30px] lg:right-24 absolute scale-in-center">
@@ -106,13 +110,20 @@ const VerifyAccount = function () {
         </div>
         <button
           className={`uppercase bg-text-color w-full text-white py-3 text-base lg:text-lg font-bold
-           rounded-md tracking-wider mb-4 mt-5 ${isLoading ? "opacity-70" : ""}`}
+           rounded-md tracking-wider mb-4 mt-5 ${
+             isLoading ? "opacity-70" : ""
+           }`}
           type="submit"
         >
           verify account
         </button>
 
-        <p className="text-center text-sm mt-3 text-[#9bab76] hover:underline cursor-pointer" onClick={()=>resendCode()}>Resend code</p>
+        <p
+          className="text-center text-sm mt-3 text-[#9bab76] hover:underline cursor-pointer"
+          onClick={() => resendCode()}
+        >
+          Resend code
+        </p>
       </form>
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className="bg-white translate-x-2/4 w-[331px]  border rounded-xl pt-4 absolute top-[200px] right-1/2 text-center">
