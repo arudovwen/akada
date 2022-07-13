@@ -36,10 +36,7 @@ const VerifyAccount = function () {
       };
       accountverify(values, config)
         .then(() => {
-          toast.success("Registration successful", {
-            position: "bottom-center",
-          });
-          navigate("/login");
+          toggleModal()
         })
         .catch((err) => {
           setIsLoading(false);
@@ -143,7 +140,7 @@ const VerifyAccount = function () {
 
           <div className="text-center bg-[#E4E5E3] text-sm rounded-br-xl rounded-bl-xl  flex items-center justify-center w-full py-4 mt-8  font-bold uppercase text-text-color">
             {" "}
-            <Link to="/dashboard">go to dashboard</Link>
+            <Link to="/login">go to login</Link>
           </div>
         </div>
       </CustomModal>

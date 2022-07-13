@@ -11,6 +11,7 @@ const LoginAccount = function () {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = React.useState(false);
   const [isVisible, setIsvisible] = React.useState(false);
+  const [errors, setErrors] = React.useState(null);
   const initialValues = {
     email: "",
     password: "",
@@ -53,9 +54,8 @@ const LoginAccount = function () {
           }
         })
         .catch((err) => {
-          toast.error(err.response.data.message, {
-            position: "top-right",
-          });
+          setErrors(err.response.data.message);
+
           setIsLoading(false);
         });
     },
@@ -84,8 +84,13 @@ const LoginAccount = function () {
             type="email"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            onKeyUp={() => {
+              setErrors(null);
+            }}
             value={formik.values.email}
-            className={`block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white ${
+            className={`${
+              errors && "border-red-500"
+            } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white ${
               formik.touched.email && formik.errors.email
                 ? "border-red-400"
                 : "border-gray-300"
@@ -109,8 +114,13 @@ const LoginAccount = function () {
               type={isVisible ? "text" : "password"}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              onKeyUp={() => {
+                setErrors(null);
+              }}
               value={formik.values.password}
-              className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
+              className={`${
+                errors && "border-red-500"
+              } block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300`}
               placeholder="Password"
               autoComplete="off"
             />
@@ -132,7 +142,15 @@ const LoginAccount = function () {
             <span className="text-red-400">{formik.errors.password}</span>
           )}
         </div>
-
+        {errors && (
+          <div className="pl-4">
+            <ul>
+              <li className="text-red-500 list-disc marker:text-red-500">
+                {errors}
+              </li>
+            </ul>
+          </div>
+        )}
         <button
           disabled={isLoading}
           type="submit"
