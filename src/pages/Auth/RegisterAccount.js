@@ -15,6 +15,7 @@ const RegisterAccount = function () {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = React.useState(false);
   const [errors, setErrors] = React.useState([]);
+  const [error, setError] = React.useState(null);
   const initialValues = {
     account_type: "Individual",
     username: "",
@@ -68,24 +69,9 @@ const RegisterAccount = function () {
         })
         .catch((err) => {
           setErrors(err.response.data.data);
-          console.log(err.response.data.data);
-          // err.response.data.data.forEach((i) => {
-          //   if (i.username) {
-          //     toast.error(i.username, {
-          //       position: "top-right",
-          //     });
-          //   }
-          //   if (i.email) {
-          //     toast.error(i.email, {
-          //       position: "top-right",
-          //     });
-          //   }
-          //   if (i.password) {
-          //     toast.error(i.password, {
-          //       position: "top-right",
-          //     });
-          //   }
-          // });
+
+setError(Object.assign({}, ...err.response.data.data))
+
           setIsLoading(false);
         });
     },
@@ -109,23 +95,23 @@ const RegisterAccount = function () {
       <p className="text-base lg:text-xl font-bold  mb-5">
         Kindly fill in your details to get started
       </p>
-        {errors.length > 0 && (
-          <div className="pb-4 pl-4">
-            <ul>
-              {errors.map((error, index) => (
-                <li
-                  className="text-red-500 list-disc marker:text-red-500"
-                  key={index}
-                >
-                  {error.password && <div>{error.password}</div>}
-                  {error.username && <div>{error.username}</div>}
-                   {error.email && <div>{error.email}</div>}
-                    {error.account_type && <div>{error.account_type}</div>}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+      {errors.length > 0 && (
+        <div className="pb-4 pl-4">
+          <ul>
+            {errors.map((error, index) => (
+              <li
+                className="text-red-500 list-disc marker:text-red-500"
+                key={index}
+              >
+                {error.password && <div>{error.password}</div>}
+                {error.username && <div>{error.username}</div>}
+                {error.email && <div>{error.email}</div>}
+                {error.account_type && <div>{error.account_type}</div>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <form onSubmit={formik.handleSubmit}>
         <div className=" mb-5">
@@ -141,7 +127,9 @@ const RegisterAccount = function () {
               setErrors([]);
             }}
             value={formik.values.account_type}
-            className="block border-b-2 w-full h-10 text-xl font-medium placeholder:text-gray-300"
+             className={`${
+            error &&  error.account_type && "border-red-500"
+            } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white`}
           >
             <option value="Individual">Individual</option>
             <option value="Organization">Organization</option>
@@ -232,7 +220,9 @@ const RegisterAccount = function () {
               setErrors([]);
             }}
             value={formik.values.email}
-            className={`block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white ${
+            className={`${
+            error &&  error.email && "border-red-500"
+            } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white ${
               formik.touched.email && formik.errors.email
                 ? "border-red-400"
                 : "border-gray-300"
@@ -261,8 +251,13 @@ const RegisterAccount = function () {
             type="text"
             autoComplete="username"
             required
-            className="block border-b-2 w-full h-10 text-xl placeholder:text-gray-300
-          font-medium px-2"
+            className={`${
+            error &&  error.username && "border-red-500"
+            } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white ${
+              formik.touched.username && formik.errors.username
+                ? "border-red-400"
+                : "border-gray-300"
+            }`}
             placeholder="Enter username"
           />
         </div>
@@ -282,7 +277,9 @@ const RegisterAccount = function () {
                 setErrors([]);
               }}
               value={formik.values.password}
-              className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
+              className={`${
+            error &&  error.password && "border-red-500"
+            } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white`}
               placeholder="Password"
               autoComplete="password"
             />
