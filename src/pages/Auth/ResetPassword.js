@@ -15,6 +15,7 @@ const ResetPassword = function () {
   const [phase, setPhase] = React.useState(2);
   const [otp, setOtp] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
+  const [errors, setErrors] = React.useState([]);
   const initialValues = {
     code: "",
     email: "",
@@ -41,7 +42,8 @@ const ResetPassword = function () {
         .then((res) => {
           navigate("/login");
         })
-        .catch(() => {
+        .catch((err) => {
+          setErrors(err.response.data.data);
           setIsLoading(false);
         });
     },
@@ -67,7 +69,8 @@ const ResetPassword = function () {
           position: "top-right",
         });
       })
-      .catch(() => {
+      .catch((err) => {
+        setErrors(err.response.data.data);
         setPhase(2);
       });
   }
@@ -158,7 +161,23 @@ const ResetPassword = function () {
                   </span>
                 )}
             </div>
-
+            {errors.length > 0 && (
+              <div className="pb-4 pl-4">
+                <ul>
+                  {errors.map((error, index) => (
+                    <li
+                      className="text-red-500 list-disc marker:text-red-500"
+                      key={index}
+                    >
+                      {error.password && <div>{error.password}</div>}
+                      {error.password_confirmation && (
+                        <div>{error.password_confirmation}</div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <button
               disabled={isLoading}
               type="submit"
@@ -200,6 +219,20 @@ const ResetPassword = function () {
                 containerStyle="!mx-auto justify-center gap-x-4"
               />
             </div>
+            {errors.length > 0 && (
+              <div className="pb-4 pl-4">
+                <ul>
+                  {errors.map((error, index) => (
+                    <li
+                      className="text-red-500 list-disc marker:text-red-500"
+                      key={index}
+                    >
+                      {error.code && <div>{error.code}</div>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <button
               className={`uppercase bg-text-color w-full text-white py-3 text-base lg:text-lg font-bold
            rounded-md tracking-wider mb-4 mt-5 ${

@@ -14,6 +14,7 @@ const RegisterAccount = function () {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = React.useState(false);
+  const [errors, setErrors] = React.useState([]);
   const initialValues = {
     account_type: "Individual",
     username: "",
@@ -55,9 +56,9 @@ const RegisterAccount = function () {
           if (res.status === 200) {
             sendcode(config)
               .then(() => {
-                toast.info("Verify your account", {
-                  position: "bottom-center",
-                });
+                // toast.info("Verify your account", {
+                //   position: "bottom-center",
+                // });
                 navigate("/verify-account");
               })
               .catch(() => {
@@ -66,23 +67,25 @@ const RegisterAccount = function () {
           }
         })
         .catch((err) => {
-          err.response.data.data.forEach((i) => {
-            if (i.username) {
-              toast.error(i.username, {
-                position: "top-right",
-              });
-            }
-            if (i.email) {
-              toast.error(i.email, {
-                position: "top-right",
-              });
-            }
-            if (i.password) {
-              toast.error(i.password, {
-                position: "top-right",
-              });
-            }
-          });
+          setErrors(err.response.data.data);
+          console.log({...err.response.data.data});
+          // err.response.data.data.forEach((i) => {
+          //   if (i.username) {
+          //     toast.error(i.username, {
+          //       position: "top-right",
+          //     });
+          //   }
+          //   if (i.email) {
+          //     toast.error(i.email, {
+          //       position: "top-right",
+          //     });
+          //   }
+          //   if (i.password) {
+          //     toast.error(i.password, {
+          //       position: "top-right",
+          //     });
+          //   }
+          // });
           setIsLoading(false);
         });
     },
@@ -106,6 +109,23 @@ const RegisterAccount = function () {
       <p className="text-base lg:text-xl font-bold  mb-5">
         Kindly fill in your details to get started
       </p>
+        {errors.length > 0 && (
+          <div className="pb-4 pl-4">
+            <ul>
+              {errors.map((error, index) => (
+                <li
+                  className="text-red-500 list-disc marker:text-red-500"
+                  key={index}
+                >
+                  {error.password && <div>{error.password}</div>}
+                  {error.username && <div>{error.username}</div>}
+                   {error.email && <div>{error.email}</div>}
+                    {error.account_type && <div>{error.account_type}</div>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
       <form onSubmit={formik.handleSubmit}>
         <div className=" mb-5">
@@ -117,6 +137,9 @@ const RegisterAccount = function () {
             name="account_type"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            onKeyUp={() => {
+              setErrors([]);
+            }}
             value={formik.values.account_type}
             className="block border-b-2 w-full h-10 text-xl font-medium placeholder:text-gray-300"
           >
@@ -138,6 +161,9 @@ const RegisterAccount = function () {
               autoComplete="corporate_name"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              onKeyUp={() => {
+                setErrors([]);
+              }}
               value={formik.values.corporate_name}
               type="text"
               required
@@ -157,6 +183,9 @@ const RegisterAccount = function () {
                 name="first_name"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                onKeyUp={() => {
+                  setErrors([]);
+                }}
                 value={formik.values.first_name}
                 type="text"
                 required
@@ -175,6 +204,9 @@ const RegisterAccount = function () {
                 name="last_name"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                onKeyUp={() => {
+                  setErrors([]);
+                }}
                 value={formik.values.last_name}
                 type="text"
                 required
@@ -196,6 +228,9 @@ const RegisterAccount = function () {
             type="email"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            onKeyUp={() => {
+              setErrors([]);
+            }}
             value={formik.values.email}
             className={`block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white ${
               formik.touched.email && formik.errors.email
@@ -219,6 +254,9 @@ const RegisterAccount = function () {
             name="username"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            onKeyUp={() => {
+              setErrors([]);
+            }}
             value={formik.values.username}
             type="text"
             autoComplete="username"
@@ -240,6 +278,9 @@ const RegisterAccount = function () {
               type={isVisible ? "text" : "password"}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              onKeyUp={() => {
+                setErrors([]);
+              }}
               value={formik.values.password}
               className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
               placeholder="Password"

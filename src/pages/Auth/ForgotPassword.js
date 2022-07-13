@@ -9,10 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 const ForgotPassword = function () {
   const [isLoading, setIsLoading] = React.useState(false);
+  const [errors, setErrors] = React.useState([]);
   const initialValues = {
     email: "",
   };
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
@@ -22,23 +23,23 @@ const ForgotPassword = function () {
       setIsLoading(true);
       forgotPassword(values)
         .then(() => {
-          navigate(`/reset-password?email=${values.email}`)
+          navigate(`/reset-password?email=${values.email}`);
           toast.success("Email sent", {
             position: "top-right",
           });
           setIsLoading(false);
-           values.email = "";
-
+          values.email = "";
         })
 
         .catch((err) => {
-          err.response.data.data.forEach((i) => {
-            if (i.email) {
-              toast.error(i.email, {
-                position: "top-right",
-              });
-            }
-          });
+          setErrors(err.response.data.data);
+          // err.response.data.data.forEach((i) => {
+          //   if (i.email) {
+          //     toast.error(i.email, {
+          //       position: "top-right",
+          //     });
+          //   }
+          // });
           setIsLoading(false);
         });
     },
@@ -66,6 +67,9 @@ const ForgotPassword = function () {
             id="email"
             name="email"
             type="email"
+            onKeyUp={() => {
+              setErrors([]);
+            }}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
@@ -81,6 +85,20 @@ const ForgotPassword = function () {
             <span className="text-red-400">{formik.errors.email}</span>
           )}
         </div>
+        {errors.length > 0 && (
+          <div className="pb-4 pl-4">
+            <ul>
+              {errors.map((error, index) => (
+                <li
+                  className="text-red-500 list-disc marker:text-red-500"
+                  key={index}
+                >
+                  {error.email && <div>{error.email}</div>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <button
           disabled={isLoading}
           type="submit"
