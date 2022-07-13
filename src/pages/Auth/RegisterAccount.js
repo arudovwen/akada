@@ -68,7 +68,7 @@ const RegisterAccount = function () {
         })
         .catch((err) => {
           setErrors(err.response.data.data);
-          console.log({...err.response.data.data});
+          console.log(err.response.data.data);
           // err.response.data.data.forEach((i) => {
           //   if (i.username) {
           //     toast.error(i.username, {
