@@ -15,7 +15,7 @@ const ResetPassword = function () {
   const [phase, setPhase] = React.useState(1);
   const [otp, setOtp] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
-  const [errors, setErrors] = React.useState([]);
+  const [errors, setErrors] = React.useState(null);
   const initialValues = {
     code: "",
     email: "",
@@ -41,17 +41,18 @@ const ResetPassword = function () {
       changePassword(values)
         .then((res) => {
           toast.success("Password changed!", {
-          position: "top-right",
-        });
+            position: "top-right",
+          });
           navigate("/login");
         })
         .catch((err) => {
-          setErrors(err.response.data.data);
+          setErrors(err.response.data.message);
           setIsLoading(false);
         });
     },
   });
   function handleCode(val) {
+    setErrors(null);
     setOtp(val);
   }
 
@@ -71,7 +72,6 @@ const ResetPassword = function () {
         toast.success("Reset verified!", {
           position: "top-right",
         });
-
       })
       .catch((err) => {
         setErrors(err.response.data.message);
@@ -107,8 +107,13 @@ const ResetPassword = function () {
                   type={isVisible ? "text" : "password"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  onKeyUp={() => {
+                    setErrors(null);
+                  }}
                   value={formik.values.password}
-                  className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
+                  className={`${
+                    errors ? "border-red-500" : ""
+                  } block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300`}
                   placeholder="Password"
                   autoComplete="off"
                 />
@@ -141,8 +146,13 @@ const ResetPassword = function () {
                   type={isVisible ? "text" : "password"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  onKeyUp={() => {
+                    setErrors(null);
+                  }}
                   value={formik.values.password_confirmation}
-                  className="block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300"
+                  className={`${
+                    errors ? "border-red-500" : ""
+                  } block border-b-2 w-full  h-10 text-xl font-medium px-2 placeholder:text-gray-300`}
                   placeholder="Password"
                   autoComplete="off"
                 />
@@ -167,20 +177,12 @@ const ResetPassword = function () {
                   </span>
                 )}
             </div>
-            {errors.length > 0 && (
+            {errors && (
               <div className="pb-4 pl-4">
                 <ul>
-                  {errors.map((error, index) => (
-                    <li
-                      className="text-red-500 list-disc marker:text-red-500"
-                      key={index}
-                    >
-                      {error.password && <div>{error.password}</div>}
-                      {error.password_confirmation && (
-                        <div>{error.password_confirmation}</div>
-                      )}
-                    </li>
-                  ))}
+                  <li className="text-red-500 list-disc marker:text-red-500">
+                    {errors && <div>{errors}</div>}
+                  </li>
                 </ul>
               </div>
             )}
@@ -221,21 +223,18 @@ const ResetPassword = function () {
                 numInputs={6}
                 name="code"
                 id="code"
-                inputStyle="!text-black border-b border-gray-600 !w-10 !h-12 !p-1"
+                inputStyle={`${
+                  errors ? "border-red-500" : "border-gray-600"
+                } !text-black border-b  !w-10 !h-12 !p-1`}
                 containerStyle="!mx-auto justify-center gap-x-4"
               />
             </div>
-            {errors.length > 0 && (
+            {errors && (
               <div className="pb-4 pl-4">
                 <ul>
-                  {errors.map((error, index) => (
-                    <li
-                      className="text-red-500 list-disc marker:text-red-500"
-                      key={index}
-                    >
-                      {error.code && <div>{error.code}</div>}
-                    </li>
-                  ))}
+                  <li className="text-red-500 list-disc marker:text-red-500">
+                    {errors && <div>{errors}</div>}
+                  </li>
                 </ul>
               </div>
             )}
