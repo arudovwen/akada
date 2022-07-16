@@ -40,6 +40,9 @@ const ResetPassword = function () {
       values.code = otp;
       changePassword(values)
         .then((res) => {
+          toast.success("Password changed!", {
+          position: "top-right",
+        });
           navigate("/login");
         })
         .catch((err) => {
@@ -68,10 +71,13 @@ const ResetPassword = function () {
         toast.success("Reset verified!", {
           position: "top-right",
         });
+
       })
       .catch((err) => {
-        setErrors(err.response.data.data);
-        setPhase(2);
+        setErrors(err.response.data.message);
+        // toast.success("Reset verified!", {
+        //   position: "top-right",
+        // });
       });
   }
   return (
