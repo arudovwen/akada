@@ -4,7 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 export const AuthLayout = () => {
   const { user } = useAuth();
 
-  if (user) {
+  if (!user) {
     return <Navigate to="/dashboard" />;
   } else {
     return (

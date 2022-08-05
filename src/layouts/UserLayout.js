@@ -8,7 +8,7 @@ import dash from "../images/dash.png";
 export const UserLayout = () => {
   const { user } = useAuth();
 
-  if (!user) {
+  if (user) {
     return <Navigate to="/login" />;
   }
 

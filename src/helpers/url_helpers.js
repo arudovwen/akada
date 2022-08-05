@@ -8,6 +8,10 @@ const urls = {
   FORGOT_PASSWORD: "/v1/password/email",
   RESET_PASSWORD: "/v1/password/confirm-reset-token",
   CHANGE_PASSWORD: "/v1/password/change",
+
+  //Sponsor
+  GET_SPONSORED_STUDENTS: "/v1/students/sponsored",
+  GET_UNSPONSORED_STUDENTS: "/v1/students",
 };
 
 export default urls;

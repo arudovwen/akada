@@ -70,7 +70,7 @@ const RegisterAccount = function () {
         .catch((err) => {
           setErrors(err.response.data.data);
 
-setError(Object.assign({}, ...err.response.data.data))
+          setError(Object.assign({}, ...err.response.data.data));
 
           setIsLoading(false);
         });
@@ -127,8 +127,8 @@ setError(Object.assign({}, ...err.response.data.data))
               setErrors([]);
             }}
             value={formik.values.account_type}
-             className={`${
-            error &&  error.account_type && "border-red-500"
+            className={`${
+              error && error.account_type && "border-red-500"
             } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white`}
           >
             <option value="Individual">Individual</option>
@@ -221,7 +221,7 @@ setError(Object.assign({}, ...err.response.data.data))
             }}
             value={formik.values.email}
             className={`${
-            error &&  error.email && "border-red-500"
+              error && error.email && "border-red-500"
             } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white ${
               formik.touched.email && formik.errors.email
                 ? "border-red-400"
@@ -252,7 +252,7 @@ setError(Object.assign({}, ...err.response.data.data))
             autoComplete="username"
             required
             className={`${
-            error &&  error.username && "border-red-500"
+              error && error.username && "border-red-500"
             } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white ${
               formik.touched.username && formik.errors.username
                 ? "border-red-400"
@@ -278,8 +278,8 @@ setError(Object.assign({}, ...err.response.data.data))
               }}
               value={formik.values.password}
               className={`${
-            error &&  error.password && "border-red-500"
-            } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white`}
+                error && error.password && "border-red-500"
+              } block border-b-2 w-full h-10 text-xl font-medium px-2 placeholder:text-gray-300 bg-white`}
               placeholder="Password"
               autoComplete="password"
             />

@@ -1,119 +1,150 @@
-import customer1 from '../../../images/customer1.png';
-import * as React from 'react';
+import customer1 from "../../../images/customer1.png";
+import * as React from "react";
 import {
   DotsVerticalIcon,
   ChevronDownIcon,
   XIcon,
-} from '@heroicons/react/outline';
-import { Menu, Transition } from '@headlessui/react';
-import CustomModal from '../../../components/Modal';
-import Pagination from '../../../components/Pagination';
-import StudentDetail from '../../Dashboard/StudentDetails/Details';
+} from "@heroicons/react/outline";
+import { Menu, Transition } from "@headlessui/react";
+import CustomModal from "../../../components/Modal";
+import Pagination from "../../../components/Pagination";
+import candidate from "../../../images/candidate.png";
+import StudentDetail from "../../Dashboard/StudentDetails/Details";
+import {
+  getSponsoredStudents,
+  getUnsponsoredStudents,
+} from "../../../services/sponsorservices";
 const Table = function ({ toggleDetailsModal }) {
   let [isOpen, setIsOpen] = React.useState(false);
+  const [students, setStudents] = React.useState(10);
+  const [totalData, setTotalData] = React.useState(40);
+  let [pageNumber, setPageNumber] = React.useState(1);
+  const [pageSize, setPageSize] = React.useState(10);
+
+  React.useEffect(() => {
+    getSponsored();
+  }, []);
+  function getSponsored() {
+    getSponsoredStudents().then((response) => {
+      setStudents(response.data.data);
+    });
+  }
+  function getUnSponsored() {
+    getUnsponsoredStudents().then((response) => {
+      setStudents(response.data.data);
+    });
+  }
   function toggleModal() {
     setIsOpen(!isOpen);
   }
+  function handleChange(e) {
+    if (Number(e.target.value) === 1) {
+      getSponsored();
+    } else {
+      getUnSponsored();
+    }
+  }
+  function next() {
+    setPageNumber(pageNumber++);
+     console.log(
+       "🚀 ~ file: Table.js ~ line 52 ~ prev ~ pageNumber",
+       pageNumber
+     );
+  }
+  function prev() {
+    if (pageNumber === 1) return;
+     console.log("🚀 ~ file: Table.js ~ line 52 ~ prev ~ pageNumber", pageNumber)
+     setPageNumber(pageNumber--);
+  }
   return (
-    <div className=" container pb-20">
-      <div className="font-semibold mb-4">Leader board</div>
-      <div className="flex capitalize gap-x-5 items-center">
-        <div className="relative pr-6">
-          <select className="appearance-none bg-transparent text-text-color font-semibold relative outline-none bg-transpare">
-            <option>By Subject</option>
-            <option value="Date">Date</option>
-            <option value="Email">Email</option>
-            <option value="Sector">Sector</option>
-            <option value="Gender"> Gender</option>
-          </select>
-          <ChevronDownIcon className="h-4 w-4 absolute top-1 right-0 text-text-color pointer-events-none" />
-        </div>
-        <div className="relative">
+    <div className=" container pb-20 mx-auto">
+      <div className="flex flex-col lg:flex-row gap-5 items-center justify-between mb-12">
+        <div className="w-full flex gap-x-6 justify-between lg:justify-start items-center">
           {" "}
-          <select className="appearance-none outline-none bg-transparent text-gray-400 border px-3 w-40 py-2 rounded-lg border-gray-200 relative">
-            <option>Agriculture</option>
-            <option value="Date">Date</option>
-            <option value="Email">Email</option>
-            <option value="Sector">Sector</option>
-            <option value="Gender"> Gender</option>
+          <h1 className="font-semibold text-lg">Leader board</h1>
+          <select
+            onChange={(e) => handleChange(e)}
+            className="text-primary bg-transparent border-0 outline-0 text-sm"
+          >
+            <option value="1">Sponsored</option>
+            <option value="2">Unsponsored</option>
           </select>
-          <ChevronDownIcon className="h-4 w-4 absolute top-3 right-2 text-gray-400 pointer-events-none" />
+        </div>
+        <div className="flex gap-x-8 items-center justify-end w-full">
+          {" "}
+          <div className="text-primary flex items-center gap-x-1 text-sm">
+            <span>By</span>
+            <select
+              onChange={(e) => handleChange(e)}
+              className="text-primary bg-transparent  border-0 outline-0 text-sm"
+            >
+              <option value="1">Subjects</option>
+              <option value="2">Date</option>
+              <option value="2">Email</option>
+              <option value="2">Name</option>
+              <option value="2">Gender</option>
+            </select>
+          </div>
+          <select
+            onChange={(e) => handleChange(e)}
+            className="text-gray-600 text-sm bg-transparent min-w-[250px border border-gray-200 rounded-lg py-1 px-3 h-10 focus:outline-primary"
+          >
+            <option value="1">Agriculture</option>
+          </select>
         </div>
       </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-4">
+        {students &&
+          Array.from(Array(10)).map((n, i) => (
+            <div className="bg-white rounded-lg shadow-lg p-6" key={i}>
+              <div className="mb-4 mx-auto w-28 h-28">
+                <img
+                  src={candidate}
+                  className="w-full h-full rounded-full"
+                  alt="img"
+                />
+              </div>
+              <table className="w-full">
+                <tbody>
+                  <tr>
+                    <td className="py-0 px-0 bg-white">Name :</td>
+                    <td className="py-0 px-0 bg-white pl-2 font-medium capitalize text-left">
+                      Odunkolade John
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-0 px-0 bg-white">School :</td>
+                    <td className="py-0 px-0 bg-white pl-2 font-medium  text-left"></td>{" "}
+                  </tr>
+                  <tr>
+                    <td className="py-0 px-0 bg-white">
+                      Cummulative :
+                    </td>
 
-      <div className="overflow-x-auto w-full">
-        <table className="capitalize table-auto text-dashboardgray text-sm w-full">
-          <thead>
-            <tr className="text-left">
-              <th>Name</th>
-              <th>form</th>
-              <th>Country</th>
-              <th>gender</th>
-              <th>subscription</th>
-              <th>school</th>
-              <th>grade</th>
-              <th>section</th>
-
-              <th>subjects</th>
-              <th>action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[...Array(6)].map((e, i) => (
-              <tr className="" key={i}>
-                <td className="flex items-center">
-                  {" "}
-                  <img
-                    src={customer1}
-                    className="w-8 h-8 rounded-lg mr-2"
-                    alt="cusotmer"
-                  />{" "}
-                  odunated taiwo
-                </td>
-                <td>u-lesson</td>
-                <td>Germany</td>
-                <td>male</td>
-                <td>monthly</td>
-                <td>corona school</td>
-                <td>A+</td>
-                <td>private</td>
-                <td className="" onClick={() => toggleDetailsModal()}>
-                  <span className="cursor-pointer"> view all </span>
-                </td>
-                <td>
-                  <Menu as="div">
-                    <Menu.Button>
-                      <DotsVerticalIcon className="w-4 h-4" />
-                    </Menu.Button>
-                    <Transition
-                      as={React.Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="absolute right-4 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
-                        <Menu.Item>
-                          <div
-                            className="rounded-md px-4 py-3 text-sm text-center cursor-pointer"
-                            onClick={() => setIsOpen(true)}
-                          >
-                            View
-                          </div>
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {/* PAGINATION STARTS HERE    */}
-        <Pagination />
+                    <td className="py-0 px-0 bg-white text-primary pl-2 font-medium  text-left">
+                      95%
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="flex gap-3 flex-col lg:flex-row items-center mt-4">
+                <button className="w-full bg-primary border primary text-white px-2 py-2 text-xs rounded">
+                  Sponsor
+                </button>
+                <button className="w-full bg-transparent text-primary border border-primary text-white px-2 py-2 text-xs rounded">
+                  View details
+                </button>
+              </div>
+            </div>
+          ))}
       </div>
+      <Pagination
+        totalData={totalData}
+        pageNumber={pageNumber}
+        pageSize={pageSize}
+        next={next}
+        prev={prev}
+      />
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className="relative">
           <span

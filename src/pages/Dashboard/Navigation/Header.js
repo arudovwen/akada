@@ -82,12 +82,12 @@ const Header = function () {
 
   return (
     <section className="bg-[#FAFAFA] w-full px-4 lg:px-8 shadow lg:shadow-none z-40">
-      <nav className="flex lg:grid lg:grid-cols-4 py-5 items-center justify-between">
-        <div className="col-span-1 z-40">
+      <nav className="flex lg:pl-12 py-5 items-center justify-between">
+        <div className="lg:w-[20%] z-40">
           <img src={akada} alt="logo" className="w-[100px] h-auto z-40" />
         </div>
 
-        <div className="col-span-2  z-30 mr-6 hidden lg:inline">
+        <div className="w-[50%]  z-30 mr-6 hidden lg:inline">
           <div className="flex">
             <div className="bg-white py-2 px-6 rounded-3xl mr-6 flex items-center">
               {" "}
@@ -106,7 +106,7 @@ const Header = function () {
             </div>
           </div>
         </div>
-        <div className="col-span-1 items-center justify-between  hidden lg:flex">
+        <div className="w-[30%] items-center justify-between  hidden lg:flex">
           <div className="flex items-center">
             <NavLink to="/cart">
               {" "}
@@ -127,7 +127,7 @@ const Header = function () {
               {" "}
               <div className="text-right flex gap-x-2 items-center h-10 bg-white rounded-full px-4 cursor-pointer">
                 <img src={taiwo} alt="taiwo" />
-                <p className="capitalize">{user.name}</p>
+                {/* <p className="capitalize">{user.name}</p> */}
                 <ChevronDownIcon
                   className="ml-2 -mr-1 h-5 w-5 text-gray-400 hover:text-gray-500"
                   aria-hidden="true"
