@@ -5,7 +5,7 @@ import topimg from '../images/topimg.png';
 export const HomeLayout = () => {
   const { user } = useAuth();
 
-  if (!user) {
+  if (user) {
     return <Navigate to='/dashboard' />;
   }
 

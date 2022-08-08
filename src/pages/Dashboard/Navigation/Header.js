@@ -127,7 +127,7 @@ const Header = function () {
               {" "}
               <div className="text-right flex gap-x-2 items-center h-10 bg-white rounded-full px-4 cursor-pointer">
                 <img src={taiwo} alt="taiwo" />
-                {/* <p className="capitalize">{user.name}</p> */}
+                <p className="capitalize">{user.name}</p>
                 <ChevronDownIcon
                   className="ml-2 -mr-1 h-5 w-5 text-gray-400 hover:text-gray-500"
                   aria-hidden="true"

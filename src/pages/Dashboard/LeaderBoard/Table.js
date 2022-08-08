@@ -14,24 +14,43 @@ import {
   getSponsoredStudents,
   getUnsponsoredStudents,
 } from "../../../services/sponsorservices";
+import { useAuth } from "../../../hooks/useAuth";
+
 const Table = function ({ toggleDetailsModal }) {
+  const { logout, user } = useAuth();
   let [isOpen, setIsOpen] = React.useState(false);
-  const [students, setStudents] = React.useState(10);
+  const [students, setStudents] = React.useState(null);
   const [totalData, setTotalData] = React.useState(40);
   let [pageNumber, setPageNumber] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(10);
+  const [student, setStudent] = React.useState(null);
+  const  [loading, setLoading] = React.useState(true)
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: "Bearer " + user.token,
+    },
+  };
 
   React.useEffect(() => {
     getSponsored();
   }, []);
   function getSponsored() {
-    getSponsoredStudents().then((response) => {
+    setLoading(true)
+    getSponsoredStudents(config).then((response) => {
       setStudents(response.data.data);
-    });
+      setLoading(false)
+    }).catch(()=>{setLoading(false)})
   }
   function getUnSponsored() {
-    getUnsponsoredStudents().then((response) => {
+    setLoading(true)
+    getUnsponsoredStudents(config).then((response) => {
       setStudents(response.data.data);
+      setLoading(false)
+    }).catch(()=>{
+
+      setLoading(false)
     });
   }
   function toggleModal() {
@@ -46,15 +65,18 @@ const Table = function ({ toggleDetailsModal }) {
   }
   function next() {
     setPageNumber(pageNumber++);
-     console.log(
-       "🚀 ~ file: Table.js ~ line 52 ~ prev ~ pageNumber",
-       pageNumber
-     );
+    console.log(
+      "🚀 ~ file: Table.js ~ line 52 ~ prev ~ pageNumber",
+      pageNumber
+    );
   }
   function prev() {
     if (pageNumber === 1) return;
-     console.log("🚀 ~ file: Table.js ~ line 52 ~ prev ~ pageNumber", pageNumber)
-     setPageNumber(pageNumber--);
+    console.log(
+      "🚀 ~ file: Table.js ~ line 52 ~ prev ~ pageNumber",
+      pageNumber
+    );
+    setPageNumber(pageNumber--);
   }
   return (
     <div className=" container pb-20 mx-auto">
@@ -93,9 +115,9 @@ const Table = function ({ toggleDetailsModal }) {
           </select>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-4">
+      {loading?<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-4">
         {students &&
-          Array.from(Array(10)).map((n, i) => (
+          students.map((n, i) => (
             <div className="bg-white rounded-lg shadow-lg p-6" key={i}>
               <div className="mb-4 mx-auto w-28 h-28">
                 <img
@@ -109,17 +131,17 @@ const Table = function ({ toggleDetailsModal }) {
                   <tr>
                     <td className="py-0 px-0 bg-white">Name :</td>
                     <td className="py-0 px-0 bg-white pl-2 font-medium capitalize text-left">
-                      Odunkolade John
+                      {n.first_name} {n.last_name}
                     </td>
                   </tr>
                   <tr>
                     <td className="py-0 px-0 bg-white">School :</td>
-                    <td className="py-0 px-0 bg-white pl-2 font-medium  text-left"></td>{" "}
+                    <td className="py-0 px-0 bg-white pl-2 font-medium  text-left capitalize">
+                      {n.school.name}
+                    </td>{" "}
                   </tr>
                   <tr>
-                    <td className="py-0 px-0 bg-white">
-                      Cummulative :
-                    </td>
+                    <td className="py-0 px-0 bg-white">Cummulative :</td>
 
                     <td className="py-0 px-0 bg-white text-primary pl-2 font-medium  text-left">
                       95%
@@ -131,13 +153,20 @@ const Table = function ({ toggleDetailsModal }) {
                 <button className="w-full bg-primary border primary text-white px-2 py-2 text-xs rounded">
                   Sponsor
                 </button>
-                <button className="w-full bg-transparent text-primary border border-primary text-white px-2 py-2 text-xs rounded">
+                <button
+                  onClick={() => {
+                    setStudent(n);
+                    toggleModal();
+                  }}
+                  className="w-full bg-transparent text-primary border border-primary text-white px-2 py-2 text-xs rounded"
+                >
                   View details
                 </button>
               </div>
             </div>
           ))}
-      </div>
+      </div>:
+    <div className="p-10 mb-24 text-center">  <i class="fa fa-spinner fa-spin text-6xl" aria-hidden="true"></i></div>}
       <Pagination
         totalData={totalData}
         pageNumber={pageNumber}
@@ -153,7 +182,7 @@ const Table = function ({ toggleDetailsModal }) {
           >
             <XIcon className="w-6 h-6 z-40" />
           </span>
-          <StudentDetail />
+          <StudentDetail student={student} />
         </div>
       </CustomModal>
     </div>

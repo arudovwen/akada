@@ -59,28 +59,32 @@ const subjects = [
   },
 ];
 
-const Boxes = function () {
+const Boxes = function ({student}) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 md:gap-16 bg-white rounded-2xl mx-auto p-6 md:p-12 w-[85vw] sm:w-[auto] max-h-[90vh] sm:max-h-full overflow-y-auto">
       <div className="">
         <div className="capitalize rounded-3xl md:shadow-lg md:px-8 py-6 w-full md:translate-y-1/2 md:mt-[-35%]">
-          <img src={candidate} alt="candidate" className="md:mx-auto w-20 h-20 md:w-full md:h-full" />
+          <img
+            src={candidate}
+            alt="candidate"
+            className="md:mx-auto w-20 h-20 md:w-full md:h-full"
+          />
           <table className="w-full">
             <tbody>
               <tr className=" bg-transparent">
                 <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
                   name:
                 </td>
-                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
-                  Odunade Taiwo
+                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2 capitalize">
+                  {student.first_name} {student.last_name}
                 </td>
               </tr>
               <tr className="bg-transparent">
                 <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
                   school:
                 </td>
-                <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
-                  The Kings College
+                <td className=" bg-transparent text-[#5B5B5B] capitalize py-[.1rem] px-2">
+                 {student.school.name}
                 </td>
               </tr>
               <tr className=" bg-transparent">
@@ -114,7 +118,7 @@ const Boxes = function () {
             className="text-sm text-[#E16D38]
 "
           >
-            odunadetiawo@gmail.com
+           {student.email}
           </p>
         </div>
 
@@ -123,21 +127,21 @@ const Boxes = function () {
         </h4>
         <table className="w-full">
           <tbody>
-            {subjects.map((item) => {
+            {student.subjects.map((item, index) => {
               return (
-                <tr className="capitalize  text-dashboardgray bg-transparent">
+                <tr className="capitalize  text-dashboardgray bg-transparent" key={index}>
                   <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
                     {" "}
                     {item.subject}{" "}
                   </td>
                   <td className=" bg-transparent text-[#5B5B5B] py-[.1rem] px-2">
                     {" "}
-                    {item.grade}{" "}
+                    {item.score}{" "}
                   </td>
                 </tr>
               );
             })}
-            <tr className=" bg-transparent capitalize ">
+            {/* <tr className=" bg-transparent capitalize ">
               <td className=" bg-transparent text-dashboardgray py-[.1rem] px-2">
                 master:
               </td>
@@ -147,7 +151,7 @@ const Boxes = function () {
               >
                 view
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
 
