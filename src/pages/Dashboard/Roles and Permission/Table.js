@@ -84,7 +84,7 @@ const Table = function () {
             ))}
           </tbody>
         </table>
-        <Pagination />
+        {/* <Pagination /> */}
       </div>
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className='relative'>
