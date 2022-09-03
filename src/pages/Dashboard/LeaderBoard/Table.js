@@ -13,9 +13,12 @@ import {
   getUnsponsoredStudents,
 } from "../../../services/sponsorservices";
 import { useAuth } from "../../../hooks/useAuth";
+import { useCart } from "../../../hooks/useCart";
 
 const Table = function ({ toggleDetailsModal }) {
   const { user } = useAuth();
+  const { cart, addToCart } = useCart();
+
   let [isOpen, setIsOpen] = React.useState(false);
   const [students, setStudents] = React.useState(null);
   let [pageNumber, setPageNumber] = React.useState(1);
@@ -155,7 +158,7 @@ const Table = function ({ toggleDetailsModal }) {
                   </tbody>
                 </table>
                 <div className="flex gap-3 flex-col lg:flex-row items-center mt-4">
-                  <button className="w-full bg-primary border primary text-white px-2 py-2 text-xs rounded">
+                  <button onClick={() => addToCart(n)} className="w-full bg-primary border primary text-white px-2 py-2 text-xs rounded">
                     Sponsor
                   </button>
                   <button

@@ -109,8 +109,8 @@ const Boxes = function () {
           </span>
         </div>
         <div className=" col-span-1 grid grid-cols-2 md:grid-cols-3 gap-4 md-gap-8 lg:gap-16 ">
-          {subjects.map((item) => (
-            <div className="gap-4 md:gap-8 lg:gap-12 capitalize  text-dashboardgray flex justify-start">
+          {subjects.map((item, i) => (
+            <div key={i} className="gap-4 md:gap-8 lg:gap-12 capitalize  text-dashboardgray flex justify-start">
               <div className="relative px-4 lg:px-6 flex items-center">
                 <div className="w-2 h-2 rounded-full bg-green-500 mr-2" style={{ backgroundColor:item.color }}></div>
                 <div>

@@ -2,6 +2,7 @@ import React, { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./hooks/useAuth";
+import {CartProvider} from "./hooks/useCart"
 import "./index.css";
 import "flowbite";
 import App from "./App";
@@ -17,7 +18,9 @@ const Main = () => {
       <StrictMode>
         <BrowserRouter>
           <AuthProvider>
-            <App />
+            <CartProvider>
+              <App />
+            </CartProvider>
           </AuthProvider>
         </BrowserRouter>
       </StrictMode>

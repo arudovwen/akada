@@ -1,56 +1,55 @@
-import MakePayment from './MakePayment';
-import * as React from 'react';
+import MakePayment from "./MakePayment";
+import * as React from "react";
+import { XIcon } from "@heroicons/react/outline";
+import CustomModal from "../../../components/Modal";
+import { currency } from "../../../hooks/useCurrency";
 
-import { DotsVerticalIcon, XIcon } from '@heroicons/react/outline';
-import { Menu, Transition } from '@headlessui/react';
-import CustomModal from '../../../components/Modal';
-
-const summary = [
-  {
-    id: 1,
-    title: 'subtotal',
-    amount: 400000,
-  },
-
-  {
-    id: 2,
-    title: 'platform fees',
-    amount: 400000,
-  },
-
-  {
-    id: 3,
-    title: 'commission',
-    amount: 400000,
-  },
-];
-
-const Summary = function () {
+const Summary = function ({
+  total,
+  subtotal,
+  commission,
+  fees,
+  extraInfo,
+  clearcart,
+}) {
   let [isOpen, setIsOpen] = React.useState(false);
-  const [isShowing, setIsShowing] = React.useState('');
+
+  const [isShowing, setIsShowing] = React.useState("");
   function toggleModal(val) {
     setIsShowing(val);
     setIsOpen(!isOpen);
   }
+
   return (
     <section>
       <div className="bg-[#F9FAFB] pt-4 pb-2 capitalize text-dashboardgray rounded-lg cart-summary">
         <h3 className="font-semibold text-lg mb-5 px-3 border-b">summary</h3>
         <table className="w-full">
           <tbody>
-            {summary.map((item) => {
-              return (
-                <tr className="border-b" key={item.title}>
-                  <td className="border-b"> {item.title}</td>
-                  <td className="font-semibold text-sm border-b">
-                    NGN {item.amount}
-                  </td>
-                </tr>
-              );
-            })}
+            <tr className="border-b">
+              <td className="border-b">Subtotal</td>
+              <td className="font-semibold text-sm border-b">
+                {currency(subtotal)}
+              </td>
+            </tr>
+            <tr className="border-b">
+              <td className="border-b">25% Platform fees</td>
+              <td className="font-semibold text-sm border-b">
+                {currency(fees)}
+              </td>
+            </tr>
+            <tr className="border-b">
+              <td className="border-b"> Commission </td>
+              <td className="font-semibold text-sm border-b">
+                {currency(commission)}
+              </td>
+            </tr>
             <tr className="">
               <td className="border-b">Total</td>
-              <td className="text-sm font-semibold border-b">NGN 5,000,000</td>
+              <td className="text-sm font-semibold border-b">
+                {" "}
+                {currency(total)}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -58,7 +57,7 @@ const Summary = function () {
         <div className="px-3">
           <button
             type="button"
-            className="capitalize lg:uppercase bg-text-color w-full text-white  py-3 text-lg font-light rounded-md mb-4 tracking-wider mt-5"
+            className="capitalize lg:uppercase bg-text-color w-full text-white  py-3 text-base font-light rounded-md mb-4 tracking-wider mt-5"
           >
             <span onClick={() => toggleModal("checkout")}>checkout</span>
           </button>
@@ -73,7 +72,16 @@ const Summary = function () {
           >
             <XIcon className="w-6 h-6 z-40 cursor-pointer" />
           </span>
-          {isShowing === "checkout" && <MakePayment />}
+          {isShowing === "checkout" && (
+            <MakePayment
+              extraInfo={extraInfo}
+              total={total}
+              subtotal={subtotal}
+              commission={commission}
+              fees={fees}
+              clearcart={clearcart}
+            />
+          )}
         </div>
       </CustomModal>
     </section>

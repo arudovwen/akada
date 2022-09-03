@@ -10,7 +10,7 @@ import AddUser from "../../Dashboard/Forms/AddUser";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
-
+import { useCart } from "../../../hooks/useCart";
 import {
   ShoppingBagIcon,
   BellIcon,
@@ -24,6 +24,7 @@ import {
   XIcon,
   ChevronDownIcon,
 } from "@heroicons/react/outline";
+
 const sideBar = [
   {
     id: 1,
@@ -58,6 +59,7 @@ const sideBar = [
 
 const Header = function () {
   const { logout, user } = useAuth();
+  const { cart } = useCart();
 
   function LogOut() {
     logout();
@@ -94,7 +96,7 @@ const Header = function () {
               <img src={home} alt="icon" className="h-4 w-4 mr-1" />
               <span className="mx-2 text-gray-400">|</span>
               {/* <span>Overview</span> */}
-              <Link to="/overview">Overview </Link>
+              <Link to="/dashboard">Overview </Link>
             </div>
             <div className="flex items-center flex-1 relative">
               <input
@@ -111,7 +113,11 @@ const Header = function () {
             <NavLink to="/cart">
               {" "}
               <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-5 relative cursor-pointer">
-                <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span>
+                {cart.length ? (
+                  <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span>
+                ) : (
+                  ""
+                )}
                 <ShoppingBagIcon className="w-5 h-5 relative" />
               </div>
             </NavLink>
