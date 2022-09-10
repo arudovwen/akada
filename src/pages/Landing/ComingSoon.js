@@ -3,10 +3,8 @@ import akadaboy from "../../images/akadaboy.png";
 import akadaboy2 from "../../images/akadaboy2.png";
 import akadagirl from "../../images/akadagirl.png";
 import dot from "../../images/dot.svg";
-import Button from "../../components/Button";
 import rec from "../../images/rec.png";
 import greenrec from "../../images/greenrec.png";
-import { Link } from "react-router-dom";
 import Countdown from "react-countdown";
 
 function ComingSoon() {

@@ -8,17 +8,17 @@ import * as React from "react";
 import { useCart } from "../../../hooks/useCart";
 
 const Cart = function () {
-  const { cart, setToCart, clearCart } = useCart();
-  const [cartData, setCartData] = React.useState(cart);
+  const { cartItems, setToCart, clearCart } = useCart();
+
   const [extraInfo, setExtraInfo] = React.useState({
     perks: [],
     budget: 0,
     apply: "",
   });
   const [fees, setFees] = React.useState(0);
-  const [commission, setCommission] = React.useState(0);
+  const [commission, ] = React.useState(0);
   const [subtotal, setSubTotal] = React.useState(() => {
-    return cartData
+    return cartItems
       .map((i) => i.amount)
       .reduce((a, b) => {
         return Number(a) + Number(b);
@@ -28,7 +28,7 @@ const Cart = function () {
     return subtotal + commission + fees;
   });
   function updateCart(data) {
-    setCartData(data);
+
     setToCart(data);
   }
   function updateInfo(data) {
@@ -39,9 +39,9 @@ const Cart = function () {
     updateCart([]);
   }
   React.useEffect(() => {
-    setCartData(cart)
+
     setSubTotal(
-      cartData
+      cartItems
         .map((i) => i.amount)
         .reduce((a, b) => {
           return Number(a) + Number(b);
@@ -49,11 +49,11 @@ const Cart = function () {
     );
     setTotal(subtotal + commission + fees);
     setFees(subtotal * 0.25);
-  }, [cart, cartData, commission, fees, subtotal]);
+  }, [ cartItems, commission, fees, subtotal]);
   return (
     <section>
       <Header />
-      <SponsorCart cartData={cartData} setCartData={updateCart} />
+      <SponsorCart cartItems={cartItems} setcartItems={updateCart} />
       <div className="lg:grid lg:grid-cols-4 container mx-auto gap-8 pb-28 lg:pb-0">
         <div className="hidden lg:inline">
           <Budget
@@ -67,7 +67,7 @@ const Cart = function () {
         </div>
 
         <div className="lg:col-span-2">
-          <Table cartData={cartData} updateCart={updateCart} />
+          <Table cartItems={cartItems} updateCart={updateCart} />
         </div>
 
         <Summary

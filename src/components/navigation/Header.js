@@ -1,7 +1,5 @@
 import * as React from 'react';
 import logo from '../../images/logo.svg';
-import { Link } from 'react-router-dom';
-import Button from '../Button';
 import Countdown from "react-countdown";
 
 import './Header.css';

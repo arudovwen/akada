@@ -1,5 +1,4 @@
 import admin from "../../../images/admin.png";
-import icon5 from "../../../images/icon5.png";
 import { CameraIcon } from "@heroicons/react/solid";
 const ProfilePicture = function () {
   return (

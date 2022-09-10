@@ -1,8 +1,5 @@
-// import akadaLogo from '../../images/akada-logo.png';
-import akadaLogo from '../../../images/akada-logo.png';
 import { Link } from 'react-router-dom';
 import * as React from 'react';
-import { IoIosArrowDown } from 'react-icons/io';
 
 const Form = function () {
   const [type, setType] = React.useState('individual');

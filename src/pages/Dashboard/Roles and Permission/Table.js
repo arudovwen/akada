@@ -5,7 +5,7 @@ import { DotsVerticalIcon, XIcon } from '@heroicons/react/outline';
 import { Menu, Transition } from '@headlessui/react';
 import CustomModal from '../../../components/Modal';
 import StudentDetail from '../../Dashboard/StudentDetails/Details';
-import Pagination from '../../../components/Pagination';
+// import Pagination from '../../../components/Pagination';
 import Button from '../../../components/Button';
 import AssignRole from '../Forms/AssignRole';
 

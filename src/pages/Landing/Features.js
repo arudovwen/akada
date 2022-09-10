@@ -2,7 +2,6 @@ import * as React from "react";
 import star from "../../images/star.png";
 import blocks from "../../images/blocks.svg";
 import Sponsorship from "../../images/sponsor.png";
-import Game from "../../images/gamecontroller.png";
 import gradient from "../../images/gradient.png";
 import rec from "../../images/rec.svg";
 import coin from "../../images/coin.png";

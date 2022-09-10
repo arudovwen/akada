@@ -4,14 +4,12 @@ import * as React from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { registerUser, sendcode } from "../../services/authservices";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAuth } from "../../hooks/useAuth";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
 const RegisterAccount = function () {
   const [isVisible, setIsvisible] = React.useState(false);
-  const { login } = useAuth();
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = React.useState(false);
   const [errors, setErrors] = React.useState([]);

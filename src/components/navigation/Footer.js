@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import * as React from "react";
 import akadaLogo from "../../images/akada-logo.png";
 import { ImFacebook, ImTwitter } from "react-icons/im";

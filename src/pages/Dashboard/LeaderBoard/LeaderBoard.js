@@ -1,5 +1,4 @@
 import Table from './Table';
-import Button from './Button';
 import Modal from "../../../components/Modal";
 import { useState } from "react";
 import { XIcon } from "@heroicons/react/outline";

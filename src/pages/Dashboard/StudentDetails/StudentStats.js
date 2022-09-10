@@ -1,8 +1,5 @@
-import Form from "../Student/Form";
-import { IoMdCheckmark } from "react-icons/io";
-import { Link } from "react-router-dom";
-import candidate from "../../../images/candidate.png";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 
 const subjects = [

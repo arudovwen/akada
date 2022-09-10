@@ -1,13 +1,9 @@
 // import AddUser from './AddUser';
 import { IoMdCheckmark } from 'react-icons/io';
-import Dashboard from '../../Dashboard/Dashboard';
+
 import { Link } from 'react-router-dom';
-// import Add from '../AddUser/Add';
-// import AddUser from '../Forms/AddUser';
-// import Header from
-import Header from '../Navigation/Header';
 import Add from '../AddUser/Add';
-import SideBar from '../Navigation/SideBar';
+
 const SuccessUser = function () {
   return (
     <section>

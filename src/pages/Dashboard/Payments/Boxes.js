@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import flag from "../../../images/flag.png";
 import eli1 from "../../../images/eli1.png";
 import eli2 from "../../../images/eli2.png";
@@ -44,32 +44,32 @@ const data = [
   },
 ];
 
-const subscription = [
-  {
-    name: "Page S",
-    uv: 400,
-    pv: 2400,
-    amt: 2400,
-  },
-];
+// const subscription = [
+//   {
+//     name: "Page S",
+//     uv: 400,
+//     pv: 2400,
+//     amt: 2400,
+//   },
+// ];
 
-const sponsorship = [
-  {
-    name: "Page T",
-    uv: 800,
-    pv: 2400,
-    amt: 2400,
-  },
-];
+// const sponsorship = [
+//   {
+//     name: "Page T",
+//     uv: 800,
+//     pv: 2400,
+//     amt: 2400,
+//   },
+// ];
 
-const upgrade = [
-  {
-    name: "Page U",
-    uv: 400,
-    pv: 2400,
-    amt: 2400,
-  },
-];
+// const upgrade = [
+//   {
+//     name: "Page U",
+//     uv: 400,
+//     pv: 2400,
+//     amt: 2400,
+//   },
+// ];
 
 const Boxes = function () {
   const [isOpen, setIsOpen] = React.useState(false);

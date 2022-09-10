@@ -1,7 +1,5 @@
 import * as React from 'react';
-
-import { DotsVerticalIcon, XIcon } from '@heroicons/react/outline';
-import { Menu, Transition } from '@headlessui/react';
+import {  XIcon } from '@heroicons/react/outline';
 import CustomModal from '../../../components/Modal';
 import Success from './Success';
 import { currency } from "../../../hooks/useCurrency";

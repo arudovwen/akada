@@ -4,7 +4,7 @@ import Modal from "../../components/Modal";
 import { useState } from "react";
 import { XIcon } from "@heroicons/react/outline";
 import StudentDetails from "../Dashboard/StudentDetails/StudentStats";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell } from "recharts";
 
 const Dashboard = function () {
   let [isOpen, setisOpen] = useState(false);
@@ -14,32 +14,32 @@ const Dashboard = function () {
   ];
   const data02 = [{ name: "A1", value: 100 }];
   const COLORS = ["#E16D38", "#97B550"];
- const RADIAN = Math.PI / 180;
- const renderCustomizedLabel = ({
-   cx,
-   cy,
-   midAngle,
-   innerRadius,
-   outerRadius,
-   percent,
-   index,
- }) => {
-   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-   const x = cx + radius * Math.cos(-midAngle * RADIAN);
-   const y = cy + radius * Math.sin(-midAngle * RADIAN);
+//  const RADIAN = Math.PI / 180;
+//  const renderCustomizedLabel = ({
+//    cx,
+//    cy,
+//    midAngle,
+//    innerRadius,
+//    outerRadius,
+//    percent,
+//    index,
+//  }) => {
+//    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+//    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+//    const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-   return (
-     <text
-       x={x}
-       y={y}
-       fill="#fafafa"
-       textAnchor={x > cx ? "start" : "end"}
-       dominantBaseline="central"
-     >
-       {`${(percent * 100).toFixed(0)}%`}
-     </text>
-   );
- };
+//    return (
+//      <text
+//        x={x}
+//        y={y}
+//        fill="#fafafa"
+//        textAnchor={x > cx ? "start" : "end"}
+//        dominantBaseline="central"
+//      >
+//        {`${(percent * 100).toFixed(0)}%`}
+//      </text>
+//    );
+//  };
   function toggleModal() {
     setisOpen(!isOpen);
   }

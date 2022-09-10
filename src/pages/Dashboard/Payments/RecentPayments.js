@@ -1,6 +1,4 @@
 import sponsor from '../../../images/sponsor2.png';
-import action from '../../../images/computer.png';
-import upgrade from '../../../images/upgrade.png';
 
 const payments = [
   {

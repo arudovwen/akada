@@ -59,7 +59,7 @@ const sideBar = [
 
 const Header = function () {
   const { logout, user } = useAuth();
-  const { cart } = useCart();
+  const { cartItems } = useCart();
 
   function LogOut() {
     logout();
@@ -75,6 +75,7 @@ const Header = function () {
     setStatus(false);
     setIsSideOpen(!isSideOpen);
   }
+
   const location = useLocation();
 
   React.useEffect(() => {
@@ -91,40 +92,43 @@ const Header = function () {
 
         <div className="w-[50%]  z-30 mr-6 hidden lg:inline">
           <div className="flex">
-            <div className="bg-white py-2 px-6 rounded-3xl mr-6 flex items-center">
+            <div className="bg-white py-2 px-6  shadow-sm rounded-3xl mr-6 flex items-center">
               {" "}
               <img src={home} alt="icon" className="h-4 w-4 mr-1" />
               <span className="mx-2 text-gray-400">|</span>
               {/* <span>Overview</span> */}
               <Link to="/dashboard">Overview </Link>
             </div>
-            <div className="flex items-center flex-1 relative">
+            <div className="flex items-center flex-1 relative ">
               <input
                 type="text"
                 placeholder="Search"
-                className=" rounded-full px-4 py-2 flex-1"
+                className=" rounded-full px-4 py-2 flex-1  shadow-sm"
               />
               <SearchIcon className="w-4 h-4 absolute right-5" />
             </div>
           </div>
         </div>
         <div className="w-[30%] items-center justify-between  hidden lg:flex">
-          <div className="flex items-center">
+          <div className="flex items-center gap-x-3">
             <NavLink to="/cart">
               {" "}
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-5 relative cursor-pointer">
-                {cart.length ? (
-                  <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span>
+              <div className="w-10 h-10 rounded-full shadow-sm bg-white flex items-center justify-center relative cursor-pointer">
+                <ShoppingBagIcon className="w-4 h-4 relative" />
+                {cartItems.length ? (
+                  <span className="bg-red-500 w-4 h-4 flex items-center justify-center rounded-full text-white text-xs">
+                    {" "}
+                    {cartItems.length}
+                  </span>
                 ) : (
                   ""
                 )}
-                <ShoppingBagIcon className="w-5 h-5 relative" />
               </div>
             </NavLink>
             <NavLink to="/notifications">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative cursor-pointer">
-                <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span>
-                <BellIcon className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-full  shadow-sm bg-white flex items-center justify-center relative cursor-pointer">
+                {/* <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span> */}
+                <BellIcon className="w-4 h-4" />
               </div>
             </NavLink>
           </div>
@@ -133,7 +137,7 @@ const Header = function () {
               {" "}
               <div className="text-right flex gap-x-2 items-center h-10 bg-white rounded-full px-4 cursor-pointer">
                 <img src={taiwo} alt="taiwo" />
-                <p className="capitalize">{user.name}</p>
+                <p className="capitalize whitespace-nowrap">{user.name}</p>
                 <ChevronDownIcon
                   className="ml-2 -mr-1 h-5 w-5 text-gray-400 hover:text-gray-500"
                   aria-hidden="true"
@@ -162,19 +166,44 @@ const Header = function () {
             </Transition>
           </Menu>
         </div>
-        {!status && (
-          <label htmlFor="check" className="flex lg:hidden menu z-40">
-            <input
-              type="checkbox"
-              id="check"
-              value={status}
-              onChange={(e) => handleChange(e)}
-            />
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-        )}
+        <span className="flex items-center lg:hidden gap-x-4 z-40">
+          {" "}
+          <div className="flex items-center gap-x-3">
+            <NavLink to="/cart">
+              {" "}
+              <div className="flex items-center justify-center relative cursor-pointer">
+                <ShoppingBagIcon className="w-6 h-6 relative" />
+                {cartItems.length ? (
+                  <span className="bg-red-500 w-6 h-6 flex items-center justify-center rounded-full text-white text-xs">
+                    {" "}
+                    {cartItems.length}
+                  </span>
+                ) : (
+                  ""
+                )}
+              </div>
+            </NavLink>
+            <NavLink to="/notifications">
+              <div className=" flex items-center justify-center relative cursor-pointer">
+                {/* <span className="bg-red-500 w-2 h-2 rounded-full absolute top-3 right-2"></span> */}
+                <BellIcon className="w-6 h-6" />
+              </div>
+            </NavLink>
+          </div>
+          {!status && (
+            <label htmlFor="check" className="flex lg:hidden menu z-40">
+              <input
+                type="checkbox"
+                id="check"
+                value={status}
+                onChange={(e) => handleChange(e)}
+              />
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+          )}
+        </span>
       </nav>
       {status && (
         <aside className="w-full bg-gray-800/80 h-screen fixed left-0 top-0 z-[999] ease-in-out transition duration-500">

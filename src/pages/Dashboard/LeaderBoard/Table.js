@@ -1,8 +1,6 @@
-
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
-import {
-  XIcon,
-} from "@heroicons/react/outline";
+import { XIcon } from "@heroicons/react/outline";
 
 import CustomModal from "../../../components/Modal";
 import Pagination from "../../../components/Pagination";
@@ -17,7 +15,7 @@ import { useCart } from "../../../hooks/useCart";
 
 const Table = function ({ toggleDetailsModal }) {
   const { user } = useAuth();
-  const { cart, addToCart } = useCart();
+  const { addToCart, cartItems } = useCart();
 
   let [isOpen, setIsOpen] = React.useState(false);
   const [students, setStudents] = React.useState(null);
@@ -25,8 +23,8 @@ const Table = function ({ toggleDetailsModal }) {
   const [student, setStudent] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [active, setActive] = React.useState(1);
-  const [query, setQuery] = React.useState("");
-  const [meta, setMeta] = React.useState({})
+  const [query] = React.useState("");
+  const [meta, setMeta] = React.useState({});
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -44,7 +42,7 @@ const Table = function ({ toggleDetailsModal }) {
     getSponsoredStudents({ pageNumber, query }, config)
       .then((response) => {
         setStudents(response.data.data);
-        setMeta(response.data.meta)
+        setMeta(response.data.meta);
         setLoading(false);
       })
       .catch(() => {
@@ -55,9 +53,9 @@ const Table = function ({ toggleDetailsModal }) {
     setLoading(true);
     getUnsponsoredStudents({ pageNumber, query }, config)
       .then((response) => {
-      setStudents(response.data.data);
-      setMeta(response.data.meta);
-      setLoading(false);
+        setStudents(response.data.data);
+        setMeta(response.data.meta);
+        setLoading(false);
       })
       .catch(() => {
         setLoading(false);
@@ -69,13 +67,19 @@ const Table = function ({ toggleDetailsModal }) {
   }
 
   function next() {
-    setPageNumber(pageNumber +  1);
+    setPageNumber(pageNumber + 1);
+    window.scrollTo(0,0)
   }
 
   function prev() {
     setPageNumber(pageNumber - 1);
+    window.scrollTo(0,0)
   }
-
+  function isInCart(id) {
+    return cartItems.some(
+      (item) => `${item.first_name} ${item.last_name}` === id
+    );
+  }
   React.useEffect(() => {
     if (active === 1) {
       getSponsored();
@@ -123,69 +127,78 @@ const Table = function ({ toggleDetailsModal }) {
         </div>
       </div>
       {!loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-4">
-          {students &&
-            students.map((n, i) => (
-              <div className="bg-white rounded-lg shadow-lg p-6" key={i}>
-                <div className="mb-4 mx-auto w-28 h-28">
-                  <img
-                    src={candidate}
-                    className="w-full h-full rounded-full"
-                    alt="img"
-                  />
-                </div>
-                <table className="w-full">
-                  <tbody>
-                    <tr>
-                      <td className="py-0 px-0 bg-white">Name :</td>
-                      <td className="py-0 px-0 bg-white pl-2 font-medium capitalize text-left">
-                        {n.first_name} {n.last_name}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-0 px-0 bg-white">School :</td>
-                      <td className="py-0 px-0 bg-white pl-2 font-medium  text-left capitalize">
-                        {n.school.name}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-0 px-0 bg-white">Cummulative :</td>
+        <>
+          {" "}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-4">
+            {students &&
+              students.map((n, i) => (
+                <div className="bg-white rounded-lg shadow-lg p-6" key={i}>
+                  <div className="mb-4 mx-auto w-28 h-28">
+                    <img
+                      src={candidate}
+                      className="w-full h-full rounded-full"
+                      alt="img"
+                    />
+                  </div>
+                  <table className="w-full">
+                    <tbody>
+                      <tr>
+                        <td className="py-0 px-0 bg-white">Name :</td>
+                        <td className="py-0 px-0 bg-white pl-2 font-medium capitalize text-left">
+                          {n.first_name} {n.last_name}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="py-0 px-0 bg-white">School :</td>
+                        <td className="py-0 px-0 bg-white pl-2 font-medium  text-left capitalize">
+                          {n.school.name}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="py-0 px-0 bg-white">Cummulative :</td>
 
-                      <td className="py-0 px-0 bg-white text-primary pl-2 font-medium  text-left">
-                        95%
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div className="flex gap-3 flex-col lg:flex-row items-center mt-4">
-                  <button onClick={() => addToCart(n)} className="w-full bg-primary border primary text-white px-2 py-2 text-xs rounded">
-                    Sponsor
-                  </button>
-                  <button
-                    onClick={() => {
-                      setStudent(n);
-                      toggleModal();
-                    }}
-                    className="w-full bg-transparent text-primary border border-primary text-white px-2 py-2 text-xs rounded"
-                  >
-                    View details
-                  </button>
+                        <td className="py-0 px-0 bg-white text-primary pl-2 font-medium  text-left">
+                          95%
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="flex gap-3 flex-col lg:flex-row items-center mt-4">
+                    {isInCart(`${n.first_name} ${n.last_name}`) ? (
+                      <button className="w-full bg-primary border primary text-white px-2 py-2 text-xs rounded opacity-60">
+                        In cart
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => addToCart(n)}
+                        className="w-full bg-primary border primary text-white px-2 py-2 text-xs rounded"
+                      >
+                        Sponsor
+                      </button>
+                    )}
+
+                    <button
+                      onClick={() => {
+                        setStudent(n);
+                        toggleModal();
+                      }}
+                      className="w-full bg-transparent text-primary border border-primary text-white px-2 py-2 text-xs rounded"
+                    >
+                      View details
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-        </div>
+              ))}
+          </div>
+          <Pagination meta={meta} next={next} prev={prev} />
+        </>
       ) : (
         <div className="p-10 my-40 text-center">
           {" "}
           <i className="fa fa-spinner fa-spin text-6xl" aria-hidden="true"></i>
         </div>
       )}
-      <Pagination
-        meta={meta}
-        next={next}
-        prev={prev}
 
-      />
       <CustomModal isOpen={isOpen} closeModal={() => toggleModal()}>
         <div className="relative">
           <span

@@ -1,5 +1,4 @@
-import akadaLogo from '../../../images/akada-logo.png';
-import { Link } from 'react-router-dom';
+
 import CustomModal from '../../../components/Modal';
 import { useState } from 'react';
 import { IoMdCheckmark } from 'react-icons/io';

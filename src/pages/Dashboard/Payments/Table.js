@@ -1,16 +1,4 @@
 import customer1 from '../../../images/customer1.png';
-import eye from '../../../images/eye.png';
-import brow from '../../../images/brow.png';
-import * as React from 'react';
-import {
-  DotsVerticalIcon,
-  ChevronDownIcon,
-  XIcon,
-} from '@heroicons/react/outline';
-import { Menu, Transition } from '@headlessui/react';
-import CustomModal from '../../../components/Modal';
-// import Pagination from '../../../components/Pagination';
-import StudentDetail from '../../Dashboard/StudentDetails/Details';
 import { VscEye } from "react-icons/vsc";
 
 const Table = function () {

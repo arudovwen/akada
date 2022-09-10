@@ -1,6 +1,6 @@
 import * as React from "react";
 import akadaLogo from "../../images/akada-logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CustomModal from "../../components/Modal";
 import { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
@@ -12,9 +12,9 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const VerifyAccount = function () {
-  const navigate = useNavigate();
+
   let [isOpen, setIsOpen] = useState(false);
-  const [otp, setOtp] = useState("");
+  const [, setOtp] = useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const initialValues = {
     code: "",
@@ -36,7 +36,7 @@ const VerifyAccount = function () {
       };
       accountverify(values, config)
         .then(() => {
-          toggleModal()
+          toggleModal();
         })
         .catch((err) => {
           setIsLoading(false);

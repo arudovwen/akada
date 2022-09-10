@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import ProfilePicture from './ProfilePicture';
 import CustomModal from '../../../components/Modal';
 import { useState } from 'react';
@@ -110,7 +111,7 @@ const UpdateProfile = function () {
 
           <div className='text-center bg-[#E4E5E3] text-sm rounded-br-xl rounded-bl-xl  flex items-center justify-center w-full py-4 mt-8  font-bold uppercase text-text-color'>
             {' '}
-            <a href=''>go to dashboard</a>
+            <a href='#'>go to dashboard</a>
           </div>
         </div>
       </CustomModal>

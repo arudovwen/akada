@@ -18,12 +18,12 @@ const Table = function () {
     const { user } = useAuth();
 
     const [students, setStudents] = React.useState(null);
-    let [pageNumber, setPageNumber] = React.useState(1);
+    let [pageNumber, ] = React.useState(1);
     const [student, setStudent] = React.useState(null);
     const [loading, setLoading] = React.useState(true);
-    const [active, setActive] = React.useState(1);
-    const [query, setQuery] = React.useState("");
-    const [meta, setMeta] = React.useState({});
+    // const [active, setActive] = React.useState(1);
+    const [query, ] = React.useState("");
+    const [, setMeta] = React.useState({});
   let [isOpen, setIsOpen] = React.useState(false);
   const [isShowing, setIsShowing] = React.useState("details");
    const config = {
@@ -36,6 +36,7 @@ const Table = function () {
 
    React.useEffect(() => {
      getSponsored();
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    function getSponsored() {

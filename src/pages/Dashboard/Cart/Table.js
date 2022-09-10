@@ -1,16 +1,16 @@
 import customer1 from "../../../images/customer1.png";
 import * as React from "react";
 import { PencilAltIcon, CheckIcon } from "@heroicons/react/outline";
-import { Menu, Transition } from "@headlessui/react";
-import CustomModal from "../../../components/Modal";
-// import Pagination from '../../../components/Pagination';
-import StudentDetail from "../../Dashboard/StudentDetails/Details";
+import { XIcon } from "@heroicons/react/solid";
+// import { Menu, Transition } from "@headlessui/react";
+// import CustomModal from "../../../components/Modal";
+// // import Pagination from '../../../components/Pagination';
+// import StudentDetail from "../../Dashboard/StudentDetails/Details";
 import { useCart } from "../../../hooks/useCart";
 import { currency } from "../../../hooks/useCurrency";
 
-const Table = function ({cartData, updateCart}) {
-
-
+const Table = function ({ cartItems, updateCart }) {
+  const { clearCart, removeFromCart } = useCart();
   const [inputData, setInputData] = React.useState([]);
   function openInput(index) {
     let newinput = inputData;
@@ -23,7 +23,7 @@ const Table = function ({cartData, updateCart}) {
     setInputData(inputnew);
   }
   function handleAmount(e, i) {
-    let newinput = cartData;
+    let newinput = cartItems;
     let inputnew = newinput.map((item, id) => {
       if (id === i) {
         item.amount = e.target.value;
@@ -31,7 +31,6 @@ const Table = function ({cartData, updateCart}) {
       return item;
     });
     updateCart(inputnew);
-
   }
   return (
     <section className="w-full lg:w-auto  rounded-xl bg-white">
@@ -66,7 +65,7 @@ const Table = function ({cartData, updateCart}) {
               </tr>
             </thead>
             <tbody>
-              {cartData.map((e, i) => (
+              {cartItems.map((e, i) => (
                 <tr className="" key={i}>
                   <td className="flex items-center border-b border-gray-100 px-4 py-2 capitalize">
                     {" "}
@@ -100,33 +99,54 @@ const Table = function ({cartData, updateCart}) {
                     )}
                   </td>
                   <td className="border-b border-gray-100 px-4 py-2">
-                    {!inputData.includes(`${e.first_name} ${e.last_name}`) ? (
-                      <PencilAltIcon
+                    <span className="flex items-center gap-x-3">
+                      {" "}
+                      {!inputData.includes(`${e.first_name} ${e.last_name}`) ? (
+                        <PencilAltIcon
+                          className="w-5 h-5"
+                          onClick={() =>
+                            openInput(`${e.first_name} ${e.last_name}`)
+                          }
+                        />
+                      ) : (
+                        <CheckIcon
+                          className="w-5 h-5"
+                          onClick={() =>
+                            closeInput(`${e.first_name} ${e.last_name}`)
+                          }
+                        />
+                      )}
+                      <XIcon
+                        onClick={() => {
+                          removeFromCart(e.id);
+                        }}
                         className="w-5 h-5"
-                        onClick={() =>
-                          openInput(`${e.first_name} ${e.last_name}`)
-                        }
                       />
-                    ) : (
-                      <CheckIcon
-                        className="w-5 h-5"
-                        onClick={() =>
-                          closeInput(`${e.first_name} ${e.last_name}`)
-                        }
-                      />
-                    )}
+                    </span>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          {!cartData.length && (
+
+          {!cartItems.length && (
             <div className="text-xl font-medium text-center py-10 mt-16 text-gray-400">
               You have no student in your cart!
             </div>
           )}
-
         </div>
+        {cartItems.length ? (
+          <div className=" font-medium text-center mt-6">
+            <button
+              onClick={() => clearCart()}
+              className="border border-red-500 rounded-lg px-4 py-1 text-sm flex items-center gap-x-1 text-red-500"
+            >
+              Clear cart <XIcon className="w-4 h-4" />
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </section>
   );

@@ -1,12 +1,13 @@
-import Form from "../Student/Form";
-import { IoMdCheckmark } from "react-icons/io";
-import { Link } from "react-router-dom";
 import candidate from "../../../images/candidate.png";
 import { useCart } from "../../../hooks/useCart";
 
-
-const Boxes = function ({student}) {
-   const { cart, addToCart } = useCart();
+const Boxes = function ({ student }) {
+  const { cartItems, addToCart } = useCart();
+  function isInCart(id) {
+    return cartItems.some(
+      (item) => `${item.first_name} ${item.last_name}` === id
+    );
+  }
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 md:gap-16 bg-white rounded-2xl mx-auto p-6 md:p-12 w-[85vw] sm:w-[auto] max-h-[90vh] sm:max-h-full overflow-y-auto">
       <div className="">
@@ -104,13 +105,18 @@ const Boxes = function ({student}) {
             </tr> */}
           </tbody>
         </table>
-
-        <button
-          onClick={() => addToCart(student)}
-          className="uppercase bg-text-color w-full text-white border-white py-4 text-base font-medium rounded-md mb-4 tracking-wider mt-5"
-        >
-          Sponsor
-        </button>
+        {isInCart(`${student.first_name} ${student.last_name}`) ? (
+          <button className="w-full bg-primary border primary text-white px-2 py-2 text-xs rounded opacity-60">
+            In cart
+          </button>
+        ) : (
+          <button
+            onClick={() => addToCart(student)}
+            className="uppercase bg-text-color w-full text-white border-white py-4 text-base font-medium rounded-md mb-4 tracking-wider mt-5"
+          >
+            Sponsor
+          </button>
+        )}
       </div>
     </div>
   );
