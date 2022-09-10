@@ -5,6 +5,8 @@ import { useLocalStorage } from "./useLocalStorage";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+
+  
   const [user, setUser] = useLocalStorage("user", null);
   const [admin, setAdmin] = useLocalStorage("admin", null);
   const navigate = useNavigate();
